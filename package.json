@@ -1,0 +1,15 @@
+{
+  "name": "package-johnson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "package-johnson",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node package-johnson"
+  },
+  "author": "Felipe Freitag",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
