@@ -6,6 +6,7 @@ dotenv.config();
 
 client.on("ready", () => {
     console.log("I'm Package Johnson and I'm ready!");
+    client.user.setActivity("Say hi to Package Johnson!");
 });
 
 client.login(process.env.TOKEN);
