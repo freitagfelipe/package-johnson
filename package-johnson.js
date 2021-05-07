@@ -13,7 +13,7 @@ client.on("message", message => {
     if(message.author.id != "836491530394533908") {
         console.log(`${message.author.username}: ${message.content}`);
 
-        if(message.content.toLowerCase().includes("hi") && message.mentions.users.first().id == "836491530394533908")
+        if(message.content.toLowerCase() == "hi <@!836491530394533908>" && message.mentions.users.first().id == "836491530394533908")
             greetingMessage(message);
     }
 });
