@@ -1,25 +1,67 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
 const dotenv = require("dotenv");
+const fileSystem = require("fs");
+const { measureMemory } = require("vm");
+
+const client = new Discord.Client();
+const { prefix } = require("./config.json");
 
 dotenv.config();
 
 client.on("ready", () => {
     console.log("I'm Package Johnson and I'm ready!");
     client.user.setActivity("Say hi to @Package Johnson!");
-});
 
-client.on("message", message => {
-    if(message.author.id != "836491530394533908") {
-        console.log(`${message.author.username}: ${message.content}`);
+    client.commands = new Discord.Collection();
+    client.interactions = new Discord.Collection();
 
-        if(message.content.toLowerCase().includes("hi") && message.mentions.users.first().id == "836491530394533908")
-            greetingMessage(message);
+    const commandFiles = fileSystem.readdirSync("./commands").filter(file => file.endsWith(".js"));
+    const interactionFiles = fileSystem.readdirSync("./interactions").filter(file => file.endsWith(".js"));
+
+    for (const file of commandFiles) {
+        const command = require(`./commands/${file}`);
+        client.commands.set(command.name, command);
+    }
+
+    for (const file of interactionFiles) {
+        const interaction = require(`./interactions/${file}`);
+        client.interactions.set(interaction.name, interaction);
     }
 });
 
-function greetingMessage(message) {
-    message.reply('hiii!!!! If you wanna see my command list just type: "!pj commands".');
-}
+client.on("message", message => {
+    if(message.author.id != client.user.id && message.content.startsWith(prefix)) {
+        console.log(`${message.author.username}: ${message.content}`);
+
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
+        const commandName = args.shift().toLowerCase();
+
+        const command = client.commands.get(commandName);
+
+        try {
+            command.execute(message, args);
+        } catch (error) {
+            console.log(error);
+            message.reply("An error occurred while trying to execute your command");
+        }
+
+    } else if(message.author.id != client.user.id && message.mentions.users.array().length > 0 && message.mentions.users.first().id == client.user.id) {
+        console.log(`${message.author.username}: ${message.content}`);
+
+        let interactionName;
+
+        if(message.content.toLowerCase().startsWith("hi")) {
+            interactionName = "greeting message";
+        }
+
+        const interaction = client.interactions.get(interactionName);
+
+        try {
+            interaction.execute(message);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+});
 
 client.login(process.env.TOKEN);
