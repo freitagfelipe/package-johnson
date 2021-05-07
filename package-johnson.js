@@ -13,19 +13,19 @@ client.on("ready", () => {
     client.user.setActivity("Say hi to @Package Johnson!");
 
     client.commands = new Discord.Collection();
-    client.interations = new Discord.Collection();
+    client.interactions = new Discord.Collection();
 
     const commandFiles = fileSystem.readdirSync("./commands").filter(file => file.endsWith(".js"));
-    const interationFiles = fileSystem.readdirSync("./interations").filter(file => file.endsWith(".js"));
+    const interactionFiles = fileSystem.readdirSync("./interactions").filter(file => file.endsWith(".js"));
 
     for (const file of commandFiles) {
         const command = require(`./commands/${file}`);
         client.commands.set(command.name, command);
     }
 
-    for (const file of interationFiles) {
-        const interation = require(`./interations/${file}`);
-        client.interations.set(interation.name, interation);
+    for (const file of interactionFiles) {
+        const interaction = require(`./interactions/${file}`);
+        client.interactions.set(interaction.name, interaction);
     }
 });
 
@@ -48,16 +48,16 @@ client.on("message", message => {
     } else if(message.author.id != client.user.id && message.mentions.users.array().length > 0 && message.mentions.users.first().id == client.user.id) {
         console.log(`${message.author.username}: ${message.content}`);
 
-        let interationName;
+        let interactionName;
 
         if(message.content.toLowerCase().startsWith("hi")) {
-            interationName = "greeting message";
+            interactionName = "greeting message";
         }
 
-        const interation = client.interations.get(interationName);
+        const interaction = client.interactions.get(interactionName);
 
         try {
-            interation.execute(message);
+            interaction.execute(message);
         } catch (error) {
             console.log(error);
         }
