@@ -45,7 +45,7 @@ client.on("message", message => {
             message.reply("An error occurred while trying to execute your command");
         }
 
-    } else if(message.author.id != client.user.id && message.mentions.users.array().length > 0 && message.mentions.users.first().id == client.user.id) {
+    } else if(message.author.id != client.user.id && message.mentions.users.first() && message.mentions.users.first().id == client.user.id) {
         console.log(`${message.author.username}: ${message.content}`);
 
         let interactionName;
