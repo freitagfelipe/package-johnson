@@ -17,12 +17,14 @@ module.exports = {
         if (user.bot)
             isHuman = "Bot";
 
+        const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://i.imgur.com/7RIdpER.png";
+
         const statsEmbed = new MessageEmbed()
             .setAuthor(
                 `${user.username}(${isHuman}), stats:`
             )
             .setColor("#FFFF00")
-            .setThumbnail(`${user.avatarURL()}`)
+            .setThumbnail(`${userAvatar}`)
             .addFields(
                 { name: "Discord tag:", value: `\`${user.username}#${user.discriminator}\``, inline: true },
                 { name: "Discord ID:", value: `\`${user.id}\``, inline: true },
