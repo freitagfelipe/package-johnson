@@ -15,6 +15,7 @@ module.exports = {
 
         const userAvatar = user.avatarURL() != null ? user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 }) : "https://i.imgur.com/7RIdpER.png";
         const userAvatarLink = user.avatarURL() != null ? user.avatarURL() : "";
+        const avatarTitle = user.avatarURL() != null ? "Click to open the avatar in your browser!" : "User doesn't have a profile photo!";
 
         const avatarEmbed = new MessageEmbed()
             .setAuthor(
@@ -22,7 +23,7 @@ module.exports = {
                 `${userAvatar}`
             )
             .setColor("#FFFF00")
-            .setTitle("Click to open the avatar in your browser!")
+            .setTitle(`${avatarTitle}`)
             .setURL(`${userAvatarLink}`)
             .setImage(userAvatar)
 
