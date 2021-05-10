@@ -13,15 +13,18 @@ module.exports = {
             user = message.author;
         }
 
+        const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://i.imgur.com/7RIdpER.png";
+        const userAvatarLink = user.avatarURL() != null ? user.avatarURL() : "";
+
         const avatarEmbed = new MessageEmbed()
             .setAuthor(
                 `${user.username}`,
-                `${user.avatarURL()}`
+                `${userAvatar}`
             )
             .setColor("#FFFF00")
             .setTitle("Click to open the avatar in your browser!")
-            .setURL(`${user.avatarURL()}`)
-            .setImage(user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
+            .setURL(`${userAvatarLink}`)
+            .setImage(userAvatar)
 
         message.reply(avatarEmbed)
     }
