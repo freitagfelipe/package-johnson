@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const dotenv = require("dotenv");
 const fileSystem = require("fs");
-const { measureMemory } = require("vm");
 
 const client = new Discord.Client();
 const { prefix } = require("./config.json");
