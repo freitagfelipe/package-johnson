@@ -8,7 +8,7 @@ module.exports = {
         let user;
         let isHuman = "Human";
 
-        if (args.length > 0) {
+        if (args.length) {
             user = message.mentions.users.first();
         } else {
             user = message.author;
