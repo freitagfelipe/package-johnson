@@ -13,7 +13,7 @@ module.exports = {
             user = message.author;
         }
 
-        const userAvatar = user.avatarURL() != null ? user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 }) : "https://i.imgur.com/7RIdpER.png";
+        const userAvatar = user.avatarURL() != null ? user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 }) : "https://i.imgur.com/KkXOUN1.png";
         const userAvatarLink = user.avatarURL() != null ? user.avatarURL() : "";
         const avatarTitle = user.avatarURL() != null ? "Click to open the avatar in your browser!" : "User doesn't have a profile photo!";
 

@@ -17,7 +17,7 @@ module.exports = {
         if (user.bot)
             isHuman = "Bot";
 
-        const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://i.imgur.com/7RIdpER.png";
+        const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://i.imgur.com/KkXOUN1.png";
 
         const statsEmbed = new MessageEmbed()
             .setAuthor(
