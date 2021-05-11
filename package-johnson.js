@@ -41,7 +41,7 @@ client.on('guildCreate', guild => {
 });
 
 client.on("message", message => {
-    if(message.author.id != client.user.id && message.content.startsWith(prefix)) {
+    if (message.author.id != client.user.id && message.content.startsWith(prefix)) {
         console.log(`${message.author.username}: ${message.content}`);
 
         const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -61,8 +61,10 @@ client.on("message", message => {
 
         let interactionName;
 
-        if(message.content.toLowerCase().startsWith("hi")) {
+        if (message.content.toLowerCase().startsWith("hi")) {
             interactionName = "greeting message";
+        } else if (message.content.toLowerCase("good morning")) {
+            interactionName = "good morning";
         }
 
         const interaction = client.interactions.get(interactionName);
