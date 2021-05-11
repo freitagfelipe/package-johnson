@@ -28,6 +28,18 @@ client.on("ready", () => {
     }
 });
 
+client.on('guildCreate', guild => {
+    guild.roles.create({
+        data: {
+            name: "Package Johnson",
+            color: "#FFFF00"
+        }
+    }).then(role => {
+        guild.member(client.user).roles.add(role)
+        role.setHoist(true);
+    });
+});
+
 client.on("message", message => {
     if(message.author.id != client.user.id && message.content.startsWith(prefix)) {
         console.log(`${message.author.username}: ${message.content}`);
