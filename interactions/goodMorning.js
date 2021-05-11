@@ -13,8 +13,6 @@ module.exports = {
             .setTitle(`Ohayoooooooooo!`)
             .setImage("https://i.pinimg.com/originals/1d/9b/5e/1d9b5e8047d1ec289bfc698ebb4c64cc.gif")
 
-        console.log(message.author.id)
-
         return message.channel.send(goodMorningEmbed);
     }
 }
