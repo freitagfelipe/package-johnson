@@ -28,7 +28,7 @@ client.on("ready", () => {
     }
 });
 
-client.on('guildCreate', guild => {
+client.on('guildCreate', async guild => {
     guild.roles.create({
         data: {
             name: "Package Johnson",
@@ -38,6 +38,8 @@ client.on('guildCreate', guild => {
         guild.member(client.user).roles.add(role)
         role.setHoist(true);
     });
+
+    await guild.members.fetch(guild.ownerID).then(owner => owner.send(`Hiiii, ${guild.owner.user.username}! Thank you for add me in your discord server and if you want to see my comand list you just need to click on this link: http://gg.gg/package-johnson-discord-commands !`));
 });
 
 client.on("message", message => {
