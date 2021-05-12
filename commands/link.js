@@ -12,7 +12,7 @@ module.exports = {
             )
             .setColor("#FFFF00")
             .setTitle("To add me in your discord server you just need to click on this message!")
-            .setURL(`https://bit.ly/package-johnson-bot`)
+            .setURL(`http://gg.gg/package-johnson-discord`)
             .addFields(
                 { name: "Created by:", value: "[Felipe Freitag](https://github.com/freitagfelipe)", inline: true},
                 { name: "Link to repository:", value: "[Github](https://github.com/freitagfelipe/package-johnson)", inline: true}
