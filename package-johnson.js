@@ -6,7 +6,7 @@ const { prefix } = require("./config.json");
 const client = new Discord.Client();
 
 module.exports = client;
-require("./events/joinMessage");
+require("./events/guildCreate");
 
 dotenv.config();
 
