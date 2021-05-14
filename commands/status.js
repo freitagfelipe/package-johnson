@@ -19,7 +19,7 @@ module.exports = {
 
         const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://i.imgur.com/KkXOUN1.png";
 
-        const statsEmbed = new MessageEmbed()
+        return message.channel.send(new MessageEmbed()
             .setAuthor(
                 `${user.username}(${isHuman}), stats:`
             )
@@ -31,7 +31,6 @@ module.exports = {
                 { name: "Account created on:", value: `${user.createdAt.toUTCString().split(" ").slice(0, 5).join(" ")}`, inline: true },
                 { name: "Joined on:", value: `${message.guild.members.cache.find(member => member.id == user.id).joinedAt.toUTCString().split(" ").slice(0, 5).join(" ")}`, inline: true}
             )
-
-        message.channel.send(statsEmbed);
+        );
     }
 }

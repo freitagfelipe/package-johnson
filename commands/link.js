@@ -5,7 +5,7 @@ module.exports = {
     description: "Shows the link to add Package Johnson to your discord",
 
     execute(message) {
-        const embedLink = new MessageEmbed()
+        return message.channel.send(new MessageEmbed()
             .setAuthor(
                 "Package Johnson",
                 "https://i.imgur.com/vDVSu00.png"
@@ -17,7 +17,6 @@ module.exports = {
                 { name: "Created by:", value: "[Felipe Freitag](https://github.com/freitagfelipe)", inline: true},
                 { name: "Link to repository:", value: "[Github](https://github.com/freitagfelipe/package-johnson)", inline: true}
             )
-
-        message.channel.send(embedLink);
+        );
     }
 }
