@@ -1,9 +1,12 @@
 const Discord = require("discord.js");
 const dotenv = require("dotenv");
 const fileSystem = require("fs");
+const { prefix } = require("./config.json");
 
 const client = new Discord.Client();
-const { prefix } = require("./config.json");
+
+module.exports = client;
+require("./events/joinMessage");
 
 dotenv.config();
 
@@ -26,33 +29,6 @@ client.on("ready", () => {
         const interaction = require(`./interactions/${file}`);
         client.interactions.set(interaction.name, interaction);
     }
-});
-
-client.on('guildCreate', async guild => {
-    guild.roles.create({
-        data: {
-            name: "Package Johnson",
-            color: "#FFFF00"
-        }
-    }).then(role => {
-        guild.member(client.user).roles.add(role)
-        role.setHoist(true);
-    });
-
-    await guild.members.fetch(guild.ownerID).then(owner => {
-        const ownerMessage = new Discord.MessageEmbed()
-        .setAuthor(
-            "Package Johnson",
-            "https://i.imgur.com/vDVSu00.png"
-        )
-        .setColor("#FFFF00")
-        .setTitle(`Acknowledgments and information.`)
-        .setDescription(`Hiiii, ${guild.owner.user.username}! Thank you for add me in your discord server and if you want to see my comand list you just need to click on this link: http://gg.gg/package-johnson-discord-commands`)
-        .setImage(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
-        .setTimestamp();
-
-        owner.send(ownerMessage)
-    });
 });
 
 client.on("message", message => {
