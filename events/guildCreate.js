@@ -9,9 +9,10 @@ client.on('guildCreate', guild => {
             channel.send(new MessageEmbed()
                 .setAuthor(
                     `${client.user.username}`,
-                    `${client.user.displayAvatarURL()}`
                 )
                 .setColor("#FFFF00")
+                .setDescription('Thanks for adding me in to your server, my prefix is: `!pj`')
+                .setThumbnail(`${client.user.avatarURL()}`)
             )
             
             channelMessageVerification = false;
