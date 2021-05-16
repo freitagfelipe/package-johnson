@@ -69,7 +69,7 @@ async function sendMusicEmbed(message, args) {
             { name: "Duration time:", value: `\`${musicTime}\``, inline: true },
             { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
         )
-        .setThumbnail(musicInfo.videoDetails.thumbnails[4].url)
+        .setThumbnail(musicInfo.videoDetails.thumbnails[0].url)
         .setTimestamp()
     );
 }
@@ -77,10 +77,15 @@ async function sendMusicEmbed(message, args) {
 function formatMusicTime(musicTime) {
     let musicTimeHours = Math.trunc(musicTime / 3600) || "00";
     let musicTimeMinuts = Math.trunc((musicTime - Number(musicTimeHours) * 3600) / 60) || "00";
+    let musicTimeSeconds =  Math.trunc(musicTime - (Number(musicTimeHours) * 3600 + Number(musicTimeMinuts) * 60));
 
     if (musicTimeMinuts < 10 && musicTimeMinuts != "00") {
         musicTimeMinuts = "0" + musicTimeMinuts;
     }
 
-    return `${String(musicTimeHours)}:${musicTimeMinuts}`;
+    if (musicTimeSeconds < 10 && musicTimeSeconds != "00") {
+        musicTimeSeconds = "0" + musicTimeSeconds;
+    }
+
+    return (Number(musicTimeHours) > 0 || Number(musicTimeMinuts) > 0 || Number(musicTimeSeconds) > 0) ? `${String(musicTimeHours)}:${musicTimeMinuts}:${musicTimeSeconds}` : `Live music`;
 }
