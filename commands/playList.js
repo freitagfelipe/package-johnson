@@ -118,6 +118,7 @@ module.exports = {
                 
                 if (music[0]) {
                     msg.delete();
+                    message.delete();
 
                     if (page == 1) {
                         client.commands.get("play").execute(message, [music[0]]);
