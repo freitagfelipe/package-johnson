@@ -11,7 +11,9 @@ module.exports = {
         const PJPermissions = voiceChannel.permissionsFor(message.client.user);
         let song;
 
-        if (!voiceChannel) {
+        if (!(args.length > 0)) {
+            return message.reply("you need to insert a music name or a music link!")
+        } else if (!voiceChannel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (!PJPermissions.has("CONNECT")) {
             return message.reply("I don't have permissions to connect to the voice channel!");
