@@ -11,7 +11,9 @@ module.exports = {
         const PJPermissions = voiceChannel.permissionsFor(message.client.user);
         let song;
 
-        if (!voiceChannel) {
+        if (!(args.length > 0)) {
+            return message.reply("you need to insert a music name or a music link!")
+        } else if (!voiceChannel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (!PJPermissions.has("CONNECT")) {
             return message.reply("I don't have permissions to connect to the voice channel!");
@@ -31,7 +33,14 @@ module.exports = {
 
         sendMusicEmbed(message, song);
 
-        const connection = await voiceChannel.join();
+        let connection
+
+        try {
+            connection = await voiceChannel.join();
+        } catch (error) {
+            console.log(`There was an error connecting to the voice channel: ${error}`);
+            return message.reply("there was an error connecting to the voice channel!");
+        }
 
         connection.play(ytdl(song, { quality: "highestaudio"}))
             .on("finish", () => {
@@ -60,7 +69,7 @@ async function sendMusicEmbed(message, args) {
             { name: "Duration time:", value: `\`${musicTime}\``, inline: true },
             { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
         )
-        .setThumbnail(musicInfo.videoDetails.thumbnails[4].url)
+        .setThumbnail(musicInfo.videoDetails.thumbnails[0].url)
         .setTimestamp()
     );
 }
@@ -68,10 +77,15 @@ async function sendMusicEmbed(message, args) {
 function formatMusicTime(musicTime) {
     let musicTimeHours = Math.trunc(musicTime / 3600) || "00";
     let musicTimeMinuts = Math.trunc((musicTime - Number(musicTimeHours) * 3600) / 60) || "00";
+    let musicTimeSeconds =  Math.trunc(musicTime - (Number(musicTimeHours) * 3600 + Number(musicTimeMinuts) * 60));
 
     if (musicTimeMinuts < 10 && musicTimeMinuts != "00") {
         musicTimeMinuts = "0" + musicTimeMinuts;
     }
 
-    return `${String(musicTimeHours)}:${musicTimeMinuts}`;
+    if (musicTimeSeconds < 10 && musicTimeSeconds != "00") {
+        musicTimeSeconds = "0" + musicTimeSeconds;
+    }
+
+    return (Number(musicTimeHours) > 0 || Number(musicTimeMinuts) > 0 || Number(musicTimeSeconds) > 0) ? `${String(musicTimeHours)}:${musicTimeMinuts}:${musicTimeSeconds}` : `Live music`;
 }

@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.3",
+    "discord.js-pagination": "^1.0.3",
     "dotenv": "^8.2.0",
     "opusscript": "0.0.8",
     "yt-search": "^2.8.0",
