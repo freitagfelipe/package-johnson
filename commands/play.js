@@ -31,7 +31,14 @@ module.exports = {
 
         sendMusicEmbed(message, song);
 
-        const connection = await voiceChannel.join();
+        let connection
+
+        try {
+            connection = await voiceChannel.join();
+        } catch (error) {
+            console.log(`There was an error connecting to the voice channel: ${error}`);
+            return message.reply("there was an error connecting to the voice channel!");
+        }
 
         connection.play(ytdl(song, { quality: "highestaudio"}))
             .on("finish", () => {
