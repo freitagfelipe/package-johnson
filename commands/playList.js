@@ -58,15 +58,17 @@ module.exports = {
             let music = [];
 
             setTimeout(() => {
-                message.delete();
-                msg.delete();
+                if (!msg.deleted) {
+                    message.delete();
+                    msg.delete();
+                }
             }, 60000);
 
             const filter = (reaction, user) => {
                 return ["⏩", "⏪", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"].includes(reaction.emoji.name) && user.id === message.author.id;
             }
 
-            const collector = msg.createReactionCollector(filter, { max: 5, time: 60000 });
+            const collector = msg.createReactionCollector(filter, { time: 60000 });
 
             collector.on("collect", collected => {
                 switch (collected.emoji.name) {
