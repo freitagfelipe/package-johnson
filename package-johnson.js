@@ -44,7 +44,7 @@ client.on("message", message => {
             command.execute(message, args);
         } catch (error) {
             console.log(error);
-            message.reply("An error occurred while trying to execute your command");
+            message.reply("An error occurred while trying to execute your command, please try again!");
         }
 
     } else if(message.author.id != client.user.id && message.mentions.users.first() && message.mentions.users.first().id == client.user.id) {
