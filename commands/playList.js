@@ -67,6 +67,11 @@ module.exports = {
             3)[Sad lofi to help you sleep](https://youtu.be/f3kEzMCXRfI)\n
             4)[Shiloh Dynasty Relax Music With Rain](https://youtu.be/-jM-ICsBX3I)\n
             5)[Japanese night cafe vibes / a lofi hip hop mix ~ chill with taiki](https://youtu.be/9FvvbVI5rYA)\n
+            6)[Studying in the library [lofi hip hop chill beats] ~ chill with taiki](https://youtu.be/T0c-H86VUno)\n
+            7)[Space Lofi Café - relaxing beats to chill/study to](https://youtu.be/yXa2_m0fhzQ)\n
+            8)[Asian night markets / lofi hip hop mix](https://youtu.be/M43cDHb-6R0)\n
+            9)[Old songs but it's lofi remix](https://youtu.be/BrnDlRmW5hs)\n
+            10)[4 A.M Study Session - [lofi hip hop/chill beats]](https://youtu.be/TURbeWK2wwg)
         `)
 
         pagination(message, [pageOne, pageTwo, pageThree], ['⏪', '⏩'], "60000").then(msg => {
@@ -118,19 +123,19 @@ module.exports = {
                         music = ["https://youtu.be/bmVKaAV_7-A", "https://youtu.be/ZhstyJSNKME", "https://youtu.be/9FvvbVI5rYA"];
                         break;
                     case "6️⃣":
-                        music = ["https://youtu.be/XKDGZ-VWLMg", "https://youtu.be/AzV77KFsLn4", ""];
+                        music = ["https://youtu.be/XKDGZ-VWLMg", "https://youtu.be/AzV77KFsLn4", "https://youtu.be/T0c-H86VUno"];
                         break;
                     case "7️⃣":
-                        music = ["https://youtu.be/Xyj0Mq-YdUY", "https://youtu.be/21qNxnCS8WU", ""];
+                        music = ["https://youtu.be/Xyj0Mq-YdUY", "https://youtu.be/21qNxnCS8WU", "https://youtu.be/yXa2_m0fhzQ"];
                         break;
                     case "8️⃣":
-                        music = ["https://youtu.be/l7TxwBhtTUY", "https://youtu.be/oFm6rbA5BD8", ""];
+                        music = ["https://youtu.be/l7TxwBhtTUY", "https://youtu.be/oFm6rbA5BD8", "https://youtu.be/M43cDHb-6R0"];
                         break;
                     case "9️⃣":
-                        music = ["https://youtu.be/NDfF_XwNtIw", "https://youtu.be/lTRiuFIWV54", ""];
+                        music = ["https://youtu.be/NDfF_XwNtIw", "https://youtu.be/lTRiuFIWV54", "https://youtu.be/BrnDlRmW5hs"];
                         break;
                     case "🔟":
-                        music = ["https://youtu.be/7AHGD1IvssY", "https://youtu.be/UoMbwCoJTYM", ""];
+                        music = ["https://youtu.be/7AHGD1IvssY", "https://youtu.be/UoMbwCoJTYM", "https://youtu.be/TURbeWK2wwg"];
                         break;
                 }
                 
