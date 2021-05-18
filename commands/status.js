@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "status",
-    description: "Show user stats",
+    description: "Show user stats.",
 
     execute(message, args) {
         let user;

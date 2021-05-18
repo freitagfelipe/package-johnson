@@ -17,19 +17,19 @@ module.exports = {
                 `${message.client.user.displayAvatarURL()}`
             )
             .setColor("#FFFF00")
-            .setTitle("Lofi playlist(1/2)")
+            .setTitle("Lofi playlist(1/3)")
             .setDescription(`
                 **React with the emoji of the music you want to listen to!**\n
-                1)[Lofi hip hop radio - beats to relax/study to](https://www.youtube.com/watch?v=5qap5aO4i9A)\n
-                2)[Lofi hip hop radio - beats to sleep/chill to](https://www.youtube.com/watch?v=DWcJFNfaw9c)\n
+                1)[Lofi hip hop radio - beats to relax/study to](https://youtu.be/5qap5aO4i9A)\n
+                2)[Lofi hip hop radio - beats to sleep/chill to](https://youtu.be/DWcJFNfaw9c)\n
                 3)[The answer is in the stars ~ lofi hip hop mix](https://youtu.be/_DwmKtbVFJ4)\n
-                4)[Code-fi / lofi beats to code/relax to](https://www.youtube.com/watch?v=f02mOEt11OQ)\n
-                5)[Chill lofi beats to code/relax to](https://www.youtube.com/watch?v=bmVKaAV_7-A)\n
-                6)[RAINING IN ＴＯＫＹＯ (Lofi HipHop)](https://www.youtube.com/watch?v=XKDGZ-VWLMg)\n
-                7)[RAINING IN ＰＡＲＩＳ (Lofi HipHop)](https://www.youtube.com/watch?v=Xyj0Mq-YdUY)\n
-                8)[Lofi hip hop radio - sad & sleepy beats](https://www.youtube.com/watch?v=l7TxwBhtTUY)\n
-                9)[I can't sleep. It's 4am ~ lofi hip hop mix](https://www.youtube.com/watch?v=NDfF_XwNtIw)\n
-                10)[The loneliest feeling in the world - sad lofi hip hop mix](https://www.youtube.com/watch?v=7AHGD1IvssY)
+                4)[Code-fi / lofi beats to code/relax to](https://youtu.be/f02mOEt11OQ)\n
+                5)[Chill lofi beats to code/relax to](https://youtu.be/bmVKaAV_7-A)\n
+                6)[RAINING IN ＴＯＫＹＯ (Lofi HipHop)](https://youtu.be/XKDGZ-VWLMg)\n
+                7)[RAINING IN ＰＡＲＩＳ (Lofi HipHop)](https://youtu.be/Xyj0Mq-YdUY)\n
+                8)[Lofi hip hop radio - sad & sleepy beats](https://youtu.be/l7TxwBhtTUY)\n
+                9)[I can't sleep. It's 4am ~ lofi hip hop mix](https://youtu.be/NDfF_XwNtIw)\n
+                10)[The loneliest feeling in the world - sad lofi hip hop mix](https://youtu.be/7AHGD1IvssY)
             `)
 
         const pageTwo =  new MessageEmbed()
@@ -38,24 +38,40 @@ module.exports = {
                 `${message.client.user.displayAvatarURL()}`
             )
             .setColor("#FFFF00")
-            .setTitle("Lofi playlist(2/2)")
+            .setTitle("Lofi playlist(2/3)")
             .setDescription(`
                 **React with the emoji of the music you want to listen to!**\n
-                1)[It's 3am. Why so sad ? ~ lofi hip hop mix](https://www.youtube.com/watch?v=hzpt3fQjY9U)\n
-                2)[Alone with myself / lofi hip hop mix](https://www.youtube.com/watch?v=ldUT4FLxql4)\n
-                3)[[ｌｏｆｉ]　ＭＩＮＥＣＲＡＦＴ](https://www.youtube.com/watch?v=snphzO9UFJM)\n
-                4)[Khutko - Violet [lofi hip hop/relaxing beats]](https://www.youtube.com/watch?v=fkThAW1het8)\n
-                5)[Lofi hip hop - brazil songs playlist](https://www.youtube.com/watch?v=ZhstyJSNKME)\n
-                6)[Lofi songs for slow days](https://www.youtube.com/watch?v=AzV77KFsLn4)\n
-                7)[ＣＨＩＬＬ　ＲＡＤＩＯ ２４／７](https://www.youtube.com/watch?v=21qNxnCS8WU)\n
-                8)[Depressing songs / sad songs that make you cry mix (sad music playlist 24/7)](https://www.youtube.com/watch?v=GOjsIgeRhYU)\n
-                9)[1 A.M Study Session 📚 - [lofi hip hop/chill beats]](https://www.youtube.com/watch?v=lTRiuFIWV54)\n
-                10)[Anime lofi hip hop radio - 24/7 chill lofi remixes of anime](https://www.youtube.com/watch?v=UoMbwCoJTYM)\n
+                1)[It's 3am. Why so sad ? ~ lofi hip hop mix](https://youtu.be/hzpt3fQjY9U)\n
+                2)[Alone with myself / lofi hip hop mix](https://youtu.be/ldUT4FLxql4)\n
+                3)[[ｌｏｆｉ]　ＭＩＮＥＣＲＡＦＴ](https://youtu.be/snphzO9UFJM)\n
+                4)[Khutko - Violet [lofi hip hop/relaxing beats]](https://youtu.be/fkThAW1het8)\n
+                5)[Lofi hip hop - brazil songs playlist](https://youtu.be/ZhstyJSNKME)\n
+                6)[Lofi songs for slow days](https://youtu.be/AzV77KFsLn4)\n
+                7)[ＣＨＩＬＬ　ＲＡＤＩＯ ２４／７](https://youtu.be/21qNxnCS8WU)\n
+                8)[Night at the bookstore. [lofi / chillhop / anime mix]](https://youtu.be/oFm6rbA5BD8)\n
+                9)[1 A.M Study Session 📚 - [lofi hip hop/chill beats]](https://youtu.be/lTRiuFIWV54)\n
+                10)[Anime lofi hip hop radio - 24/7 chill lofi remixes of anime](https://youtu.be/UoMbwCoJTYM)
             `)
+        
+        const pageThree = new MessageEmbed()
+        .setAuthor(
+            `${message.client.user.username}`,
+            `${message.client.user.displayAvatarURL()}`
+        )
+        .setColor("#FFFF00")
+        .setTitle("Lofi playlist(3/3)")
+        .setDescription(`
+            **React with the emoji of the music you want to listen to!**\n
+            1)[[24/7 CHILL LOFI HIP HOP RADIO] beats to sleep/relax/study to](https://youtu.be/VfW86fnQL5w)\n
+            2)[Naruto Chill Trap, Lofi Hip Hop Mix](https://youtu.be/1j5BvojJrNc)\n
+            3)[Sad lofi to help you sleep](https://youtu.be/f3kEzMCXRfI)\n
+            4)[Shiloh Dynasty Relax Music With Rain](https://youtu.be/-jM-ICsBX3I)\n
+            5)[Japanese night cafe vibes / a lofi hip hop mix ~ chill with taiki](https://youtu.be/9FvvbVI5rYA)\n
+        `)
 
-        pagination(message, [pageOne, pageTwo], ['⏪', '⏩'], "60000").then(msg => {
-            let page = 1;
-            let music = [];
+        pagination(message, [pageOne, pageTwo, pageThree], ['⏪', '⏩'], "60000").then(msg => {
+            let page = 0;
+            let music;
 
             setTimeout(() => {
                 if (!msg.deleted) {
@@ -74,61 +90,61 @@ module.exports = {
                 switch (collected.emoji.name) {
                     case "⏩":
                         if (page == 2) {
-                            page = 1;
+                            page = 0;
                         } else {
                             page++;
                         }
                         break;
                     case "⏪":
-                        if (page == 1) {
+                        if (page == 0) {
                             page = 2;
                         } else {
                             page--;
                         }
                         break;
                     case "1️⃣":
-                        music = ["https://www.youtube.com/watch?v=5qap5aO4i9A", "https://www.youtube.com/watch?v=hzpt3fQjY9U"];
+                        music = ["https://youtu.be/5qap5aO4i9A", "https://youtu.be/hzpt3fQjY9U", "https://youtu.be/oFm6rbA5BD8"];
                         break;
                     case "2️⃣":
-                        music = ["https://www.youtube.com/watch?v=DWcJFNfaw9c", "https://www.youtube.com/watch?v=ldUT4FLxql4"];
+                        music = ["https://youtu.be/DWcJFNfaw9c", "https://youtu.be/ldUT4FLxql4", "https://youtu.be/1j5BvojJrNc"];
                         break;
                     case "3️⃣":
-                        music = ["https://youtu.be/_DwmKtbVFJ4", "https://www.youtube.com/watch?v=snphzO9UFJM"];
+                        music = ["https://youtu.be/_DwmKtbVFJ4", "https://youtu.be/snphzO9UFJM", "https://youtu.be/f3kEzMCXRfI"];
                         break;
                     case "4️⃣":
-                        music = ["https://www.youtube.com/watch?v=f02mOEt11OQ", "https://www.youtube.com/watch?v=fkThAW1het8"];
+                        music = ["https://youtu.be/f02mOEt11OQ", "https://youtu.be/fkThAW1het8", "https://youtu.be/-jM-ICsBX3I"];
                         break;
                     case "5️⃣":
-                        music = ["https://www.youtube.com/watch?v=bmVKaAV_7-A", "https://www.youtube.com/watch?v=ZhstyJSNKME"];
+                        music = ["https://youtu.be/bmVKaAV_7-A", "https://youtu.be/ZhstyJSNKME", "https://youtu.be/9FvvbVI5rYA"];
                         break;
                     case "6️⃣":
-                        music = ["https://www.youtube.com/watch?v=XKDGZ-VWLMg", "https://www.youtube.com/watch?v=AzV77KFsLn4"];
+                        music = ["https://youtu.be/XKDGZ-VWLMg", "https://youtu.be/AzV77KFsLn4", ""];
                         break;
                     case "7️⃣":
-                        music = ["https://www.youtube.com/watch?v=Xyj0Mq-YdUY", "https://www.youtube.com/watch?v=21qNxnCS8WU"];
+                        music = ["https://youtu.be/Xyj0Mq-YdUY", "https://youtu.be/21qNxnCS8WU", ""];
                         break;
                     case "8️⃣":
-                        music = ["https://www.youtube.com/watch?v=l7TxwBhtTUY", "https://www.youtube.com/watch?v=GOjsIgeRhYU"];
+                        music = ["https://youtu.be/l7TxwBhtTUY", "https://youtu.be/oFm6rbA5BD8", ""];
                         break;
                     case "9️⃣":
-                        music = ["https://www.youtube.com/watch?v=NDfF_XwNtIw", "https://www.youtube.com/watch?v=lTRiuFIWV54"];
+                        music = ["https://youtu.be/NDfF_XwNtIw", "https://youtu.be/lTRiuFIWV54", ""];
                         break;
                     case "🔟":
-                        music = ["https://www.youtube.com/watch?v=7AHGD1IvssY", "https://www.youtube.com/watch?v=UoMbwCoJTYM"];
+                        music = ["https://youtu.be/7AHGD1IvssY", "https://youtu.be/UoMbwCoJTYM", ""];
                         break;
                 }
                 
-                if (music[0]) {
-                    msg.delete();
-                    message.delete();
+                if (music) {
+                    if (music[page]) {
+                        msg.delete();
+                        message.delete();
 
-                    if (page == 1) {
-                        client.commands.get("play").execute(message, [music[0]]);
+                        client.commands.get("play").execute(message, [music[page]]);
+
+                        return message.reply("thank you for choosing! Your music is about to start ...");
                     } else {
-                        client.commands.get("play").execute(message, [music[1]]);
+                        message.reply("there is no song with the number you reacted to on this page, please react with another number!");
                     }
-
-                    return message.reply("Thank you for choosing! Your music is about to start ...");
                 }
             });
         })

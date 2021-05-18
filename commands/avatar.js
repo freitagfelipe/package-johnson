@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "avatar",
-    description: "Shows your avatar or the avatar of who you have tagged",
+    description: "Shows your avatar or the avatar of who you have tagged.",
 
     execute(message, args) {
         let user;
