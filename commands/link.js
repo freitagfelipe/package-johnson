@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "link",
-    description: "Shows the link to add Package Johnson to your discord",
+    description: "Shows the link to add Package Johnson to your discord.",
 
     execute(message) {
         return message.channel.send(new MessageEmbed()

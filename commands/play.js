@@ -5,7 +5,7 @@ const sendMusicEmbed = require("../utils/sendMusicEmbed");
 
 module.exports = {
     name: "play",
-    description: "Play a song in your voice channel",
+    description: "Play a song in your voice channel.",
 
     async execute(message, args) {
         const voiceChannel = message.member.voice.channel;
