@@ -1,6 +1,5 @@
 const ytdl = require("ytdl-core");
-const yts = require("yt-search");
-const { MessageEmbed } = require("discord.js");
+const ytsr = require("ytsr");
 const sendMusicEmbed = require("../utils/sendMusicEmbed");
 
 module.exports = {
@@ -23,20 +22,20 @@ module.exports = {
         } else if (ytdl.validateURL(args[0])) {
             song = args[0];
         } else {
-            const { videos } = await yts(args.join(" "));
+            const musics = await ytsr(args.join(" "));
 
-            if (!videos.length) {
+            if (!musics.items.length) {
                 return message.reply("no songs ware found! Please try again.");
             }
 
-            song = videos[0].url;
+            song = musics.items.find(item => item.type == "video").url;
         }
 
-        sendMusicEmbed(message, song);
-
-        let connection
+        let connection;
 
         try {
+            await sendMusicEmbed(message, song);
+
             connection = await voiceChannel.join();
         } catch (error) {
             console.log(`There was an error connecting to the voice channel: ${error}`);
