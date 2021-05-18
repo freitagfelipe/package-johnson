@@ -1,6 +1,6 @@
-const { MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
-module.exports = sendMusicEmbed;
+const { MessageEmbed } = require("discord.js");
+const formatMusicTime = require("./formatTime");
 
 async function sendMusicEmbed(message, args) {
     const musicInfo = await ytdl.getInfo(args);
@@ -24,22 +24,4 @@ async function sendMusicEmbed(message, args) {
     );
 }
 
-function formatMusicTime(musicTime) {
-    if (musicTime == "0") {
-        return "Live music";
-    } else {
-        let musicTimeHours = Math.trunc(musicTime / 3600) || "00";
-        let musicTimeMinuts = Math.trunc((musicTime - Number(musicTimeHours) * 3600) / 60) || "00";
-        let musicTimeSeconds =  Math.trunc(musicTime - (Number(musicTimeHours) * 3600 + Number(musicTimeMinuts) * 60));
-
-        if (musicTimeMinuts < 10 && musicTimeMinuts != "00") {
-            musicTimeMinuts = "0" + musicTimeMinuts;
-        }
-    
-        if (musicTimeSeconds < 10 && musicTimeSeconds != "00") {
-            musicTimeSeconds = "0" + musicTimeSeconds;
-        }
-
-        return `${String(musicTimeHours)}:${musicTimeMinuts}:${musicTimeSeconds}`;
-    }
-}
+module.exports = sendMusicEmbed;
