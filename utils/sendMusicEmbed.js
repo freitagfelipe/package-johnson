@@ -9,8 +9,6 @@ async function sendMusicEmbed(message, musics) {
     const musicInfo = await ytdl.getInfo(musics[newMusicIndex].songURL);
     const musicTime = formatMusicTime(Number(musicInfo.videoDetails.lengthSeconds));
 
-    message.reply(`***searching for ${musicInfo.videoDetails.title}!***`);
-
     message.channel.send(new MessageEmbed()
         .setAuthor(
             `${message.client.user.username}`,
@@ -25,7 +23,7 @@ async function sendMusicEmbed(message, musics) {
             { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
         )
         .setThumbnail(musicInfo.videoDetails.thumbnails[0].url)
-        .setFooter(`• Posição na fila: ${queue.musics.length} || • Loop queue: ${queue.loop ? "enable" : "disable"} || `)
+        .setFooter(`• Posição na fila: ${queue.musics.length} || `)
         .setTimestamp()
     );
 }
