@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const dotenv = require("dotenv");
 const fileSystem = require("fs");
 const { prefix } = require("./config.json");
-require("./events/guildCreate");
 
 const client = new Discord.Client();
 
@@ -75,3 +74,4 @@ client.on("message", message => {
 client.login(process.env.TOKEN);
 
 module.exports = client;
+require("./events/guildCreate");
