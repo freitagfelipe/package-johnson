@@ -2,13 +2,13 @@ const Discord = require("discord.js");
 const dotenv = require("dotenv");
 const fileSystem = require("fs");
 const { prefix } = require("./config.json");
+require("./events/guildCreate");
 
 const client = new Discord.Client();
 
-module.exports = client;
-require("./events/guildCreate");
-
 dotenv.config();
+
+global.queues = [];
 
 client.on("ready", () => {
     console.log("I'm Package Johnson and I'm ready!");
@@ -73,3 +73,5 @@ client.on("message", message => {
 });
 
 client.login(process.env.TOKEN);
+
+module.exports = client;
