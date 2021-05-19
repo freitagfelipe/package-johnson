@@ -2,9 +2,14 @@ const ytdl = require("ytdl-core");
 const { MessageEmbed } = require("discord.js");
 const formatMusicTime = require("./formatTime");
 
-async function sendMusicEmbed(message, args) {
-    const musicInfo = await ytdl.getInfo(args);
+async function sendMusicEmbed(message, musics) {
+    const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
+    const newMusicIndex = musics.length - 1;
+
+    const musicInfo = await ytdl.getInfo(musics[newMusicIndex].songURL);
     const musicTime = formatMusicTime(Number(musicInfo.videoDetails.lengthSeconds));
+
+    message.reply(`***searching for ${musicInfo.videoDetails.title}!***`);
 
     message.channel.send(new MessageEmbed()
         .setAuthor(
@@ -20,6 +25,7 @@ async function sendMusicEmbed(message, args) {
             { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
         )
         .setThumbnail(musicInfo.videoDetails.thumbnails[0].url)
+        .setFooter(`• Posição na fila: ${queue.musics.length} || • Loop queue: ${queue.loop ? "enable" : "disable"} || `)
         .setTimestamp()
     );
 }
