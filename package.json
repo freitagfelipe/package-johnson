@@ -5,7 +5,8 @@
   "main": "package-johnson",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node package-johnson"
+    "start": "node package-johnson",
+    "dev": "nodemon package-johnson.js"
   },
   "author": "Felipe Freitag",
   "license": "ISC",
@@ -17,5 +18,8 @@
     "opusscript": "0.0.8",
     "ytdl-core": "^4.8.0",
     "ytsr": "^3.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
