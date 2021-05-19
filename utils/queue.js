@@ -20,14 +20,14 @@ class Queue {
         });
     }
 
-    add(songURL, userMessage) {
+    async add(songURL, userMessage) {
         this.musics.push({songURL, user: userMessage.author});
 
-        sendMusicEmbed(userMessage, this.musics).then(() => {
-            if (!this.playing) {
-                this.play();
-            }
-        });
+        await sendMusicEmbed(userMessage, this.musics)
+        
+        if (!this.playing) {
+            this.play();
+        }
     }
 
     next() {
