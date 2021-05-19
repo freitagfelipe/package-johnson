@@ -1,6 +1,6 @@
 const ytdl = require("ytdl-core");
 const ytsr = require("ytsr");
-const sendMusicEmbed = require("../utils/sendMusicEmbed");
+const { Queue } = require("../utils/queue")
 
 module.exports = {
     name: "play",
@@ -9,7 +9,7 @@ module.exports = {
     async execute(message, args) {
         const voiceChannel = message.member.voice.channel;
         const PJPermissions = voiceChannel.permissionsFor(message.client.user);
-        let song;
+        let songURL;
 
         if (!(args.length > 0)) {
             return message.reply("you need to insert a music name or a music link!")
@@ -19,8 +19,12 @@ module.exports = {
             return message.reply("I don't have permissions to connect to the voice channel!");
         } else if (!PJPermissions.has("SPEAK")) {
             return message.reply("I don't have permissions to speak in the channel!")
-        } else if (ytdl.validateURL(args[0])) {
-            song = args[0];
+        }
+        
+        message.reply("**searching your music!**");
+        
+        if (ytdl.validateURL(args[0])) {
+            songURL = args[0];
         } else {
             const musics = await ytsr(args.join(" "));
 
@@ -28,26 +32,23 @@ module.exports = {
                 return message.reply("no songs ware found! Please try again.");
             }
 
-            song = musics.items.find(item => item.type == "video").url;
+            songURL = musics.items.find(item => item.type == "video").url;
         }
 
-        let connection;
+        let connection = await voiceChannel.join();
+    
+        let queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
-        try {
-            await sendMusicEmbed(message, song);
-
-            connection = await voiceChannel.join();
-        } catch (error) {
-            console.log(`There was an error connecting to the voice channel: ${error}`);
-            return message.reply("there was an error connecting to the voice channel!");
+        if (queue) {
+            queue.add(songURL, message);
+        } else {
+            queue = new Queue(connection);
+            global.queues.push(queue);
+            queue.add(songURL, message);
         }
 
-        connection.play(ytdl(song, { quality: "highestaudio"}))
-            .on("finish", () => {
-                voiceChannel.leave();
-            })
-            .on("error", error => {
-                console.log(error);
-            })
+        connection.on("disconnect", () => {
+            global.queues = global.queues.filter(obj => obj.connection.channel.guild.id != message.guild.id);
+        });
     }
 }

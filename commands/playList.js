@@ -145,8 +145,6 @@ module.exports = {
                         message.delete();
 
                         client.commands.get("play").execute(message, [music[page]]);
-
-                        return message.reply("thank you for choosing! Your music is about to start ...");
                     } else {
                         message.reply("there is no song with the number you reacted to on this page, please react with another number!");
                     }

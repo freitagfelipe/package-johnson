@@ -17,11 +17,7 @@ module.exports = {
 
         await message.channel.messages.fetch({limit: args[0]}).then(messages => {
             message.channel.bulkDelete(messages, true).then(messageCollection => {
-                if (args[0] != messageCollection.size) {
-                    return message.channel.send(`The chat had ${messageCollection.size - 1} ${messageWord} deleted by <@!${message.author.id}>! However, ${args[0] - (messageCollection.size - 1)} ${messageWord} couldn't be deleted because they were more than 14 days old!`);
-                } else {
-                    return message.channel.send(`The chat had ${messageCollection.size - 1} ${messageWord} deleted by <@!${message.author.id}>!`);
-                }
+                return message.channel.send(`The chat had ${messageCollection.size - 1} ${messageWord} deleted by <@!${message.author.id}>!`);
             }).catch(error => {
                 console.log(error);
 
