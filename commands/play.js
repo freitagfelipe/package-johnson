@@ -19,7 +19,11 @@ module.exports = {
             return message.reply("I don't have permissions to connect to the voice channel!");
         } else if (!PJPermissions.has("SPEAK")) {
             return message.reply("I don't have permissions to speak in the channel!")
-        } else if (ytdl.validateURL(args[0])) {
+        }
+        
+        message.reply("**searching your music!**");
+        
+        if (ytdl.validateURL(args[0])) {
             songURL = args[0];
         } else {
             const musics = await ytsr(args.join(" "));
