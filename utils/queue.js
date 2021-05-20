@@ -13,7 +13,7 @@ class Queue {
     play() {
         this.playing = true;
 
-        this.dispatcher = this.connection.play(ytdl(this.musics[0].songURL, { quality: "highestaudio"}))
+        this.dispatcher = this.connection.play(ytdl(this.musics[0].songURL, { quality: "highestaudio"}));
         
         this.dispatcher.on("finish", () => {
             this.next();
@@ -40,8 +40,6 @@ class Queue {
                 this.playing = false;
 
                 setTimeout(() => {
-                    console.log("dentro")
-
                     this.connection.disconnect();
                 }, 1000);
             }
@@ -57,13 +55,18 @@ class Queue {
     pause() {
         this.playing = false;
 
-        return this.dispatcher.pause()
+        return this.dispatcher.pause();
     }
 
     resume() {
-        this.play = true;
+        this.playing = true;
 
-        return this.dispatcher.resume();
+        // These next two lines are for avoid a bug in the dispatcher.resume(), because it was only working if the user use another pause/resume
+        // If you have any solution please open an issue.
+        this.dispatcher.resume();
+        this.dispatcher.pause();
+
+        this.dispatcher.resume();
     }
 
     clear() {
