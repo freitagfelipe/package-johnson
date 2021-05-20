@@ -12,7 +12,7 @@ module.exports = {
         let songURL;
 
         if (!(args.length > 0)) {
-            return message.reply("you need to insert a music name or a music link!")
+            return message.reply("you need to insert a music name or a music link!");
         } else if (!voiceChannel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (!PJPermissions.has("CONNECT")) {
