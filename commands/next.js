@@ -19,6 +19,6 @@ module.exports = {
 
         queue.next();
 
-        message.reply("**Skipped**");
+        return message.reply("**Skipped!⏭️**");
     }
 }
