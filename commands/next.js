@@ -17,8 +17,12 @@ module.exports = {
             return message.reply("I'm not playing any thing on this server!");
         }
 
-        queue.next();
+        if (queue.musics.length == 1) {
+            message.reply("there was no music to skip!");
+        } else {
+            queue.next();
 
-        return message.reply("**Skipped!⏭️**");
+            return message.reply("**Skipped!⏭️**");
+        }
     }
 }
