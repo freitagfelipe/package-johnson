@@ -9,6 +9,8 @@ module.exports = {
     execute(message) {
         if (!message.member.voice.channel) {
             return message.reply("you need to be on a voice channel to execute this command!");
+        } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == message.member.voice.channel.name)) {
+            return message.reply("I'm already on another voice channel on this server, please join it to execute this command!");
         }
 
         const pageOne = new MessageEmbed()

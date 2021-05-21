@@ -13,8 +13,10 @@ module.exports = {
 
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
-        if (!queue || queue.playing) {
+        if (!queue) {
             return message.reply("I'm not playing anything on this server!");
+        } else if (queue.playing) {
+            return message.reply("I'm already playing a song!");
         }
 
         message.reply("**your music has been resumed!⏯️**");

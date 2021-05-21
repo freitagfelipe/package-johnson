@@ -1,6 +1,6 @@
 module.exports = {
-    name: "next",
-    description: "Skin to the next song.",
+    name: "loopQueue",
+    description: "Loop the actual queue.",
 
     execute(message) {
         if (!message.member.voice.channel) {
@@ -13,16 +13,12 @@ module.exports = {
 
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
-        if (!queue.playing) {
-            return message.reply("I'm not playing any thing on this server!");
+        if (!(queue && queue.playing)) {
+            return message.reply("I'm not playing anything on this server!");
         }
 
-        if (queue.musics.length == 1) {
-            message.reply("there was no music to skip!");
-        } else {
-            queue.next();
+        message.reply("**looped your queue!**");
 
-            return message.reply("**Skipped!⏭️**");
-        }
+        queue.loopQueue();
     }
 }

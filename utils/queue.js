@@ -6,7 +6,7 @@ class Queue {
         this.musics = [];
         this.connection = connection;
         this.dispatcher;
-        this.loop = false;
+        this.looping = false;
         this.playing = false;
     }
 
@@ -31,7 +31,7 @@ class Queue {
     }
 
     next() {
-        if (!this.loop) {
+        if (!this.looping) {
             this.musics.shift();
 
             if (this.musics.length != 0) {
@@ -41,7 +41,7 @@ class Queue {
 
                 setTimeout(() => {
                     this.connection.disconnect();
-                }, 1000);
+                }, 2000);
             }
         } else {
             const removed = this.musics.shift();
@@ -66,15 +66,19 @@ class Queue {
         this.dispatcher.resume();
         this.dispatcher.pause();
 
-        this.dispatcher.resume();
+        return this.dispatcher.resume();
     }
 
     clear() {
         this.musics = [this.musics[0]];
     }
 
-    loop() {
-
+    loopQueue() {
+        if (!this.looping) {
+            this.looping = true;
+        } else {
+            this.looping = false;
+        }
     }
 }
 
