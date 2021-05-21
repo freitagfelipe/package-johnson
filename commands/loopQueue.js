@@ -1,5 +1,5 @@
 module.exports = {
-    name: "loopQueue",
+    name: "loop-queue",
     description: "Loop the actual queue.",
 
     execute(message) {
