@@ -6,7 +6,7 @@ class Queue {
         this.musics = [];
         this.connection = connection;
         this.dispatcher;
-        this.looping = false;
+        this.loopingQueue = false;
         this.playing = false;
     }
 
@@ -31,7 +31,7 @@ class Queue {
     }
 
     next() {
-        if (!this.looping) {
+        if (!this.loopingQueue) {
             this.musics.shift();
 
             if (this.musics.length != 0) {
@@ -74,10 +74,10 @@ class Queue {
     }
 
     loopQueue() {
-        if (!this.looping) {
-            this.looping = true;
+        if (!this.loopingQueue) {
+            this.loopingQueue = true;
         } else {
-            this.looping = false;
+            this.loopingQueue = false;
         }
     }
 }
