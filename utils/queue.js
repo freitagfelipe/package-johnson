@@ -7,6 +7,7 @@ class Queue {
         this.connection = connection;
         this.dispatcher;
         this.loopingQueue = false;
+        this.loopingMusic = false;
         this.playing = false;
     }
 
@@ -31,7 +32,7 @@ class Queue {
     }
 
     next() {
-        if (!this.loopingQueue) {
+        if (!this.loopingQueue && !this.loopingMusic) {
             this.musics.shift();
 
             if (this.musics.length != 0) {
@@ -43,11 +44,13 @@ class Queue {
                     this.connection.disconnect();
                 }, 2000);
             }
-        } else {
+        } else if(this.loopingQueue) {
             const removed = this.musics.shift();
 
             this.musics.push(removed);
 
+            this.play();
+        } else {
             this.play();
         }
     }
@@ -78,6 +81,14 @@ class Queue {
             this.loopingQueue = true;
         } else {
             this.loopingQueue = false;
+        }
+    }
+
+    loopMusic() {
+        if (!this.loopingMusic) {
+            this.loopingMusic = true;
+        } else {
+            this.loopingMusic = false;
         }
     }
 }
