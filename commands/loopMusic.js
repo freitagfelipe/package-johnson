@@ -1,6 +1,6 @@
 module.exports = {
-    name: "loop-queue",
-    description: "Loop the actual queue.",
+    name: "loop-music",
+    description: "Loop the actual music.",
 
     execute(message) {
         if (!message.member.voice.channel) {
@@ -18,11 +18,11 @@ module.exports = {
         }
 
         if (!queue.loopingQueue) {
-            message.reply("**enabled queue loop!**");
+            message.reply("**enabled music loop!**");
         } else  {
-            message.reply("**disabled queue loop!**");
+            message.reply("**disabled music loop!**");
         }
 
-        queue.loopQueue();
+        queue.loopMusic();
     }
 }
