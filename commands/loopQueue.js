@@ -17,7 +17,11 @@ module.exports = {
             return message.reply("I'm not playing anything on this server!");
         }
 
-        message.reply("**looped your queue!**");
+        if (!queue.loopingQueue) {
+            message.reply("**enabled queue loop!**");
+        } else  {
+            message.reply("**disabled queue loop!**");
+        }
 
         queue.loopQueue();
     }
