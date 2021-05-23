@@ -94,8 +94,8 @@ class Queue {
         }
     }
 
-    showQueue(message, queue) {
-        return sendQueueEmbed(message, queue);
+    showQueue(message) {
+        return sendQueueEmbed(message, this.musics, this.loopingMusic, this.loopingQueue);
     }
 }
 
