@@ -1,5 +1,6 @@
 const ytdl = require("ytdl-core");
 const sendMusicEmbed = require("./sendMusicEmbed");
+const { sendQueueEmbed } = require("./sendQueueEmbed");
 
 class Queue {
     constructor(connection) {
@@ -90,6 +91,10 @@ class Queue {
         } else {
             this.loopingMusic = false;
         }
+    }
+
+    showQueue(message, queue) {
+        return sendQueueEmbed(message, queue);
     }
 }
 
