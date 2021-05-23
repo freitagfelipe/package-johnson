@@ -9,7 +9,7 @@ module.exports = {
     async execute(message, args) {
         const voiceChannel = message.member.voice.channel;
         const PJPermissions = voiceChannel.permissionsFor(message.client.user);
-        let songURL;
+        let songInfo;
 
         if (!(args.length > 0)) {
             return message.reply("you need to insert a music name or a music link!");
@@ -24,7 +24,7 @@ module.exports = {
         message.reply("**searching your music!**");
         
         if (ytdl.validateURL(args[0])) {
-            songURL = args[0];
+            songInfo = await ytdl.getInfo(args[0]);
         } else {
             const musics = await ytsr(args.join(" "));
 
@@ -32,7 +32,7 @@ module.exports = {
                 return message.reply("no songs ware found! Please try again.");
             }
 
-            songURL = musics.items.find(item => item.type == "video").url;
+            songInfo = await ytdl.getInfo(musics.items.find(item => item.type == "video").url);
         }
 
         let connection = await voiceChannel.join();
@@ -40,11 +40,11 @@ module.exports = {
         let queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
         if (queue) {
-            queue.add(songURL, message);
+            queue.add(songInfo, message);
         } else {
             queue = new Queue(connection);
             global.queues.push(queue);
-            queue.add(songURL, message);
+            queue.add(songInfo, message);
         }
 
         connection.on("disconnect", () => {
