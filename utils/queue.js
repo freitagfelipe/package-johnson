@@ -26,7 +26,7 @@ class Queue {
     async add(songInfo, userMessage) {
         this.musics.push({songInfo, user: userMessage.author});
 
-        await sendMusicEmbed(userMessage, this.musics);
+        await sendMusicEmbed(userMessage, this.musics, songInfo);
         
         if (!this.playing) {
             this.play();

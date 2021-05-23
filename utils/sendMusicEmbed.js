@@ -2,9 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const formatMusicTime = require("./formatTime");
 
 module.exports = {
-    sendMusicEmbed(message, musics) {
-        const musicIndex = musics.length - 1;
-        const songInfo = musics[musicIndex].songInfo;
+    sendMusicEmbed(message, musics, songInfo) {
         const musicTime = formatMusicTime(Number(songInfo.videoDetails.lengthSeconds));
 
         message.channel.send(new MessageEmbed()
