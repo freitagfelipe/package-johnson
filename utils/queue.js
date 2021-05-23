@@ -1,5 +1,7 @@
 const ytdl = require("ytdl-core");
-const sendMusicEmbed = require("./sendMusicEmbed");
+
+const { sendMusicEmbed } = require("./sendMusicEmbed");
+const { sendQueueEmbed } = require("./sendQueueEmbed");
 
 class Queue {
     constructor(connection) {
@@ -14,17 +16,17 @@ class Queue {
     play() {
         this.playing = true;
 
-        this.dispatcher = this.connection.play(ytdl(this.musics[0].songURL, { quality: "highestaudio"}));
+        this.dispatcher = this.connection.play(ytdl(this.musics[0].songInfo.videoDetails.video_url, { quality: "highestaudio"}));
         
         this.dispatcher.on("finish", () => {
             this.next();
         });
     }
 
-    async add(songURL, userMessage) {
-        this.musics.push({songURL, user: userMessage.author});
+    async add(songInfo, userMessage) {
+        this.musics.push({songInfo, user: userMessage.author});
 
-        await sendMusicEmbed(userMessage, this.musics)
+        await sendMusicEmbed(userMessage, this.musics, songInfo);
         
         if (!this.playing) {
             this.play();
@@ -90,6 +92,10 @@ class Queue {
         } else {
             this.loopingMusic = false;
         }
+    }
+
+    showQueue(message) {
+        return sendQueueEmbed(message, this.musics, this.loopingMusic, this.loopingQueue);
     }
 }
 

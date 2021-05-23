@@ -56,25 +56,25 @@ module.exports = {
             `)
         
         const pageThree = new MessageEmbed()
-        .setAuthor(
-            `${message.client.user.username}`,
-            `${message.client.user.displayAvatarURL()}`
-        )
-        .setColor("#FFFF00")
-        .setTitle("Lofi playlist(3/3)")
-        .setDescription(`
-            **React with the emoji of the music you want to listen to!**\n
-            1)[[24/7 CHILL LOFI HIP HOP RADIO] beats to sleep/relax/study to](https://youtu.be/VfW86fnQL5w)\n
-            2)[Naruto Chill Trap, Lofi Hip Hop Mix](https://youtu.be/1j5BvojJrNc)\n
-            3)[Sad lofi to help you sleep](https://youtu.be/f3kEzMCXRfI)\n
-            4)[Shiloh Dynasty Relax Music With Rain](https://youtu.be/-jM-ICsBX3I)\n
-            5)[Japanese night cafe vibes / a lofi hip hop mix ~ chill with taiki](https://youtu.be/9FvvbVI5rYA)\n
-            6)[Studying in the library [lofi hip hop chill beats] ~ chill with taiki](https://youtu.be/T0c-H86VUno)\n
-            7)[Space Lofi Café - relaxing beats to chill/study to](https://youtu.be/yXa2_m0fhzQ)\n
-            8)[Asian night markets / lofi hip hop mix](https://youtu.be/M43cDHb-6R0)\n
-            9)[Old songs but it's lofi remix](https://youtu.be/BrnDlRmW5hs)\n
-            10)[4 A.M Study Session - [lofi hip hop/chill beats]](https://youtu.be/TURbeWK2wwg)
-        `)
+            .setAuthor(
+                `${message.client.user.username}`,
+                `${message.client.user.displayAvatarURL()}`
+            )
+            .setColor("#FFFF00")
+            .setTitle("Lofi playlist(3/3)")
+            .setDescription(`
+                **React with the emoji of the music you want to listen to!**\n
+                1)[[24/7 CHILL LOFI HIP HOP RADIO] beats to sleep/relax/study to](https://youtu.be/VfW86fnQL5w)\n
+                2)[Naruto Chill Trap, Lofi Hip Hop Mix](https://youtu.be/1j5BvojJrNc)\n
+                3)[Sad lofi to help you sleep](https://youtu.be/f3kEzMCXRfI)\n
+                4)[Shiloh Dynasty Relax Music With Rain](https://youtu.be/-jM-ICsBX3I)\n
+                5)[Japanese night cafe vibes / a lofi hip hop mix ~ chill with taiki](https://youtu.be/9FvvbVI5rYA)\n
+                6)[Studying in the library [lofi hip hop chill beats] ~ chill with taiki](https://youtu.be/T0c-H86VUno)\n
+                7)[Space Lofi Café - relaxing beats to chill/study to](https://youtu.be/yXa2_m0fhzQ)\n
+                8)[Asian night markets / lofi hip hop mix](https://youtu.be/M43cDHb-6R0)\n
+                9)[Old songs but it's lofi remix](https://youtu.be/BrnDlRmW5hs)\n
+                10)[4 A.M Study Session - [lofi hip hop/chill beats]](https://youtu.be/TURbeWK2wwg)
+            `)
 
         pagination(message, [pageOne, pageTwo, pageThree], ['⏪', '⏩'], "60000").then(msg => {
             let page = 0;

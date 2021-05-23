@@ -1,5 +1,6 @@
 const client = require("../package-johnson");
 const { MessageEmbed } = require("discord.js");
+const { prefix } = require("../config.json");
 
 client.on('guildCreate', guild => {
     let channelMessageVerification = true;
@@ -11,7 +12,7 @@ client.on('guildCreate', guild => {
                     `${client.user.username}`,
                 )
                 .setColor("#FFFF00")
-                .setDescription('Thanks for adding me in to your server, my prefix is: `!pj`')
+                .setDescription(`Thanks for adding me in to your server, my prefix is: \`${prefix}\`!`)
                 .setThumbnail(`${client.user.avatarURL()}`)
             )
             
