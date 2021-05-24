@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "link",
@@ -10,7 +11,7 @@ module.exports = {
                 "Package Johnson",
                 "https://i.imgur.com/vDVSu00.png"
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setTitle("To add me in your discord server you just need to click on this message!")
             .setURL(`http://gg.gg/package-johnson-discord`)
             .addFields(

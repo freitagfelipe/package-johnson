@@ -1,6 +1,6 @@
 module.exports = {
-    name: "loop-music",
-    description: "Loop the actual music.",
+    name: "clear-queue",
+    description: "Clear the server music queue.",
 
     execute(message) {
         if (!message.member.voice.channel) {
@@ -13,16 +13,12 @@ module.exports = {
 
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
-        if (!(queue && queue.playing)) {
-            return message.reply("I'm not playing anything on this server!");
+        if (queue.musics.length < 2) {
+            return message.reply("your queue doesn't have enough music to clean!");
         }
 
-        if (!queue.loopingMusic) {
-            message.reply("**enabled music loop!**");
-        } else  {
-            message.reply("**disabled music loop!**");
-        }
+        queue.clearQueue();
 
-        queue.loopMusic();
+        return message.reply("**cleaned your queue!**");
     }
 }

@@ -20,7 +20,7 @@ module.exports = {
         if (queue.musics.length == 1) {
             message.reply("there was no music to skip!");
         } else {
-            queue.next();
+            queue.next(true);
 
             return message.reply("**Skipped!⏭️**");
         }

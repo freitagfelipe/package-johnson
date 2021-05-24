@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "avatar",
@@ -22,7 +23,7 @@ module.exports = {
                 `${user.username}`,
                 `${userAvatar}`
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setTitle(`${avatarTitle}`)
             .setURL(`${userAvatarLink}`)
             .setImage(userAvatar)

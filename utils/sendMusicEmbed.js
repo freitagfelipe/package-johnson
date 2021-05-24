@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const formatMusicTime = require("./formatTime");
+const { embedColor } = require("../config.json");
 
 module.exports = {
     sendMusicEmbed(message, musics, songInfo) {
@@ -10,7 +11,7 @@ module.exports = {
                 `${message.client.user.username}`,
                 `${message.client.user.displayAvatarURL()}`
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setTitle(`Music name: ${songInfo.videoDetails.title}`)
             .setURL(`${songInfo.videoDetails.video_url}`)
             .addFields(

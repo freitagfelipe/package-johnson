@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const pagination = require("discord.js-pagination");
+const { embedColor } = require("../config.json");
 
 module.exports = {
     async sendQueueEmbed(message, musics, loopingMusic, loopingQueue) {
@@ -11,7 +12,7 @@ module.exports = {
                         `${message.client.user.username}`,
                         `${message.client.user.displayAvatarURL()}`
                     )
-                    .setColor("#FFFF00")
+                    .setColor(`${embedColor}`)
                     .setTitle("Music queue:")
                     .setThumbnail(`${message.client.user.avatarURL()}`);
 
@@ -23,7 +24,7 @@ module.exports = {
                 page.addField("\u200B",`${number}) [${musics[j].songInfo.videoDetails.title}](${musics[j].songInfo.videoDetails.video_url})`);
             }
             
-            page.addField("\u200B", `Queue loop: ${loopingQueue ? "✔️" : "❌"} || Music loop: ${loopingMusic ? "✔️" : "❌"}`);
+            page.addField("\u200B", `Queue loop: ${loopingQueue ? "✅" : "❎"} || Music loop: ${loopingMusic ? "✅" : "❎"}`);
 
             pages.push(page);
         }

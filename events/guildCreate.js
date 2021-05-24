@@ -1,6 +1,6 @@
 const client = require("../package-johnson");
 const { MessageEmbed } = require("discord.js");
-const { prefix } = require("../config.json");
+const { prefix, embedColor } = require("../config.json");
 
 client.on('guildCreate', guild => {
     let channelMessageVerification = true;
@@ -11,8 +11,8 @@ client.on('guildCreate', guild => {
                 .setAuthor(
                     `${client.user.username}`,
                 )
-                .setColor("#FFFF00")
-                .setDescription(`Thanks for adding me in to your server, my prefix is: \`${prefix}\`!`)
+                .setColor(`${embedColor}`)
+                .setDescription(`Thanks for adding me in to your server, my prefix is: \`${prefix}\` !`)
                 .setThumbnail(`${client.user.avatarURL()}`)
             )
             
@@ -23,7 +23,7 @@ client.on('guildCreate', guild => {
     guild.roles.create({
         data: {
             name: "Package Johnson",
-            color: "#FFFF00"
+            color: `${embedColor}`
         }
     }).then(role => {
         guild.member(client.user).roles.add(role)
@@ -36,7 +36,7 @@ client.on('guildCreate', guild => {
                 `${client.user.username}`,
                 `${client.user.displayAvatarURL()}`
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setTitle(`Acknowledgments and information.`)
             .setDescription(`Hiiii, ${guild.owner.user.username}! Thank you for add me in your discord server and if you want to see my comand list you just need to click on this link: http://gg.gg/package-johnson-discord-commands`)
             .setImage(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
