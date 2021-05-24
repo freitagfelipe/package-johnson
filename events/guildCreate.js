@@ -12,7 +12,7 @@ client.on('guildCreate', guild => {
                     `${client.user.username}`,
                 )
                 .setColor(`${embedColor}`)
-                .setDescription(`Thanks for adding me in to your server, my prefix is: \`${prefix}\`!`)
+                .setDescription(`Thanks for adding me in to your server, my prefix is: \`${prefix}\` !`)
                 .setThumbnail(`${client.user.avatarURL()}`)
             )
             
