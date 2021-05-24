@@ -17,7 +17,7 @@ module.exports = {
             return message.reply("I'm not playing anything on this server!");
         }
 
-        if (!queue.loopingQueue) {
+        if (!queue.loopingMusic) {
             message.reply("**enabled music loop!**");
         } else  {
             message.reply("**disabled music loop!**");
