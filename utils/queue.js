@@ -74,7 +74,7 @@ class Queue {
         return this.dispatcher.resume();
     }
 
-    clear() {
+    clearQueue() {
         this.musics = [this.musics[0]];
     }
 
