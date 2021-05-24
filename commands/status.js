@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "status",
@@ -23,7 +24,7 @@ module.exports = {
             .setAuthor(
                 `${user.username}(${isHuman}), stats:`
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setThumbnail(`${userAvatar}`)
             .addFields(
                 { name: "Discord tag:", value: `\`${user.username}#${user.discriminator}\``, inline: true },

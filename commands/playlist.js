@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const pagination = require("discord.js-pagination");
 const client = require("../package-johnson");
+const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "playlist",
@@ -18,7 +19,7 @@ module.exports = {
                 `${message.client.user.username}`,
                 `${message.client.user.displayAvatarURL()}`
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setTitle("Lofi playlist(1/3)")
             .setDescription(`
                 **React with the emoji of the music you want to listen to!**\n
@@ -39,7 +40,7 @@ module.exports = {
                 `${message.client.user.username}`,
                 `${message.client.user.displayAvatarURL()}`
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setTitle("Lofi playlist(2/3)")
             .setDescription(`
                 **React with the emoji of the music you want to listen to!**\n
@@ -60,7 +61,7 @@ module.exports = {
                 `${message.client.user.username}`,
                 `${message.client.user.displayAvatarURL()}`
             )
-            .setColor("#FFFF00")
+            .setColor(`${embedColor}`)
             .setTitle("Lofi playlist(3/3)")
             .setDescription(`
                 **React with the emoji of the music you want to listen to!**\n
