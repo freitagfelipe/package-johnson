@@ -23,7 +23,7 @@ module.exports = {
                 page.addField("\u200B",`${number}) [${musics[j].songInfo.videoDetails.title}](${musics[j].songInfo.videoDetails.video_url})`);
             }
             
-            page.addField("\u200B", `Queue loop: ${loopingQueue ? "✔️" : "❌"} || Music loop: ${loopingMusic ? "✔️" : "❌"}`);
+            page.addField("\u200B", `Queue loop: ${loopingQueue ? "✅" : "❎"} || Music loop: ${loopingMusic ? "✅" : "❎"}`);
 
             pages.push(page);
         }
