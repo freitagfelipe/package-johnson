@@ -33,8 +33,9 @@ class Queue {
         }
     }
 
-    next() {
-        if (!this.loopingQueue && !this.loopingMusic) {
+    next(isUserCommand) {
+        if (!this.loopingQueue && !this.loopingMusic || isUserCommand) {
+            this.loopingMusic = false;
             this.musics.shift();
 
             if (this.musics.length != 0) {
@@ -46,7 +47,7 @@ class Queue {
                     this.connection.disconnect();
                 }, 2000);
             }
-        } else if(this.loopingQueue) {
+        } else if(this.loopingQueue && !this.loopingMusic) {
             const removed = this.musics.shift();
 
             this.musics.push(removed);
