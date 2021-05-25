@@ -1,6 +1,7 @@
 module.exports = {
     name: "clear",
     description: "Clear messagens in the channel",
+    aliases: ["c"],
 
     async execute(message, args) {
         if (!args.length || isNaN(args[0]) ||args[0] < 1 || args[0] > 99) {

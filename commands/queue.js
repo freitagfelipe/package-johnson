@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "queue",
     description: "Show the current music queue.",
+    aliases: ["q", "musics"],
 
     execute(message) {
         if (!message.member.voice.channel) {

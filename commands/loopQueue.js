@@ -1,6 +1,7 @@
 module.exports = {
     name: "loop-queue",
     description: "Loop the actual queue.",
+    aliases: ["lq", "loopQueue"],
 
     execute(message) {
         if (!message.member.voice.channel) {

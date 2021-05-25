@@ -5,6 +5,7 @@ const { Queue } = require("../utils/queue")
 module.exports = {
     name: "play",
     description: "Play a song in your voice channel.",
+    aliases: ["p"],
 
     async execute(message, args) {
         const voiceChannel = message.member.voice.channel;

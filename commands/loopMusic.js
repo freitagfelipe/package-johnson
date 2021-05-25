@@ -1,6 +1,7 @@
 module.exports = {
     name: "loop-music",
     description: "Loop the actual music.",
+    aliases: ["lm", "loopMusic"],
 
     execute(message) {
         if (!message.member.voice.channel) {

@@ -1,6 +1,7 @@
 module.exports = {
     name: "leave",
     description: "Forces Package Johnson to leave the voice channel.",
+    aliases: ["disconnect", "dc", "l"],
 
     execute(message) {
         const userVoiceChannel = message.member.voice.channel;

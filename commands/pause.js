@@ -1,6 +1,7 @@
 module.exports = {
     name: "pause",
     description: "pauses the current song.",
+    aliases: ["stop"],
 
     execute(message) {
         if (!message.member.voice.channel) {
