@@ -6,6 +6,7 @@ const { embedColor } = require("../config.json");
 module.exports = {
     name: "playlist",
     description: "Shows my favorite lofi playlist.",
+    aliases: ["pl"],
 
     execute(message) {
         if (!message.member.voice.channel) {

@@ -1,6 +1,7 @@
 module.exports = {
     name: "join",
     description: "Package Johnson will join in your voice channel.",
+    aliases: ["connect"],
 
     execute(message) {
         const userVoiceChannel = message.member.voice.channel;

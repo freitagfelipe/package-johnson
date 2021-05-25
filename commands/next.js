@@ -1,6 +1,7 @@
 module.exports = {
     name: "next",
     description: "Skin to the next song.",
+    aliases: ["skip"],
 
     execute(message) {
         if (!message.member.voice.channel) {

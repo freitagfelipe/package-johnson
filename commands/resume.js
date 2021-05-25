@@ -1,6 +1,7 @@
 module.exports = {
     name: "resume",
     description: "continues playing the song that is paused.",
+    aliases: ["continue", "r"],
 
     execute(message) {
         if (!message.member.voice.channel) {
