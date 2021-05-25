@@ -37,7 +37,7 @@ client.on("message", message => {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
 
-        const command = client.commands.get(commandName);
+        const command = client.commands.get(commandName) || client.commands.find(command => command.aliases && command.aliases.includes(commandName));
 
         try {
             command.execute(message, args);
