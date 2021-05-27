@@ -103,6 +103,10 @@ class Queue {
     showNowPlaying(message) {
         return sendNowPlayingMusicEmbed(message, this.musics[0], this.dispatcher);
     }
+
+    removeMusic(musicNumber) {
+        this.musics.splice(musicNumber, 1);
+    }
 }
 
 module.exports = { Queue };
