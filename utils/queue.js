@@ -68,11 +68,6 @@ class Queue {
     resume() {
         this.playing = true;
 
-        // These next two lines are for avoid a bug in the dispatcher.resume(), because it was only working if the user use another pause/resume
-        // If you have any solution please open an issue.
-        this.dispatcher.resume();
-        this.dispatcher.pause();
-
         return this.dispatcher.resume();
     }
 
