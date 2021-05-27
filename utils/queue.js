@@ -2,6 +2,7 @@ const ytdl = require("ytdl-core");
 
 const { sendMusicEmbed } = require("./sendMusicEmbed");
 const { sendQueueEmbed } = require("./sendQueueEmbed");
+const { sendNowPlayingMusicEmbed } = require("./sendNowPlayingMusicEmbed");
 
 class Queue {
     constructor(connection) {
@@ -97,6 +98,10 @@ class Queue {
 
     showQueue(message) {
         return sendQueueEmbed(message, this.musics, this.loopingMusic, this.loopingQueue);
+    }
+
+    showNowPlaying(message) {
+        return sendNowPlayingMusicEmbed(message, this.musics[0], this.dispatcher);
     }
 }
 
