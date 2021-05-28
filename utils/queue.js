@@ -24,10 +24,14 @@ class Queue {
         });
     }
 
-    async add(songInfo, userMessage) {
-        this.musics.push({songInfo, user: userMessage.author});
+    async add(songInfo, userMessage, isPlayTop) {
+        if (!isPlayTop) {
+            this.musics.push({songInfo, user: userMessage.author});
+        } else {
+            this.musics.splice(1, 0, {songInfo, user: userMessage.author})
+        }
 
-        await sendMusicEmbed(userMessage, this.musics, songInfo);
+        await sendMusicEmbed(userMessage, this.musics, songInfo, isPlayTop);
         
         if (!this.playing) {
             this.play();
@@ -68,11 +72,6 @@ class Queue {
     resume() {
         this.playing = true;
 
-        // These next two lines are for avoid a bug in the dispatcher.resume(), because it was only working if the user use another pause/resume
-        // If you have any solution please open an issue.
-        this.dispatcher.resume();
-        this.dispatcher.pause();
-
         return this.dispatcher.resume();
     }
 
@@ -106,6 +105,14 @@ class Queue {
 
     removeMusic(musicNumber) {
         this.musics.splice(musicNumber, 1);
+    }
+
+    jump(musicNumber) {
+        this.musics[0] = this.musics[musicNumber];
+        this.musics.splice(1, musicNumber);
+        this.loopingMusic = false;
+
+        this.play()
     }
 }
 

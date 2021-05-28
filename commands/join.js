@@ -1,7 +1,7 @@
 module.exports = {
     name: "join",
     description: "Package Johnson will join in your voice channel.",
-    aliases: ["connect", "j"],
+    aliases: ["connect", "summon"],
 
     execute(message) {
         if (!message.member.voice.channel) {

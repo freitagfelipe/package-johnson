@@ -1,9 +1,11 @@
-module.exports = {
-    name: "now-playing",
-    description: "Show information about the song that is currently playing.",
-    aliases: ["np", "nowPlaying"],
+const { execute } = require("./play");
 
-    execute(message) {
+module.exports = {
+    name: "play-top",
+    description: "Add a song in the top of the queue.",
+    aliases: ["pt", "playtop"],
+
+    execute(message, args) {
         if (!message.member.voice.channel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
@@ -15,9 +17,9 @@ module.exports = {
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
         if (!queue) {
-            return message.reply("I'm not playing any thing on this server!");
+            return message.reply("I'm not playing anything on this server!");
         }
 
-        queue.showNowPlaying(message);
+        execute(message, args, 1)
     }
 }

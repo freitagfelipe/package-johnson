@@ -1,9 +1,9 @@
 module.exports = {
-    name: "now-playing",
-    description: "Show information about the song that is currently playing.",
-    aliases: ["np", "nowPlaying"],
+    name: "jump",
+    description: "Jump to a specific song in the queue and start playing it.",
+    aliases: ["j"],
 
-    execute(message) {
+    execute(message, args) {
         if (!message.member.voice.channel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
@@ -18,6 +18,8 @@ module.exports = {
             return message.reply("I'm not playing any thing on this server!");
         }
 
-        queue.showNowPlaying(message);
+        message.reply(`jump to music \`${args[0]}) ${queue.musics[args[0]].songInfo.videoDetails.title}\`!`);
+
+        queue.jump(args[0]);
     }
 }

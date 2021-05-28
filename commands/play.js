@@ -7,7 +7,7 @@ module.exports = {
     description: "Play a song in your voice channel.",
     aliases: ["p"],
 
-    async execute(message, args) {
+    async execute(message, args, isPlayTop) {
         const voiceChannel = message.member.voice.channel;
         const PJPermissions = voiceChannel.permissionsFor(message.client.user);
         let songInfo;
@@ -41,11 +41,11 @@ module.exports = {
         let queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
         if (queue) {
-            queue.add(songInfo, message);
+            queue.add(songInfo, message, isPlayTop);
         } else {
             queue = new Queue(connection);
             global.queues.push(queue);
-            queue.add(songInfo, message);
+            queue.add(songInfo, message, isPlayTop);
         }
 
         connection.on("disconnect", () => {
