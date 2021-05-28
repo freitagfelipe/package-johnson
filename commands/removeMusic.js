@@ -4,8 +4,6 @@ module.exports = {
     aliases: ["delete", "del", "rm"],
 
     execute(message, args) {
-        console.log(args[0])
-
         if (!message.member.voice.channel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
@@ -24,6 +22,6 @@ module.exports = {
 
         message.reply(`removed music \`${queue.musics[args[0]].songInfo.videoDetails.title}\`!`);
 
-        queue.removeMusic();
+        queue.removeMusic(args[0]);
     }
 }
