@@ -102,6 +102,14 @@ class Queue {
     removeMusic(musicNumber) {
         this.musics.splice(musicNumber, 1);
     }
+
+    jump(musicNumber) {
+        this.musics[0] = this.musics[musicNumber];
+        this.musics.splice(1, musicNumber);
+        this.loopingMusic = false;
+
+        this.play()
+    }
 }
 
 module.exports = { Queue };
