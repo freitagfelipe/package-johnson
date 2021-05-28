@@ -14,7 +14,7 @@ module.exports = {
 
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
-        if (!queue.playing) {
+        if (!queue) {
             return message.reply("I'm not playing any thing on this server!");
         }
 
