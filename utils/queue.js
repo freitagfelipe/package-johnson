@@ -24,10 +24,14 @@ class Queue {
         });
     }
 
-    async add(songInfo, userMessage) {
-        this.musics.push({songInfo, user: userMessage.author});
+    async add(songInfo, userMessage, isPlayTop) {
+        if (!isPlayTop) {
+            this.musics.push({songInfo, user: userMessage.author});
+        } else {
+            this.musics.splice(1, 0, {songInfo, user: userMessage.author})
+        }
 
-        await sendMusicEmbed(userMessage, this.musics, songInfo);
+        await sendMusicEmbed(userMessage, this.musics, songInfo, isPlayTop);
         
         if (!this.playing) {
             this.play();
