@@ -1,11 +1,11 @@
 const { execute } = require("./play");
 
 module.exports = {
-    name: "play-top",
+    name: "next-play",
     description: "Add a song in the top of the queue.",
-    aliases: ["pt", "playtop"],
+    aliases: ["skip-play", "sp"],
 
-    execute(message, args) {
+    async execute(message, args) {
         if (!message.member.voice.channel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
@@ -17,9 +17,10 @@ module.exports = {
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
         if (!queue) {
-            return message.reply("you need to have a queue to add a song on the top of it!");
+            return message.reply("you need to have a queue!");
         }
 
-        execute(message, args, 1)
+        await execute(message, args, 2);
+        queue.next();
     }
 }

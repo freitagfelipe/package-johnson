@@ -3,7 +3,7 @@ const { formatMusicTime } = require("./formatTime");
 const { embedColor } = require("../config.json");
 
 module.exports = {
-    sendMusicEmbed(message, musics, songInfo, isPlayTop) {
+    sendMusicEmbed(message, musics, songInfo, wichPlay) {
         const musicTime = formatMusicTime(Number(songInfo.videoDetails.lengthSeconds));
 
         message.channel.send(new MessageEmbed()
@@ -20,7 +20,7 @@ module.exports = {
                 { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
             )
             .setThumbnail(songInfo.videoDetails.thumbnails[0].url)
-            .setFooter(`• Posição na fila: ${musics.length - 1 == 0 ? "Now playing" : isPlayTop ? "1" : musics.length - 1} || `)
+            .setFooter(`• Queue position: ${musics.length - 1 == 0 || wichPlay == 2 ? "now playing" : wichPlay == 1 ? "1" : musics.length - 1} || `)
             .setTimestamp()
         );
     }

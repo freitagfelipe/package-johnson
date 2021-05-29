@@ -11,7 +11,8 @@ global.queues = [];
 
 client.on("ready", () => {
     console.log("I'm Package Johnson and I'm ready!");
-    client.user.setActivity("Say hi to @Package Johnson!");
+
+    changeStatus();
 
     client.commands = new Discord.Collection();
     client.interactions = new Discord.Collection();
@@ -75,3 +76,4 @@ client.login(process.env.TOKEN);
 
 module.exports = client;
 require("./events/guildCreate");
+const { changeStatus } = require("./events/changeStatus");
