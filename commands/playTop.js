@@ -17,7 +17,7 @@ module.exports = {
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
         if (!queue) {
-            return message.reply("I'm not playing anything on this server!");
+            return message.reply("you need to have a queue to add a song on the top of it!");
         }
 
         execute(message, args, 1)
