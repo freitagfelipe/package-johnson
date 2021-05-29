@@ -20,7 +20,7 @@ module.exports = {
                 { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
             )
             .setThumbnail(songInfo.videoDetails.thumbnails[0].url)
-            .setFooter(`• Posição na fila: ${musics.length - 1 == 0 ? "Now playing" : isPlayTop ? "1" : musics.length - 1} || `)
+            .setFooter(`• Queue position: ${musics.length - 1 == 0 ? "Now playing" : isPlayTop ? "1" : musics.length - 1} || `)
             .setTimestamp()
         );
     }
