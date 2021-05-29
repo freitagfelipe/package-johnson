@@ -24,14 +24,14 @@ class Queue {
         });
     }
 
-    async add(songInfo, userMessage, isPlayTop) {
-        if (!isPlayTop) {
+    async add(songInfo, userMessage, wichPlay) {
+        if (!wichPlay) {
             this.musics.push({songInfo, user: userMessage.author});
-        } else {
-            this.musics.splice(1, 0, {songInfo, user: userMessage.author})
+        } else if(wichPlay) {
+            this.musics.splice(1, 0, {songInfo, user: userMessage.author});
         }
 
-        await sendMusicEmbed(userMessage, this.musics, songInfo, isPlayTop);
+        await sendMusicEmbed(userMessage, this.musics, songInfo, wichPlay);
         
         if (!this.playing) {
             this.play();
