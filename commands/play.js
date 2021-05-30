@@ -7,7 +7,7 @@ module.exports = {
     description: "Play a song in your voice channel.",
     aliases: ["p"],
 
-    async execute(message, args, wichPlay) {
+    async execute(message, args, wichPlay = 0) {
         const voiceChannel = message.member.voice.channel;
         let songInfo;
 
@@ -30,7 +30,7 @@ module.exports = {
         if (ytdl.validateURL(args[0])) {
             songInfo = await ytdl.getInfo(args[0]);
         } else {
-            const musics = await ytsr(args.join(" "));
+            const musics = await ytsr(args.join(" "), {page: 1});
 
             if (!musics.items.length) {
                 return message.reply("no songs ware found! Please try again.");
