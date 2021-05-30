@@ -24,8 +24,12 @@ module.exports = {
         } else if (!PJPermissions.has("SPEAK")) {
             return message.reply("I don't have permissions to speak in the channel!")
         }
+
+        let searchingMessage;
         
-        message.reply("**searching your music!**");
+        message.channel.send("**searching your music!**").then(msg => {
+            searchingMessage = msg;
+        });
         
         if (ytdl.validateURL(args[0])) {
             songInfo = await ytdl.getInfo(args[0]);
@@ -42,6 +46,8 @@ module.exports = {
         let connection = await voiceChannel.join();
     
         let queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
+
+        searchingMessage.delete();
 
         if (queue) {
             queue.add(songInfo, message, wichPlay);
