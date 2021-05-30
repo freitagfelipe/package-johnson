@@ -84,6 +84,7 @@ module.exports = {
 
             setTimeout(() => {
                 if (!msg.deleted) {
+                    message.channel.send("**Timeout!**");
                     message.delete();
                     msg.delete();
                 }
