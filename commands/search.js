@@ -16,7 +16,7 @@ module.exports = {
 
         let searchingMessage;
 
-        message.channel.send("**Searching!**").then(msg => {
+        message.channel.send("**Searching!🔎**").then(msg => {
             searchingMessage = msg;
         });
 
@@ -56,7 +56,7 @@ module.exports = {
 
             setTimeout(() => {
                 if (!msg.deleted) {
-                    message.channel.send("**Timeout!**");
+                    message.channel.send("**Timeout!⌛**");
                     message.delete();
                     msg.delete();
                 }

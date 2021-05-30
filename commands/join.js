@@ -14,6 +14,6 @@ module.exports = {
 
         message.member.voice.channel.join();
 
-        return message.channel.send("Successfully connected!");
+        return message.channel.send("Successfully connected!✅");
     }
 }

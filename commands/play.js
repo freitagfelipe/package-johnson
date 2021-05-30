@@ -27,7 +27,7 @@ module.exports = {
 
         let searchingMessage;
         
-        message.channel.send("**Searching your music!**").then(msg => {
+        message.channel.send("**Searching your music!🔎**").then(msg => {
             searchingMessage = msg;
         });
         
