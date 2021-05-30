@@ -9,14 +9,17 @@ module.exports = {
 
     async execute(message, args, wichPlay) {
         const voiceChannel = message.member.voice.channel;
-        const PJPermissions = voiceChannel.permissionsFor(message.client.user);
         let songInfo;
 
         if (!(args.length > 0)) {
             return message.reply("you need to insert a music name or a music link!");
         } else if (!voiceChannel) {
             return message.reply("you need to be on a voice channel to execute this command!");
-        } else if (!PJPermissions.has("CONNECT")) {
+        }
+
+        const PJPermissions = voiceChannel.permissionsFor(message.client.user);
+        
+        if (!PJPermissions.has("CONNECT")) {
             return message.reply("I don't have permissions to connect to the voice channel!");
         } else if (!PJPermissions.has("SPEAK")) {
             return message.reply("I don't have permissions to speak in the channel!")
