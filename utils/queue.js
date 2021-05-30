@@ -33,7 +33,7 @@ class Queue {
 
         await sendMusicEmbed(userMessage, this.musics, songInfo, wichPlay);
         
-        if (!this.playing) {
+        if (this.musics.length == 1) {
             this.play();
         }
     }
