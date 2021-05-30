@@ -19,9 +19,9 @@ module.exports = {
         }
 
         if (!queue.loopingQueue) {
-            message.reply("**enabled queue loop!**");
+            message.channel.send("**Enabled queue loop!🔁**");
         } else  {
-            message.reply("**disabled queue loop!**");
+            message.channel.send("**Disabled queue loop!🔁**");
         }
 
         queue.loopQueue();

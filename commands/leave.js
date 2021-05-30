@@ -16,6 +16,6 @@ module.exports = {
 
         userVoiceChannel.leave();
 
-        return message.reply("successfully disconnected!");
+        return message.channel.send("Successfully disconnected!✅");
     }
 }

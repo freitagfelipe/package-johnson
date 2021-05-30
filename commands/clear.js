@@ -18,7 +18,7 @@ module.exports = {
 
         await message.channel.messages.fetch({limit: args[0]}).then(messages => {
             message.channel.bulkDelete(messages, true).then(messageCollection => {
-                return message.channel.send(`The chat had ${messageCollection.size - 1} ${messageWord} deleted by <@!${message.author.id}>!`);
+                return message.channel.send(`The chat had ${messageCollection.size - 1} ${messageWord} deleted by <@!${message.author.id}>!🚮`);
             }).catch(error => {
                 console.log(error);
 

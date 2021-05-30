@@ -23,7 +23,7 @@ module.exports = {
         } else {
             queue.next(true);
 
-            return message.reply("**Skipped!⏭️**");
+            return message.channel.send("**Skipped!⏭️**");
         }
     }
 }

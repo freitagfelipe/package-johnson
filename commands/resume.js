@@ -20,7 +20,7 @@ module.exports = {
             return message.reply("I'm already playing a song!");
         }
 
-        message.reply("**your music has been resumed!⏯️**");
+        message.channel.send("**Your music has been resumed!⏯️**");
 
         queue.resume();
     }
