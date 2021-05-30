@@ -18,7 +18,7 @@ module.exports = {
             return message.reply("I'm not playing any thing on this server!");
         }
 
-        message.reply(`jump to music \`${args[0]}) ${queue.musics[args[0]].songInfo.videoDetails.title}\`!`);
+        message.channel.send(`Jumped to music \`${args[0]}) ${queue.musics[args[0]].songInfo.videoDetails.title}\`!`);
 
         queue.jump(args[0]);
     }

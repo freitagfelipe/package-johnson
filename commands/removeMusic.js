@@ -20,7 +20,7 @@ module.exports = {
             return message.reply("there is no music in that position!");
         }
 
-        message.reply(`removed music \`${queue.musics[args[0]].songInfo.videoDetails.title}\`!`);
+        message.channel.send(`Successfully removed music \`${queue.musics[args[0]].songInfo.videoDetails.title}\`!`);
 
         queue.removeMusic(args[0]);
     }

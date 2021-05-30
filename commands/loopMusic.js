@@ -19,9 +19,9 @@ module.exports = {
         }
 
         if (!queue.loopingMusic) {
-            message.reply("**enabled music loop!**");
+            message.channel.send("**Enabled music loop!**");
         } else  {
-            message.reply("**disabled music loop!**");
+            message.channel.send("**Disabled music loop!**");
         }
 
         queue.loopMusic();
