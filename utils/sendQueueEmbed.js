@@ -20,11 +20,11 @@ module.exports = {
                     .setThumbnail(`${message.client.user.avatarURL()}`)
                     .addField("**Now Playing:**", `[${nowPlaying.songInfo.videoDetails.title}](${nowPlaying.songInfo.videoDetails.video_url}) | \`${nowPlaying.user.username}#${nowPlaying.user.discriminator}\``)
 
-            for (let j = 10 * i, number = 1; j < 10 * (i + 1); j++, number++) {
+            for (let j = 10 * i; j < 10 * (i + 1); j++) {
                 if (musics[j] == undefined) {
                     break;
                 } else if (j != 0) {
-                    musicText += `${number - 1}) [${musics[j].songInfo.videoDetails.title}](${musics[j].songInfo.videoDetails.video_url}) | \`${musics[j].user.username}#${musics[j].user.discriminator}\`\n`;
+                    musicText += `${j}) [${musics[j].songInfo.videoDetails.title}](${musics[j].songInfo.videoDetails.video_url}) | \`${musics[j].user.username}#${musics[j].user.discriminator}\`\n`;
                 }
             }
 
