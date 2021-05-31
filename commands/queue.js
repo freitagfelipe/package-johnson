@@ -1,5 +1,3 @@
-const { MessageEmbed } = require("discord.js");
-
 module.exports = {
     name: "queue",
     description: "Show the current music queue.",
