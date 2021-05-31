@@ -16,6 +16,8 @@ module.exports = {
 
         if (!queue) {
             return message.reply("I'm not playing any thing on this server!");
+        } else if (queue.musics.length - 1 < args[0] || args[0] <= 0) {
+            return message.reply("there is no music in that position!");
         }
 
         message.channel.send(`Jumped to music \`${args[0]}) ${queue.musics[args[0]].songInfo.videoDetails.title}\`!⤴️`);

@@ -10,8 +10,8 @@ module.exports = {
     async execute(message, args) {
         if (!message.member.voice.channel) {
             return message.reply("you need to be on a voice channel to execute this command!");
-        } else if (!(args.length > 0)) {
-            return message.reply("you need to inser a music name!");
+        } else if (!(args.length > 0) || args[0].startsWith("https://")) {
+            return message.reply("you need to insert a music name!");
         }
 
         let searchingMessage;
