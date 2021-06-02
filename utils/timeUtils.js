@@ -1,3 +1,5 @@
+const client = require("../package-johnson");
+
 module.exports = {
     formatMusicTime(musicTime) {
         if (musicTime == "0") {
@@ -33,7 +35,7 @@ module.exports = {
         return `${days} days and ${hours}:${minutes}:${seconds}`
     },
 
-    getCurrentHour() {
+    getCurrentInteraction() {
         let hour = new Date().getHours();
 
         return hour >= 6 && hour <= 12 ? "Say good morning to @Package Johnson!" : hour > 12 && hour <= 18 ? "Say good afternoon to @Package Johnson!" : "Say good night to @Package Johnson!";
