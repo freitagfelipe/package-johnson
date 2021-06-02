@@ -1,6 +1,6 @@
 const client = require("../package-johnson");
 const ytsr = require("ytsr");
-const { MessageEmbed, Collector } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 
 module.exports = {
