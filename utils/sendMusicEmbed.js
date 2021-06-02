@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const { formatMusicTime } = require("./formatTime");
+const { formatMusicTime } = require("./timeUtils");
 const { embedColor } = require("../config.json");
 
 module.exports = {

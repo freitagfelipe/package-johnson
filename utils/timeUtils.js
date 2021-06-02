@@ -1,3 +1,5 @@
+const client = require("../package-johnson");
+
 module.exports = {
     formatMusicTime(musicTime) {
         if (musicTime == "0") {
@@ -17,5 +19,25 @@ module.exports = {
 
             return `${String(musicTimeHours)}:${musicTimeMinuts}:${musicTimeSeconds}`;
         }
+    },
+
+    getAwakeTime() {
+        let upTimeSeconds, days, hours, minutes, seconds
+
+        upTimeSeconds = (client.uptime / 1000);
+        days = Math.floor(upTimeSeconds / 86400);
+        upTimeSeconds %= 86400;
+        hours = Math.floor(upTimeSeconds / 3600);
+        upTimeSeconds %= 3600;
+        minutes = Math.floor(upTimeSeconds / 60);
+        seconds = Math.floor(upTimeSeconds % 60);
+
+        return `${days} days and ${hours}:${minutes}:${seconds}`
+    },
+
+    getCurrentInteraction() {
+        let hour = new Date().getHours();
+
+        return hour >= 6 && hour <= 12 ? "Say good morning to @Package Johnson!" : hour > 12 && hour <= 18 ? "Say good afternoon to @Package Johnson!" : "Say good night to @Package Johnson!";
     }
 }

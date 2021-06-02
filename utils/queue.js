@@ -12,6 +12,7 @@ class Queue {
         this.loopingQueue = false;
         this.loopingMusic = false;
         this.playing = false;
+        this.volume = 100;
     }
 
     play() {
@@ -113,6 +114,12 @@ class Queue {
         this.loopingMusic = false;
 
         this.play()
+    }
+
+    setVolume(volumeNumber) {
+        this.volume = volumeNumber;
+
+        this.dispatcher.setVolumeLogarithmic(this.volume / 100);
     }
 }
 
