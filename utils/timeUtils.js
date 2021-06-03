@@ -32,6 +32,22 @@ module.exports = {
         minutes = Math.floor(upTimeSeconds / 60);
         seconds = Math.floor(upTimeSeconds % 60);
 
+        if (days < 10) {
+            days = "0" + days;
+        }
+
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+
+        if (seconds < 10) {
+            minutes = "0" + seconds;
+        }
+
         return `${days} days and ${hours}:${minutes}:${seconds}`
     },
 
@@ -39,5 +55,29 @@ module.exports = {
         let hour = new Date().getHours();
 
         return hour >= 6 && hour <= 12 ? "Say good morning to @Package Johnson!" : hour > 12 && hour <= 18 ? "Say good afternoon to @Package Johnson!" : "Say good night to @Package Johnson!";
+    },
+
+    getFortniteTrackerTime(totalMinutesPlayed) {
+        let timeInSeconds = totalMinutesPlayed * 60, days, hours, minutes;
+
+        days = Math.floor(timeInSeconds / 86400);
+        timeInSeconds %= 86400;
+        hours = Math.floor(timeInSeconds / 3600);
+        timeInSeconds %= 3600;
+        minutes = Math.floor(timeInSeconds / 60);
+
+        if (days < 10) {
+            days = "0" + days;
+        }
+
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+
+        return `${days}D ${hours}:${minutes}`;
     }
 }
