@@ -38,18 +38,19 @@ module.exports = {
             .setColor(embedColor)
             .setThumbnail(`${message.client.user.avatarURL()}`)
             .setTitle("React with the emoji of the music you want to listen to!")
+            .setTimestamp()
 
-        let musicText = "";
+        let descriptionText = "";
 
-        for (let i = 0; i < 5; i++) {
-            musicText += `${i + 1}) [${musics[i].title}](${musics[i].url}) | [${musics[i].author.name}](${musics[i].author.url})\n`;
+        for (let i = 0; i < 10; i++) {
+            descriptionText += `${i + 1}) [${musics[i].title}](${musics[i].url}) | \`Channel name:\` [${musics[i].author.name}](${musics[i].author.url}) | \`Music Time:\` ${musics[i].duration}\n`;
         }
 
-        page.addField("These are the results of your search: ", musicText);
+        page.setDescription(`These are the results of your search:\n${descriptionText}`);
 
         message.channel.send(page).then(msg => {
             const filter = (reaction, user) => {
-                return ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"].includes(reaction.emoji.name) && user.id === message.author.id;
+                return ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"].includes(reaction.emoji.name) && user.id === message.author.id;
             }
 
             const collector = msg.createReactionCollector(filter, { time: 60000});
