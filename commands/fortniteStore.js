@@ -36,6 +36,7 @@ module.exports = {
 
         const store = await getStore();
         const pages = [];
+        let descriptionText = "";
         let currentPage = new MessageEmbed()
             .setAuthor(
                 `${message.client.user.username}`,
@@ -46,9 +47,10 @@ module.exports = {
             .setTimestamp();
 
         for (let i = 0; i < store.length; i++) {
-            currentPage.addField("\u200B", `[${store[i].name}](${store[i].imageUrl}) | \`vBucks: ${store[i].vBucks == 0 ? "please look the store!" : store[i].vBucks}\``);
+            descriptionText += `[${store[i].name}](${store[i].imageUrl}) | \`vBucks: ${store[i].vBucks == 0 ? "please look the store!" : store[i].vBucks}\`\n`;
 
             if ((i + 1) % 10 == 0 || i == store.length - 1) {
+                currentPage.setDescription(descriptionText);
                 pages.push(currentPage);
                 currentPage = new MessageEmbed()
                     .setAuthor(
