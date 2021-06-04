@@ -45,9 +45,23 @@ module.exports = {
         if (pages.length == 1) {
             pages[0].setFooter("Page 1/1");
             
-            return message.channel.send(pages[0]);
+            return message.channel.send(pages[0]).then(msg => {
+                setTimeout(() => {
+                    if (!msg.deleted) {
+                        msg.delete();
+                        message.delete();
+                    }
+                }, 60000);
+            });
         } else {
-            return pagination(message, pages, ['⏪', '⏩'], "60000");
+            return pagination(message, pages, ['⏪', '⏩'], 60000).then(msg => {
+                setTimeout(() => {
+                    if (!msg.deleted) {
+                        msg.delete();
+                        message.delete();
+                    }
+                }, 60000);
+            });
         }
     }
 }

@@ -63,6 +63,13 @@ module.exports = {
             }
         }
 
-        return pagination(message, pages, ['⏪', '⏩'], "60000");
+        return pagination(message, pages, ['⏪', '⏩'], 60000).then(msg => {
+            setTimeout(() => {
+                if (!msg.deleted) {
+                    msg.delete();
+                    message.delete();
+                }
+            })
+        });
     }
 }
