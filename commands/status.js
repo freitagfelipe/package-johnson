@@ -4,6 +4,7 @@ const { embedColor } = require("../config.json");
 module.exports = {
     name: "status",
     description: "Show user stats.",
+    aliases: ["userinfo", "user-info"],
 
     execute(message, args) {
         let user;
