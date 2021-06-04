@@ -92,6 +92,13 @@ module.exports = {
             collector.on("collect", collected => {
                 let isCorrect;
 
+                let player = global.quizScores.find(player => message.author.username == player.name);
+
+                if (!player) {
+                    global.quizScores.push([0, message.author.username]);
+                    player = global.quizScores[global.quizScores.length - 1];
+                }
+
                 switch (collected.emoji.name) {
                     case "1️⃣":
                         answers[0] == question.correct_answer ? isCorrect = true : isCorrect = false;
@@ -107,16 +114,15 @@ module.exports = {
                         break;
                 }
 
-                if (isCorrect == true) {
+                if (isCorrect) {
                     message.channel.send("**Correct answer!✅**");
-                } else if(isCorrect == "default") {
-                    message.reply("Please react with a number from one to four!");
+                    player[0] += 1;
                 } else {
                     message.channel.send("**Incorrect answer!❎**");
                 }
 
-                    message.delete();
-                    msg.delete();
+                message.delete();
+                msg.delete();
             });
         });
     }
