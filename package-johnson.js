@@ -8,6 +8,7 @@ const client = new Discord.Client();
 dotenv.config();
 
 global.queues = [];
+global.quizScores = [];
 
 client.on("ready", () => {
     console.log("I'm Package Johnson and I'm ready!");
