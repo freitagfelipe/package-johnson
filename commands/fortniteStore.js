@@ -69,7 +69,7 @@ module.exports = {
                     msg.delete();
                     message.delete();
                 }
-            })
+            }, 60000);
         });
     }
 }
