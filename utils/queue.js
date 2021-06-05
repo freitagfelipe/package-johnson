@@ -3,6 +3,7 @@ const ytdl = require("ytdl-core");
 const { sendMusicEmbed } = require("./sendMusicEmbed");
 const { sendQueueEmbed } = require("./sendQueueEmbed");
 const { sendNowPlayingMusicEmbed } = require("./sendNowPlayingMusicEmbed");
+const { shuffleArray } = require("./shuffleArray");
 
 class Queue {
     constructor(connection) {
@@ -18,7 +19,7 @@ class Queue {
     play() {
         this.playing = true;
 
-        this.dispatcher = this.connection.play(ytdl(this.musics[0].songInfo.videoDetails.video_url, { quality: "highestaudio"}));
+        this.dispatcher = this.connection.play(ytdl.downloadFromInfo(this.musics[0].songInfo, { quality: "highestaudio"}));
         
         this.dispatcher.on("finish", () => {
             this.next();
@@ -120,6 +121,12 @@ class Queue {
         this.volume = volumeNumber;
 
         this.dispatcher.setVolumeLogarithmic(this.volume / 100);
+    }
+
+    shuffleQueue() {
+        const nowPlaying = this.musics.shift();
+        shuffleArray(this.musics);
+        this.musics.unshift(nowPlaying);
     }
 }
 

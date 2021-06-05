@@ -23,7 +23,7 @@ module.exports = {
                 if (response.ok) {
                     const jsonResponse = await response.json();
 
-                    return jsonResponse;
+                    return jsonResponse.sort((a, b) => b.vBucks - a.vBucks);
                 } else {
                     throw new Error("Request failed!");
                 }
@@ -52,6 +52,7 @@ module.exports = {
             if ((i + 1) % 10 == 0 || i == store.length - 1) {
                 currentPage.setDescription(descriptionText);
                 pages.push(currentPage);
+                descriptionText = "";
                 currentPage = new MessageEmbed()
                     .setAuthor(
                         `${message.client.user.username}`,
