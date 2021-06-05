@@ -62,7 +62,7 @@ module.exports = {
         let answers = question.incorrect_answers.slice(0, question.incorrect_answers.length);
 
         answers.push(question.correct_answer);
-        answer = shuffleArray(answers);
+        shuffleArray(answers);
 
         message.channel.send(new MessageEmbed()
             .setAuthor(
