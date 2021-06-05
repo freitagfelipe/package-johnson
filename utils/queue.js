@@ -18,7 +18,7 @@ class Queue {
     play() {
         this.playing = true;
 
-        this.dispatcher = this.connection.play(ytdl(this.musics[0].songInfo.videoDetails.video_url, { quality: "highestaudio"}));
+        this.dispatcher = this.connection.play(ytdl.downloadFromInfo(this.musics[0].songInfo, { quality: "highestaudio"}));
         
         this.dispatcher.on("finish", () => {
             this.next();
