@@ -3,6 +3,7 @@ const ytdl = require("ytdl-core");
 const { sendMusicEmbed } = require("./sendMusicEmbed");
 const { sendQueueEmbed } = require("./sendQueueEmbed");
 const { sendNowPlayingMusicEmbed } = require("./sendNowPlayingMusicEmbed");
+const { shuffleArray } = require("./shuffleArray");
 
 class Queue {
     constructor(connection) {
@@ -120,6 +121,12 @@ class Queue {
         this.volume = volumeNumber;
 
         this.dispatcher.setVolumeLogarithmic(this.volume / 100);
+    }
+
+    shuffleQueue() {
+        const nowPlaying = this.musics.shift();
+        shuffleArray(this.musics);
+        this.musics.unshift(nowPlaying);
     }
 }
 
