@@ -23,7 +23,7 @@ module.exports = {
                 if (response.ok) {
                     const jsonResponse = await response.json();
 
-                    return jsonResponse;
+                    return jsonResponse.sort((a, b) => b.vBucks - a.vBucks);
                 } else {
                     throw new Error("Request failed!");
                 }
