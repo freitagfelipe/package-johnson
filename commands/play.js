@@ -15,6 +15,8 @@ module.exports = {
             return message.reply("you need to insert a music name or a music link!");
         } else if (!voiceChannel) {
             return message.reply("you need to be on a voice channel to execute this command!");
+        } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == voiceChannel.name)) {
+            return message.reply("we aren't at the same voice channel!");
         }
 
         const PJPermissions = voiceChannel.permissionsFor(message.client.user);
