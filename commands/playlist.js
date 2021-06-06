@@ -78,7 +78,7 @@ module.exports = {
                 10)[4 A.M Study Session - [lofi hip hop/chill beats]](https://youtu.be/TURbeWK2wwg)
             `)
 
-        pagination(message, [pageOne, pageTwo, pageThree], ['⏪', '⏩'], "60000").then(msg => {
+        pagination(message, [pageOne, pageTwo, pageThree], ['⏪', '⏩'], 60000).then(msg => {
             let page = 0;
             let music;
 
