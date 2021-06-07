@@ -2,7 +2,7 @@ const { execute } = require("./play");
 
 module.exports = {
     name: "next-play",
-    description: "Add a song in the top of the queue.",
+    description: "Add a song in the top of the queue and skip the current song.",
     aliases: ["skip-play", "sp"],
 
     async execute(message, args) {
