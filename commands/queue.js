@@ -2,6 +2,7 @@ module.exports = {
     name: "queue",
     description: "Show the current music queue.",
     aliases: ["q", "musics"],
+    usage: ".pj queue",
 
     execute(message) {
         if (!message.member.voice.channel) {

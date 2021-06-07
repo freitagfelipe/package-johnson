@@ -2,6 +2,7 @@ module.exports = {
     name: "loop-queue",
     description: "Loop the actual queue.",
     aliases: ["lq", "loopQueue"],
+    usage: ".pj loop-queue",
 
     execute(message) {
         if (!message.member.voice.channel) {

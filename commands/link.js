@@ -4,6 +4,7 @@ const { embedColor } = require("../config.json");
 module.exports = {
     name: "link",
     description: "Shows the link to add Package Johnson to your discord.",
+    usage: ".pj link",
 
     execute(message) {
         return message.channel.send(new MessageEmbed()

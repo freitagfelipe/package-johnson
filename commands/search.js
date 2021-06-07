@@ -6,6 +6,7 @@ const { embedColor } = require("../config.json");
 module.exports = {
     name: "search",
     description: "Search for a music name and send a list to your choose wich one will play.",
+    usage: ".pj search",
 
     async execute(message, args) {
         if (!message.member.voice.channel) {

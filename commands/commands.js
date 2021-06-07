@@ -6,6 +6,7 @@ const { embedColor } = require("../config.json");
 module.exports = {
     name: "commands",
     description: "Show the name of all commands.",
+    usage: ".pj commands",
 
     execute(message) {
         const commandsName = [];

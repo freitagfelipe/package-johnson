@@ -5,6 +5,7 @@ module.exports = {
     name: "status",
     description: "Show user stats.",
     aliases: ["userinfo", "user-info"],
+    usage: ".pj status or .pj status <user mention>",
 
     execute(message, args) {
         let user;

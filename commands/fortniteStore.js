@@ -10,6 +10,7 @@ module.exports = {
     name: "fortnite-store",
     description: "Shows current fortnite store",
     aliases: ["fnstore", "fn-store", "store"],
+    usage: ".pj fortnite-store",
 
     async execute(message) {
         const getStore = async () => {

@@ -10,6 +10,7 @@ module.exports = {
     name: "fortnite-tracker",
     description: "Shows the status of a person on fortnite.",
     aliases: ["fntracker", "fn-tracker"],
+    usage: ".pj fortnite-tracker <platform> <fortnite nickname>",
 
     async execute(message, args) {
         if (!(args[0] == "kbm") && !(args[0] == "gamepad") && !(args[0] == "touch")) {

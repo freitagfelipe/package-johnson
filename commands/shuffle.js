@@ -2,6 +2,7 @@ module.exports = {
     name: "shuffle-queue",
     description: "Shuffle your current queue.",
     aliases: ["random", "shuffle", "random-queue"],
+    usage: ".pj shuffle-queue",
 
     execute(message) {
         if (!message.member.voice.channel) {

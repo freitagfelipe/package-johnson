@@ -2,6 +2,7 @@ module.exports = {
     name: "resume",
     description: "continues playing the song that is paused.",
     aliases: ["continue", "r"],
+    usage: ".pj resume",
 
     execute(message) {
         if (!message.member.voice.channel) {

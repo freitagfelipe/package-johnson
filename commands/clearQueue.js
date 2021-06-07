@@ -2,6 +2,7 @@ module.exports = {
     name: "clear-queue",
     description: "Clear the server music queue.",
     aliases: ["cq", "clearQueue"],
+    usage: ".pj clear-queue",
 
     execute(message) {
         if (!message.member.voice.channel) {

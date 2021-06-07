@@ -2,6 +2,7 @@ module.exports = {
     name: "now-playing",
     description: "Show information about the song that is currently playing.",
     aliases: ["np", "nowPlaying"],
+    usage: ".pj now-playing",
 
     execute(message) {
         if (!message.member.voice.channel) {
