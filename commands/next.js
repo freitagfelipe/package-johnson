@@ -2,6 +2,7 @@ module.exports = {
     name: "next",
     description: "Skin to the next song.",
     aliases: ["skip"],
+    usage: ".pj next",
 
     execute(message) {
         if (!message.member.voice.channel) {

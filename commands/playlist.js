@@ -7,6 +7,7 @@ module.exports = {
     name: "playlist",
     description: "Shows my favorite lofi playlist.",
     aliases: ["pl"],
+    usage: ".pj playlist",
 
     execute(message) {
         if (!message.member.voice.channel) {

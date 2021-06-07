@@ -4,6 +4,7 @@ module.exports = {
     name: "next-play",
     description: "Add a song in the top of the queue and skip the current song.",
     aliases: ["skip-play", "sp"],
+    usage: ".pj next-play <music name|link|playlist link>",
 
     async execute(message, args) {
         if (!message.member.voice.channel) {

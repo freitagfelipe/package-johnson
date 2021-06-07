@@ -5,6 +5,7 @@ module.exports = {
     name: "quiz-scores",
     description: "Shows the top 10 quiz scores.",
     aliases: ["qs", "quizscores"],
+    usage: ".pj quiz-scores",
     
     execute(message) {
         const scores = global.quizScores.sort((a, b) => b[0] - a[0]);

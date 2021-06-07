@@ -6,6 +6,7 @@ module.exports = {
     name: "grab-music",
     description: "Send the current music in your private chat.",
     aliases: ["grab"],
+    usage: ".pj grab-music",
 
     execute(message) {
         if (!message.member.voice.channel) {

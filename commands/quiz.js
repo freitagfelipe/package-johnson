@@ -7,6 +7,7 @@ const { shuffleArray } = require("../utils/shuffleArray");
 module.exports = {
     name: "quiz",
     description: "Package will send questions and whoever gets it right first wins.",
+    usage: ".pj quiz",
 
     async execute(message) {
         const getQuestions = async () => {

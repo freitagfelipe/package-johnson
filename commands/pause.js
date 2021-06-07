@@ -2,6 +2,7 @@ module.exports = {
     name: "pause",
     description: "pauses the current song.",
     aliases: ["stop"],
+    usage: ".pj pause",
 
     execute(message) {
         if (!message.member.voice.channel) {

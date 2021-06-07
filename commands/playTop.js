@@ -4,6 +4,7 @@ module.exports = {
     name: "play-top",
     description: "Add a song in the top of the queue.",
     aliases: ["pt", "playtop"],
+    usage: ".pj play-top <music name|link|playlist link>",
 
     execute(message, args) {
         if (!message.member.voice.channel) {

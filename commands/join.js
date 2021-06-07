@@ -2,6 +2,7 @@ module.exports = {
     name: "join",
     description: "Package Johnson will join in your voice channel.",
     aliases: ["connect", "summon"],
+    usage: ".pj join",
 
     execute(message) {
         if (!message.member.voice.channel) {

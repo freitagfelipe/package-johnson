@@ -2,6 +2,7 @@ module.exports = {
     name: "loop-music",
     description: "Loop the actual music.",
     aliases: ["lm", "loopMusic"],
+    usage: ".pj loop-music",
 
     execute(message) {
         if (!message.member.voice.channel) {

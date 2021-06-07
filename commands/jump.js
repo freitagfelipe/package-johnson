@@ -2,6 +2,7 @@ module.exports = {
     name: "jump",
     description: "Jump to a specific song in the queue and start playing it.",
     aliases: ["j"],
+    usage: ".pj jump <music number>",
 
     execute(message, args) {
         if (!message.member.voice.channel) {
