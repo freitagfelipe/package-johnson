@@ -1,5 +1,7 @@
-const { MessageEmbed } = require("discord.js");
 const pagination = require("discord.js-pagination");
+
+const { formatMusicTime } = require("../utils/timeUtils");
+const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 
 module.exports = {
@@ -16,12 +18,14 @@ module.exports = {
                     .setThumbnail(`${message.client.user.avatarURL()}`)
 
         for (let i = 0; i < musics.length; i++) {
+            const durationTime = formatMusicTime(musics[i].songInfo.videoDetails.lengthSeconds);
+
             if (i == 0) {
-                descriptionText += `**Now Playing:**\n- [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`${musics[i].user.username}#${musics[i].user.discriminator}\`\n`;
+                descriptionText += `**Now Playing:**\n- [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`${durationTime} Requested by: ${musics[i].user.username}#${musics[i].user.discriminator}\`\n`;
             } else if(i == 1) {
-                descriptionText += `**Up Next:**\n${i}) [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`${musics[i].user.username}#${musics[i].user.discriminator}\`\n`;
+                descriptionText += `**Up Next:**\n${i}) [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`${durationTime} Requested by: ${musics[i].user.username}#${musics[i].user.discriminator}\`\n`;
             } else {
-                descriptionText += `${i}) [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`${musics[i].user.username}#${musics[i].user.discriminator}\`\n`;
+                descriptionText += `${i}) [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`${durationTime} Requested by: ${musics[i].user.username}#${musics[i].user.discriminator}\`\n`;
             }
 
             if ((i % 10 == 0 && i != 0) || i == musics.length - 1) {
