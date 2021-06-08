@@ -6,7 +6,7 @@ module.exports = {
     name: "play",
     description: "Play a song in your voice channel.",
     aliases: ["p"],
-    usage: ".pj play <music name|link|playlist link>",
+    usage: ".pj play <music name|link>",
 
     async execute(message, args, wichPlay = 0) {
         const voiceChannel = message.member.voice.channel;
