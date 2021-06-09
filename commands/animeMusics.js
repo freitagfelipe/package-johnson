@@ -165,7 +165,7 @@ module.exports = {
                     const animeMusicName = isOpeningPage ? openings[music + 10 * page] : endings[music + 10 * (page - openingPages)];
 
                     if (animeMusicName) {
-                        execute(message, animeMusicName.slice(4).split(" "));
+                        execute(message, animeMusicName.slice(4).split("by")[0].split(" "));
                         message.delete();
                         msg.delete();
                     } else {
