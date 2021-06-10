@@ -17,15 +17,7 @@ module.exports = {
         } else if (!voiceChannel) {
             return message.reply("you need to be on a voice channel to execute this command!");
         } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == voiceChannel.name)) {
-            return message.reply("we aren't at the same voice channel!");
-        }
-
-        const PJPermissions = voiceChannel.permissionsFor(message.client.user);
-        
-        if (!PJPermissions.has("CONNECT")) {
-            return message.reply("I don't have permissions to connect to the voice channel!");
-        } else if (!PJPermissions.has("SPEAK")) {
-            return message.reply("I don't have permissions to speak in the channel!")
+            return message.reply("you need to be on a voice channel to listen to a song!");
         }
 
         let searchingMessage;
