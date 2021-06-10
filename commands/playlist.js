@@ -36,6 +36,7 @@ module.exports = {
                 9)[I can't sleep. It's 4am ~ lofi hip hop mix](https://youtu.be/NDfF_XwNtIw)\n
                 10)[The loneliest feeling in the world - sad lofi hip hop mix](https://youtu.be/7AHGD1IvssY)
             `)
+            .addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`)
 
         const pageTwo =  new MessageEmbed()
             .setAuthor(
@@ -57,6 +58,7 @@ module.exports = {
                 9)[1 A.M Study Session 📚 - [lofi hip hop/chill beats]](https://youtu.be/lTRiuFIWV54)\n
                 10)[Anime lofi hip hop radio - 24/7 chill lofi remixes of anime](https://youtu.be/UoMbwCoJTYM)
             `)
+            .addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`)
         
         const pageThree = new MessageEmbed()
             .setAuthor(
@@ -78,6 +80,7 @@ module.exports = {
                 9)[Old songs but it's lofi remix](https://youtu.be/BrnDlRmW5hs)\n
                 10)[4 A.M Study Session - [lofi hip hop/chill beats]](https://youtu.be/TURbeWK2wwg)
             `)
+            .addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`)
 
         pagination(message, [pageOne, pageTwo, pageThree], ['⏪', '⏩'], 60000).then(msg => {
             let page = 0;
