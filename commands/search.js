@@ -48,6 +48,7 @@ module.exports = {
         }
 
         page.setDescription(`These are the results of your search:\n${descriptionText}`);
+        page.addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`);
 
         message.channel.send(page).then(msg => {
             const filter = (reaction, user) => {
