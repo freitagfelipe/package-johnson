@@ -20,14 +20,6 @@ module.exports = {
             return message.reply("you need to be on a voice channel to listen to a song!");
         }
 
-        const PJPermissions = voiceChannel.permissionsFor(message.client.user);
-        
-        if (!PJPermissions.has("CONNECT")) {
-            return message.reply("I don't have permissions to connect to the voice channel!");
-        } else if (!PJPermissions.has("SPEAK")) {
-            return message.reply("I don't have permissions to speak in the channel!")
-        }
-
         let searchingMessage;
         
         message.channel.send("**Searching your music!🔎**").then(msg => {
