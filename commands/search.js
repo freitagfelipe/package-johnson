@@ -43,8 +43,8 @@ module.exports = {
 
         let descriptionText = "";
 
-        for (let i = 0; i < 10; i++) {
-            descriptionText += `${i + 1}) [${musics[i].title}](${musics[i].url}) | \`Channel name:\` [${musics[i].author.name}](${musics[i].author.url}) | \`Music Time:\` ${musics[i].duration}\n`;
+        for (let i = 0; i < 5; i++) {
+            descriptionText += `${i + 1}) [${musics[i].title}](${musics[i].url}) | \`Channel name:\` [${musics[i].author.name}](${musics[i].author.url})\n`;
         }
 
         page.setDescription(`These are the results of your search:\n${descriptionText}`);
