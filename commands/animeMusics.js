@@ -162,10 +162,16 @@ module.exports = {
                 }
 
                 if (music || music == 0) {
-                    const animeMusicName = isOpeningPage ? openings[music + 10 * page] : endings[music + 10 * (page - openingPages)];
+                    let animeMusicName;
+
+                    if(openings.length >= 1) {
+                       animeMusicName = isOpeningPage ? openings[music + 10 * page].slice(4).split(" ") : endings[music + 10 * (page - openingPages)].slice(4).split(" ");
+                    } else {
+                        animeMusicName = endings[music + 10 * page].slice(4).split(" ");
+                    }
 
                     if (animeMusicName) {
-                        execute(message, animeMusicName.slice(4).split("by")[0].split(" "));
+                        execute(message, animeMusicName.slice(0, animeMusicName.indexOf("eps") - 1 || animeMusicName.length));
                         message.delete();
                         msg.delete();
                     } else {
