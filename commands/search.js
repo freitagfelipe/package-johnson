@@ -52,10 +52,10 @@ module.exports = {
 
         message.channel.send(page).then(msg => {
             const filter = (reaction, user) => {
-                return ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"].includes(reaction.emoji.name) && user.id === message.author.id;
+                return ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"].includes(reaction.emoji.name) && user.id === message.author.id;
             }
 
-            const collector = msg.createReactionCollector(filter, { time: 60000});
+            const collector = msg.createReactionCollector(filter, { time: 60000 });
 
             setTimeout(() => {
                 if (!msg.deleted) {
