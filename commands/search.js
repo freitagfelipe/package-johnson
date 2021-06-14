@@ -38,21 +38,16 @@ module.exports = {
             )
             .setColor(embedColor)
             .setThumbnail(`${message.client.user.avatarURL()}`)
-            .setTitle("React with the emoji of the music you want to listen to!")
+            .setTitle(`${message.author.username}, react with the emoji of the music you want to listen to!`)
             .setTimestamp()
 
-        let descriptionText = "";
-
-        for (let i = 0; i < 5; i++) {
-            descriptionText += `${i + 1}) [${musics[i].title}](${musics[i].url}) | \`Channel name:\` [${musics[i].author.name}](${musics[i].author.url})\n`;
+        for (let i = 0; i < 10; i++) {
+            page.addField("\u200B", `${i + 1}) [${musics[i].title}](${musics[i].url}) | \`Channel name:\` [${musics[i].author.name}](${musics[i].author.url})`);
         }
-
-        page.setDescription(`These are the results of your search:\n${descriptionText}`);
-        page.addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`);
 
         message.channel.send(page).then(msg => {
             const filter = (reaction, user) => {
-                return ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"].includes(reaction.emoji.name) && user.id === message.author.id;
+                return ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"].includes(reaction.emoji.name) && user.id === message.author.id;
             }
 
             const collector = msg.createReactionCollector(filter, { time: 60000 });
@@ -84,6 +79,21 @@ module.exports = {
                     case "5️⃣":
                         music = musics[4].url;
                         break;
+                    case "6️⃣":
+                        music = musics[5].url;
+                        break;
+                    case "7️⃣":
+                        music = musics[6].url;
+                        break;
+                    case "8️⃣":
+                        music = musics[7].url;
+                        break;
+                    case "9️⃣":
+                        music = musics[8].url;
+                        break;
+                    case "🔟":
+                        music = musics[9].url;
+                        break;
                 }
     
                 if (music) {
@@ -92,7 +102,7 @@ module.exports = {
 
                     client.commands.get("play").execute(message, [music]);
                 } else {
-                    message.reply("there is no song with the numer you reacted, please react with another number!");
+                    message.reply("there is no song with the number you reacted, please react with another number!");
                 }
             });
         });
