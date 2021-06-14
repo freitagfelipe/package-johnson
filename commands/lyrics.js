@@ -1,6 +1,5 @@
 const lyricsFinder = require("lyrics-finder");
 const pagination = require("discord.js-pagination");
-
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 

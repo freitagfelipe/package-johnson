@@ -1,5 +1,4 @@
 const pagination = require("discord.js-pagination");
-
 const { formatMusicTime } = require("../utils/timeUtils");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");

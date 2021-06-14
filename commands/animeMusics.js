@@ -1,8 +1,7 @@
 const pagination = require("discord.js-pagination");
-const { execute } = require("./play");
 const Jikan = require("jikan-node");
 const mal = new Jikan();
-
+const { execute } = require("./play");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 

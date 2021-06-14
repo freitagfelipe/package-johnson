@@ -1,6 +1,5 @@
 const Jikan = require("jikan-node");
 const mal = new Jikan();
-
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 

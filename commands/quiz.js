@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 const { shuffleArray } = require("../utils/shuffleArray");
