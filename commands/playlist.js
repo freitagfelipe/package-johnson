@@ -1,7 +1,7 @@
-const { MessageEmbed } = require("discord.js");
-const pagination = require("discord.js-pagination");
 const client = require("../package-johnson");
+const pagination = require("discord.js-pagination");
 const { embedColor } = require("../config.json");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "playlist",

@@ -1,5 +1,4 @@
 const client = require("../package-johnson");
-
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 
