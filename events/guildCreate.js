@@ -12,7 +12,7 @@ client.on('guildCreate', guild => {
                     `${client.user.username}`,
                 )
                 .setColor(`${embedColor}`)
-                .setDescription(`Thanks for adding me in to your server, my prefix is: \`${prefix}\` !`)
+                .setDescription(`Thanks for adding me to your server, my prefix is: \`${prefix}\` !`)
                 .setThumbnail(`${client.user.avatarURL()}`)
             )
             
@@ -38,7 +38,7 @@ client.on('guildCreate', guild => {
             )
             .setColor(`${embedColor}`)
             .setTitle(`Acknowledgments and information.`)
-            .setDescription(`Hiiii, ${guild.owner.user.username}! Thank you for add me in your discord server and if you want to see my comand list you just need to click on this link: http://gg.gg/package-johnson-discord-commands`)
+            .setDescription(`Hiiii, ${guild.owner.user.username}! Thank you for add me in your discord server and if you want to see my comand list you just need to click on this link: [PJ repository](https://github.com/freitagfelipe/package-johnson-discord)`)
             .setImage(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
             .setTimestamp()
         );

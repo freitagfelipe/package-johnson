@@ -219,7 +219,7 @@ module.exports = {
 
                             execute(message, animeMusicName);
                         } else {
-                            message.reply("there is no song with the numer you reacted, please react with another number!");
+                            message.reply("there is no song with the number you reacted to on this page, please react with another number!");
                         }
                     }
                 });
