@@ -6,6 +6,7 @@ const { embedColor } = require("../config.json");
 module.exports = {
     name: "lyrics",
     description: "Shows the lyrics of a music.",
+    aliases: ["l"],
     usage: ".pj lyrics <music name> <author name>",
 
     async execute(message, args) {

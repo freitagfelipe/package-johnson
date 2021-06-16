@@ -1,5 +1,5 @@
-const client = require("../package-johnson");
 const ytsr = require("ytsr");
+const { execute } = require("./play");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 
@@ -100,7 +100,7 @@ module.exports = {
                     msg.delete();
                     message.delete();
 
-                    client.commands.get("play").execute(message, [music]);
+                    execute(message, [music]);
                 } else {
                     message.reply("there is no song with the number you reacted, please react with another number!");
                 }
