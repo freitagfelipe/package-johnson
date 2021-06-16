@@ -1,5 +1,5 @@
-const client = require("../package-johnson");
 const pagination = require("discord.js-pagination");
+const { execute } = require("./play");
 const { embedColor } = require("../config.json");
 const { MessageEmbed } = require("discord.js");
 
@@ -153,7 +153,7 @@ module.exports = {
                         msg.delete();
                         message.delete();
 
-                        client.commands.get("play").execute(message, [music[page]]);
+                        execute(message, [music[page]]);
                     } else {
                         message.reply("there is no song with the number you reacted to on this page, please react with another number!");
                     }
