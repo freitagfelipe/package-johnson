@@ -44,6 +44,8 @@ module.exports = {
             return message.reply(`I couldn't find a opening for the anime ${anime.title}`);
         }
 
+        searchingMessage.delete();
+
         if(openings.length <= 10) {
             for(let i = 0; i < openings.length; i++) {
                 currentPage.addField("\u200B", `${i + 1}) ${openings[i].slice(4)}`);

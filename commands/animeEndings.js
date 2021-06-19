@@ -44,6 +44,8 @@ module.exports = {
             return message.reply(`I couldn't find a ending for the anime ${anime.title}`);
         }
 
+        searchingMessage.delete();
+
         if(endings.length <= 10) {
             for(let i = 0; i < endings.length; i++) {
                 currentPage.addField("\u200B", `${i + 1}) ${endings[i].slice(4)}`);
