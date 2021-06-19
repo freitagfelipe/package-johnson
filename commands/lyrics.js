@@ -7,7 +7,7 @@ module.exports = {
     name: "lyrics",
     description: "Shows the lyrics of a music.",
     aliases: ["l"],
-    usage: ".pj lyrics <music name> <author name>",
+    usage: ".pj lyrics <music name> | <author name>",
 
     async execute(message, args) {
         if (args.includes("|")) {
@@ -23,38 +23,35 @@ module.exports = {
                         `${message.client.user.displayAvatarURL()}`
                     )
                     .setColor(embedColor)
-                    .setTitle(`Artist: \`${authorName}\` | Music Name: \`${musicName}\``)
+                    .setTitle(`MusicName: \`${musicName}\` | Music Name: \`${authorName}\``)
                     .setDescription(lyrics)
                     .setTimestamp()
                 )
             } else {
                 const pages = [];
-                let currentDescription = "";
                 let currentPage = new MessageEmbed()
                     .setAuthor(
                         `${message.client.user.username}`,
                         `${message.client.user.displayAvatarURL()}`
                     )
                     .setColor(embedColor)
-                    .setTitle(`Artist: \`${authorName}\` | Music Name: \`${musicName}\``)
+                    .setTitle(`MusicName: \`${musicName}\` | Music Name: \`${authorName}\``)
                     .setTimestamp()
 
                 lyrics = lyrics.split("\n\n");
                 
                 for (let i = 0; i < lyrics.length; i++) {
-                    currentDescription += `${lyrics[i]}\n\n`;
+                    currentPage.addField("\u200B", `${lyrics[i]}`);
 
-                    if ((i % 9 == 0 && i != 0) || i == lyrics.length - 1) {
-                        currentPage.setDescription(currentDescription);
+                    if (((i + 1) % 10 == 0 && i != 0) || i == lyrics.length - 1) {
                         pages.push(currentPage);
-                        currentDescription = "";
                         currentPage = new MessageEmbed()
                             .setAuthor(
                                 `${message.client.user.username}`,
                                 `${message.client.user.displayAvatarURL()}`
                             )
                             .setColor(embedColor)
-                            .setTitle(`Artist: \`${authorName}\` | Music Name: \`${musicName}\``)
+                            .setTitle(`MusicName: \`${musicName}\` | Music Name: \`${authorName}\``)
                             .setTimestamp()
                     }
                 }
@@ -62,7 +59,7 @@ module.exports = {
                 return pagination(message, pages, ['⏪', '⏩'], 60000);
             }
         } else {
-            return message.reply("the correct usage of this command is <artist name> | <music name>!");
+            return message.reply("the correct usage of this command is <music name> | <author name>!");
         }
     }
 }

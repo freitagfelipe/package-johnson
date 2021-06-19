@@ -1,7 +1,7 @@
 module.exports = {
     name: "leave",
     description: "Forces Package Johnson to leave the voice channel.",
-    aliases: ["disconnect", "dc", "l"],
+    aliases: ["disconnect", "dc", "lv"],
     usage: ".pj leave",
 
     execute(message) {

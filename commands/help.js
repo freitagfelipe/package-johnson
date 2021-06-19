@@ -27,7 +27,7 @@ module.exports = {
             .setColor(embedColor)
             .setTitle(`I'll help you with \`${command.name}\`!`)
             .addFields(
-                { name: "Aliases:", value: `\`${command.aliases ? command.aliases : "This command doesn't have aliases!"}\``},
+                { name: "Aliases:", value: `\`${command.aliases ? command.aliases.join(", ") : "This command doesn't have aliases!"}\``},
                 { name: "Description:", value: `\`${command.description}\``},
                 { name: "Usage:", value: `\`${command.usage}\``}
             )

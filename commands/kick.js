@@ -19,26 +19,28 @@ module.exports = {
             return message.reply("the correct usage of this command is .pj kick <user mention> or .pj kick <user mention> <reason>!");
         } else if (member.id == message.author.id) {
             return message.reply("you can't kick yourself!");
+        } else if (member.id == message.client.user.id) {
+            return message.reply("I can't kick myself!");
         }
 
         const reason = args.slice(1).join(" ") || "no reason";
 
-        try {
-            member.kick(reason).then(() => {
-                message.channel.send(new MessageEmbed()
-                    .setAuthor(
-                        `${message.client.user.username}`,
-                        `${message.client.user.displayAvatarURL()}`
-                    )
-                    .setColor(embedColor)
-                    .setTitle(`${member.user.username} was kicked from the server by ${message.author.username}!`)
-                    .setDescription(`**Reason: ${reason}**`)
-                    .setThumbnail(member.user.displayAvatarURL())
-                    .setTimestamp()
+        member.kick(reason).then(() => {
+            message.channel.send(new MessageEmbed()
+                .setAuthor(
+                    `${message.client.user.username}`,
+                    `${message.client.user.displayAvatarURL()}`
                 )
-            });
-        } catch(error) {
-            return message.reply(`I don't have permission to kick ${member.user.username} because her role is higher than mine!`);
-        }
+                .setColor(embedColor)
+                .setTitle(`${member.user.username} was kicked from the server by ${message.author.username}!`)
+                .setDescription(`**Reason: ${reason}**`)
+                .setThumbnail(member.user.displayAvatarURL())
+                .setTimestamp()
+            )
+        }).catch(error => {
+            console.log(error);
+
+            return message.reply("I don't have permission to kick this user because his role is higher than mine!")
+        });
     }
 }
