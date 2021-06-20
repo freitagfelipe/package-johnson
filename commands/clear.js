@@ -1,6 +1,6 @@
 module.exports = {
     name: "clear",
-    description: "Clear messagens in the channel",
+    description: "Clear messages in the channel.",
     aliases: ["c"],
     usage: ".pj clear <number of messages>",
 
@@ -10,7 +10,7 @@ module.exports = {
         } else if(message.author.bot) {
             return message.reply("you have to be a human to be able to execute this command!");
         } else if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-            return message.reply("you must have permission to execute this command!");
+            return message.reply("you don't have permission to manage messages!");
         }
 
         const messageWord = args[0] == 1 ? "message" : "messages";
@@ -23,7 +23,7 @@ module.exports = {
             }).catch(error => {
                 console.log(error);
 
-                return message.reply("an error occurred while trying to delete messages");
+                return message.reply("an error occurred while trying to delete messages!");
             });
         });
     }

@@ -5,12 +5,12 @@ const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "search",
-    description: "Search for a music name and send a list to your choose wich one will play.",
+    description: "Searches for a music name and send a list to you choose wich one will play.",
     usage: ".pj search",
 
     async execute(message, args) {
         if (!message.member.voice.channel) {
-            return message.reply("you need to be on a voice channel to execute this command!");
+            return message.reply("you need to be in a voice channel to execute this command!");
         } else if (!(args.length > 0) || args[0].startsWith("https://")) {
             return message.reply("you need to insert a music name!");
         }
@@ -38,7 +38,7 @@ module.exports = {
             )
             .setColor(embedColor)
             .setThumbnail(`${message.client.user.avatarURL()}`)
-            .setTitle(`${message.author.username}, react with the emoji of the music you want to listen to!`)
+            .setTitle(`${message.author.username}, react with an emoji of a number from 1️⃣ to 🔟 corresponding to the music you want to listen to!`)
             .setTimestamp()
 
         for (let i = 0; i < 10; i++) {

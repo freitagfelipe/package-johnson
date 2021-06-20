@@ -113,7 +113,7 @@ class Queue {
         this.musics.splice(1, musicNumber);
         this.loopingMusic = false;
 
-        this.play()
+        this.play();
     }
 
     setVolume(volumeNumber) {

@@ -40,7 +40,7 @@ module.exports = {
         }).catch(error => {
             console.log(error);
 
-            return message.reply("I don't have permission to ban this user because his role is higher than mine!");
+            return message.reply("I don't have permission to ban this user because his role is higher or equal my role!");
         });
     }
 }

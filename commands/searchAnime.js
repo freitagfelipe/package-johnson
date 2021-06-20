@@ -5,7 +5,7 @@ const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "search-anime",
-    description: "Searches the anime that you requested and send his information.",
+    description: "Searches the anime that you requested and send it's information.",
     aliases: ["searchanime", "sa"],
     usage: ".pj search-anime <anime name>",
 

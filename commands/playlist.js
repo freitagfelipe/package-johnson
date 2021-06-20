@@ -11,9 +11,9 @@ module.exports = {
 
     execute(message) {
         if (!message.member.voice.channel) {
-            return message.reply("you need to be on a voice channel to execute this command!");
+            return message.reply("you need to be in a voice channel to execute this command!");
         } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == message.member.voice.channel.name)) {
-            return message.reply("I'm already on another voice channel on this server, please join it to execute this command!");
+            return message.reply("I'm already in another voice channel in this server, please join it to execute this command!");
         }
 
         const pageOne = new MessageEmbed()
@@ -36,7 +36,7 @@ module.exports = {
                 9)[I can't sleep. It's 4am ~ lofi hip hop mix](https://youtu.be/NDfF_XwNtIw)\n
                 10)[The loneliest feeling in the world - sad lofi hip hop mix](https://youtu.be/7AHGD1IvssY)
             `)
-            .addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`)
+            .addField("\u200B", `**${message.author.username}, react with an emoji of a number from 1️⃣ to 🔟 corresponding to the music you want to listen to!**`)
 
         const pageTwo =  new MessageEmbed()
             .setAuthor(
@@ -58,7 +58,7 @@ module.exports = {
                 9)[1 A.M Study Session 📚 - [lofi hip hop/chill beats]](https://youtu.be/lTRiuFIWV54)\n
                 10)[Anime lofi hip hop radio - 24/7 chill lofi remixes of anime](https://youtu.be/UoMbwCoJTYM)
             `)
-            .addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`)
+            .addField("\u200B", `**${message.author.username}, react with an emoji of a number from 1️⃣ to 🔟 corresponding to the music you want to listen to!**`)
         
         const pageThree = new MessageEmbed()
             .setAuthor(
@@ -80,7 +80,7 @@ module.exports = {
                 9)[Old songs but it's lofi remix](https://youtu.be/BrnDlRmW5hs)\n
                 10)[4 A.M Study Session - [lofi hip hop/chill beats]](https://youtu.be/TURbeWK2wwg)
             `)
-            .addField("\u200B", `**${message.author.username}, react with the emoji of the music you want to listen to!**`)
+            .addField("\u200B", `**${message.author.username}, react with an emoji of a number from 1️⃣ to 🔟 corresponding to the music you want to listen to!**`)
 
         pagination(message, [pageOne, pageTwo, pageThree], ['⏪', '⏩'], 60000).then(msg => {
             let page = 0;

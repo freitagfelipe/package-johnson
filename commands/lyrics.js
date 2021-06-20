@@ -16,6 +16,10 @@ module.exports = {
 
             let lyrics = await lyricsFinder(authorName, musicName) || "Not Found!";
 
+            if (lyrics == "Not Found!") {
+                return message.reply(`I can't find ${musicName} by ${authorName}!`);
+            }
+
             if (lyrics.length < 2048) {
                 return message.channel.send(new MessageEmbed()
                     .setAuthor(
@@ -23,7 +27,6 @@ module.exports = {
                         `${message.client.user.displayAvatarURL()}`
                     )
                     .setColor(embedColor)
-                    .setTitle(`MusicName: \`${musicName}\` | Music Name: \`${authorName}\``)
                     .setDescription(lyrics)
                     .setTimestamp()
                 )
@@ -35,7 +38,6 @@ module.exports = {
                         `${message.client.user.displayAvatarURL()}`
                     )
                     .setColor(embedColor)
-                    .setTitle(`MusicName: \`${musicName}\` | Music Name: \`${authorName}\``)
                     .setTimestamp()
 
                 lyrics = lyrics.split("\n\n");
@@ -51,7 +53,6 @@ module.exports = {
                                 `${message.client.user.displayAvatarURL()}`
                             )
                             .setColor(embedColor)
-                            .setTitle(`MusicName: \`${musicName}\` | Music Name: \`${authorName}\``)
                             .setTimestamp()
                     }
                 }
@@ -59,7 +60,7 @@ module.exports = {
                 return pagination(message, pages, ['⏪', '⏩'], 60000);
             }
         } else {
-            return message.reply("the correct usage of this command is <music name> | <author name>!");
+            return message.reply("the correct usage of this command is .pj lyrics <music name> | <author name>!");
         }
     }
 }

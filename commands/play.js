@@ -4,9 +4,9 @@ const { Queue } = require("../utils/queue")
 
 module.exports = {
     name: "play",
-    description: "Play a song in your voice channel.",
+    description: "Play a song in your current voice channel.",
     aliases: ["p"],
-    usage: ".pj play <music name|link>",
+    usage: ".pj play <music name or music link>",
 
     async execute(message, args, wichPlay = 0) {
         const voiceChannel = message.member.voice.channel;
@@ -15,9 +15,9 @@ module.exports = {
         if (!(args.length > 0)) {
             return message.reply("you need to insert a music name or a music link!");
         } else if (!voiceChannel) {
-            return message.reply("you need to be on a voice channel to execute this command!");
+            return message.reply("you need to be in a voice channel to execute this command!");
         } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == voiceChannel.name)) {
-            return message.reply("you need to be on a voice channel to listen to a song!");
+            return message.reply("we aren't at the same voice channel!!");
         }
 
         let searchingMessage;
@@ -32,7 +32,7 @@ module.exports = {
             const musics = await ytsr(args.join(" "), {page: 1});
 
             if (!musics.items.length) {
-                return message.reply("no songs ware found! Please try again.");
+                return message.reply("no songs were found! Please try again.");
             }
 
             songInfo = await ytdl.getInfo(musics.items.find(item => item.type == "video").url);

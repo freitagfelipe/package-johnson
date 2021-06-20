@@ -13,7 +13,7 @@ module.exports = {
         let descriptionText = "";
 
         if (scores.length == 0) {
-            return message.reply("it looks like I don't have a top yet!");
+            return message.reply("it looks like I don't have a ranking yet!");
         }
 
         for (let i = 0; i < 10 && i < scores.length; i++) {

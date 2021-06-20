@@ -3,7 +3,7 @@ const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "status",
-    description: "Show user stats.",
+    description: "Shows your user stats or the user stats of who you have tagged.",
     aliases: ["userinfo", "user-info"],
     usage: ".pj status or .pj status <user mention>",
 
