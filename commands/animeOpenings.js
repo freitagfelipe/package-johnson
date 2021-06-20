@@ -7,7 +7,7 @@ const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "anime-openings",
-    description: "Searches the anime that you requested and send his opening musics.",
+    description: "Searches the anime that you requested and send his openings musics.",
     aliases: ["animeopenings", "ao"],
     usage: ".pj anime-openings <anime name>",
 
@@ -36,13 +36,15 @@ module.exports = {
                 `${message.client.user.displayAvatarURL()}`
             )
             .setColor(embedColor)
-            .setTitle(`${message.author.username}, react with the emoji of the music you want to listen to!`)
+            .setTitle(`${message.author.username}, react with an emoji of a number from 1️⃣ to 🔟 corresponding to the music you want to listen to!`)
             .setThumbnail(anime.image_url)
             .setTimestamp()
 
         if (openings.length == 0 || !openings) {
-            return message.reply(`I couldn't find a opening for the anime ${anime.title}`);
+            return message.reply(`I couldn't find a opening for the anime ${anime.title}!`);
         }
+
+        searchingMessage.delete();
 
         if(openings.length <= 10) {
             for(let i = 0; i < openings.length; i++) {
@@ -114,7 +116,7 @@ module.exports = {
 
                             execute(message, animeMusicName);
                         } else {
-                            message.reply("there is no song with the numer you reacted, please react with another number!");
+                            message.reply("there is no song with the number you reacted, please react with another number!");
                         }
                     }
                 });
@@ -134,7 +136,7 @@ module.exports = {
                             `${message.client.user.displayAvatarURL()}`
                         )
                         .setColor(embedColor)
-                        .setTitle(`${message.author.username}, react with the emoji of the music you want to listen to!`)
+                        .setTitle(`${message.author.username}, react with an emoji of a number from 1️⃣ to 🔟 corresponding to the music you want to listen to!`)
                         .setThumbnail(anime.image_url)
                         .setTimestamp()
                 }

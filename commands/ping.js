@@ -1,6 +1,6 @@
 module.exports = {
     name: "ping",
-    description: "Show your ping and the latency ping.",
+    description: "Shows your ping and the latency ping.",
     usage: ".pj ping",
 
     execute(message) {

@@ -3,14 +3,14 @@ const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "link",
-    description: "Shows the link to add Package Johnson to your discord.",
+    description: "Shows the link to add Package Johnson in your discord server.",
     usage: ".pj link",
 
     execute(message) {
         return message.channel.send(new MessageEmbed()
             .setAuthor(
-                "Package Johnson",
-                "https://i.imgur.com/vDVSu00.png"
+                `${message.client.user.username}`,
+                `${message.client.user.displayAvatarURL()}`
             )
             .setColor(`${embedColor}`)
             .setTitle("To add me in your discord server you just need to click on this message!")

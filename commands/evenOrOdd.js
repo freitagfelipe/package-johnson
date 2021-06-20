@@ -3,13 +3,13 @@ const { embedColor } = require("../config.json");
 
 module.exports = {
     name: "even-or-odd",
-    description: "Package Johnson will play odd or even with you.",
+    description: "Package Johnson will play even or odd with you.",
     aliases: ["eo", "evenorodd"],
-    usage: ".pj even-or-odd <even> <number> or .pj even-or-odd <odd> <number>",
+    usage: ".pj even-or-odd <even or odd> <number>",
 
     execute(message, args) {
         if (args.length < 2 || (args[0] != "even" && args[0] != "odd") || isNaN(args[1])) {
-            return message.reply("the correct usage of this command is .pj even-or-odd <even> <number> or .pj even-or-odd <odd> <number>!");
+            return message.reply("the correct usage of this command is .pj even-or-odd <even or odd> <number>!");
         }
 
         const packageNumber = Math.floor(Math.random() * 11);

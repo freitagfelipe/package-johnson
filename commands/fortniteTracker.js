@@ -8,7 +8,7 @@ dotenv.config();
 
 module.exports = {
     name: "fortnite-tracker",
-    description: "Shows the status of a person on fortnite.",
+    description: "Shows the status of a player on fortnite.",
     aliases: ["fntracker", "fn-tracker"],
     usage: ".pj fortnite-tracker <platform> <fortnite nickname>",
 
@@ -34,7 +34,8 @@ module.exports = {
                 }
             } catch(error) {
                 console.log(error);
-                return message.reply("An error occurred while trying to execute your command, please try again!");
+                
+                return message.reply("an error occurred while trying to execute your command, please try again!");
             }
         }
 

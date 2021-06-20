@@ -8,7 +8,7 @@ dotenv.config();
 
 module.exports = {
     name: "fortnite-store",
-    description: "Shows current fortnite store",
+    description: "Shows the current fortnite store.",
     aliases: ["fnstore", "fn-store", "store"],
     usage: ".pj fortnite-store",
 
@@ -30,7 +30,8 @@ module.exports = {
                 }
             } catch(error) {
                 console.log(error);
-                return message.reply("An error occurred while trying to execute your command, please try again!");
+                
+                return message.reply("an error occurred while trying to execute your command, please try again!");
             }
             
         }

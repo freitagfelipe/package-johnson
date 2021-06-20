@@ -1,14 +1,14 @@
 module.exports = {
     name: "now-playing",
-    description: "Show information about the song that is currently playing.",
-    aliases: ["np", "nowPlaying"],
+    description: "Show informations about the song that is currently playing.",
+    aliases: ["np", "nowplaying"],
     usage: ".pj now-playing",
 
     execute(message) {
         if (!message.member.voice.channel) {
-            return message.reply("you need to be on a voice channel to execute this command!");
+            return message.reply("you need to be in a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
-            return message.reply("I'm not on any voice channel on this server!");
+            return message.reply("I'm not in any voice channel in this server!");
         } else if (!(message.guild.me.voice.channel.name == message.member.voice.channel.name)) {
             return message.reply("we aren't at the same voice channel!");
         }
@@ -16,7 +16,7 @@ module.exports = {
         const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
         if (!queue) {
-            return message.reply("I'm not playing any thing on this server!");
+            return message.reply("I'm not playing anything in this server!");
         }
 
         queue.showNowPlaying(message);

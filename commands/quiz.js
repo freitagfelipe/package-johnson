@@ -5,7 +5,7 @@ const { shuffleArray } = require("../utils/shuffleArray");
 
 module.exports = {
     name: "quiz",
-    description: "Package will send questions and whoever gets it right first wins.",
+    description: "Package Johnson will send a question in the channel.",
     usage: ".pj quiz",
 
     async execute(message) {
@@ -53,7 +53,7 @@ module.exports = {
                 }
             } catch(error) {
                 console.log(error);
-                return message.reply("An error occurred while trying to execute your command, please try again!");
+                return message.reply("an error occurred while trying to execute your command, please try again!");
             }
         }
 
@@ -70,7 +70,7 @@ module.exports = {
                 `${message.client.user.displayAvatarURL()}`
             )
             .setColor(embedColor)
-            .setTitle("React with the number of the answer you think is correct!")
+            .setTitle("React with the number from 1️⃣ to 4️⃣ corresponding to the answer you think is correct!")
             .addField(`${question.question}`, `1) ${answers[0]}\n2) ${answers[1]}\n3) ${answers[2]}\n 4) ${answers[3]}`)
             .addField("\u200B", `${message.author.username} have one minute to answer the question or it will be deleted! You just have one chance.`)
             .setTimestamp()

@@ -2,15 +2,15 @@ const { execute } = require("./play");
 
 module.exports = {
     name: "next-play",
-    description: "Add a song in the top of the queue and skip the current song.",
+    description: "Add a song on the top of the queue and skip the current song.",
     aliases: ["skip-play", "sp"],
-    usage: ".pj next-play <music name|link>",
+    usage: ".pj next-play <music name or music link>",
 
     async execute(message, args) {
         if (!message.member.voice.channel) {
-            return message.reply("you need to be on a voice channel to execute this command!");
+            return message.reply("you need to be in a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
-            return message.reply("I'm not on any voice channel on this server!");
+            return message.reply("I'm not in any voice channel in this server!");
         } else if (!(message.guild.me.voice.channel.name == message.member.voice.channel.name)) {
             return message.reply("we aren't at the same voice channel!");
         }
