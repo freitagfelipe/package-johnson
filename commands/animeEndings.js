@@ -18,7 +18,7 @@ module.exports = {
 
         let searchingMessage;
 
-        message.channel.send("**Searching your anime openings!🔎**").then(msg => searchingMessage = msg);
+        message.channel.send("**Searching your anime endings!🔎**").then(msg => searchingMessage = msg);
 
         const { results } = await mal.search("anime", args.join(" "));
 
@@ -46,81 +46,15 @@ module.exports = {
 
         searchingMessage.delete();
 
+        const totalPages = Math.ceil(endings / 10);
+        let channelMessage, page = 0;
+
         if(endings.length <= 10) {
             for(let i = 0; i < endings.length; i++) {
                 currentPage.addField("\u200B", `${i + 1}) ${endings[i].slice(4)}`);
             }
 
-            return message.channel.send(currentPage).then(msg => {
-                const filter = (reaction, user) => {
-                    return ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"].includes(reaction.emoji.name) && user.id === message.author.id;
-                }
-
-                const collector = msg.createReactionCollector(filter, { time: 60000 });
-
-                setTimeout(() => {
-                    if (!msg.deleted) {
-                        message.channel.send("**Timeout!⌛**");
-                        message.delete();
-                        msg.delete();
-                    }
-                }, 60000);
-
-                collector.on("collect", collected => {
-                    let music = -1;
-        
-                    switch (collected.emoji.name) {
-                        case "1️⃣":
-                            music = 0;
-                            break;
-                        case "2️⃣":
-                            music = 1;
-                            break;
-                        case "3️⃣":
-                            music = 2;
-                            break;
-                        case "4️⃣":
-                            music = 3;
-                            break;
-                        case "5️⃣":
-                            music = 4;
-                            break;
-                        case "6️⃣":
-                            music = 5;
-                            break;
-                        case "7️⃣":
-                            music = 6;
-                            break;
-                        case "8️⃣":
-                            music = 7;
-                            break;
-                        case "9️⃣":
-                            music = 8;
-                            break;
-                        case "9️⃣":
-                            music = 9;
-                            break;
-                        case "🔟":
-                            music = 10;
-                            break;
-                    }
-        
-                    if (music != -1) {
-                        if (endings[music]) {
-                            msg.delete();
-                            message.delete();
-
-                            let animeMusicName = endings[music].slice(4).split("by")[0].split(" ");
-                            animeMusicName.pop();
-                            animeMusicName.unshift(anime.title);
-
-                            execute(message, animeMusicName);
-                        } else {
-                            message.reply("there is no song with the number you reacted, please react with another number!");
-                        }
-                    }
-                });
-            });
+            channelMessage = await message.channel.send(currentPage);
         } else {
             const pages = [];
 
@@ -142,90 +76,89 @@ module.exports = {
                 }
             }
 
-            return pagination(message, pages, ['⏪', '⏩'], 60000).then(msg => {
-                const totalPages = Math.ceil(endings / 10);
-                let page = 0;
-
-                setTimeout(() => {
-                    if (!msg.deleted) {
-                        message.channel.send("**Timeout!⌛**");
-                        message.delete();
-                        msg.delete();
-                    }
-                }, 60000);
-
-                const filter = (reaction, user) => {
-                    return ["⏩", "⏪", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"].includes(reaction.emoji.name) && user.id === message.author.id;
-                }
-    
-                const collector = msg.createReactionCollector(filter, { time: 60000 });
-
-                collector.on("collect", collected => {
-                    let music = -1;
-
-                    switch(collected.emoji.name) {
-                        case "⏩":
-                            if(page == totalPages - 1) {
-                                page = 0;
-                            } else {
-                                page++;
-                            }
-                            break;
-                        case "⏪":
-                            if (page == 0) {
-                                page = totalPages - 1;
-                            } else {
-                                page--;
-                            }
-                            break;
-                        case "1️⃣":
-                            music = 0;
-                            break;
-                        case "2️⃣":
-                            music = 1;
-                            break;
-                        case "3️⃣":
-                            music = 2;
-                            break;
-                        case "4️⃣":
-                            music = 3;
-                            break;
-                        case "5️⃣":
-                            music = 4;
-                            break;
-                        case "6️⃣":
-                            music = 5;
-                            break;
-                        case "7️⃣":
-                            music = 6;
-                            break;
-                        case "8️⃣":
-                            music = 7;
-                            break;
-                        case "9️⃣":
-                            music = 8;
-                            break;
-                        case "🔟":
-                            music = 9;
-                            break;
-                    }
-
-                    if (music != -1) {
-                        if (endings[music + 10 * page]) {
-                            msg.delete();
-                            message.delete();
-
-                            let animeMusicName = endings[music + 10 * page].slice(4).split("by")[0].split(" ");
-                            animeMusicName.pop();
-                            animeMusicName.unshift(`${anime.title} ending`);
-
-                            execute(message, animeMusicName);
-                        } else {
-                            message.reply("there is no song with the number you reacted to on this page, please react with another number!");
-                        }
-                    }
-                });
-            })
+            channelMessage = await pagination(message, pages, ['⏪', '⏩'], 60000);
         }
+
+        setTimeout(() => {
+            if (!channelMessage.deleted) {
+                message.channel.send("**Timeout!⌛**");
+                message.delete();
+                channelMessage.delete();
+            }
+        }, 60000);
+
+        const filter = (reaction, user) => {
+            return ["⏩", "⏪", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"].includes(reaction.emoji.name) && user.id === message.author.id;
+        };
+
+        const collector = channelMessage.createReactionCollector(filter, { time: 60000 });
+
+        collector.on("collect", collected => {
+            let music = -1;
+
+            switch(collected.emoji.name) {
+                case "⏩":
+                    if(page == totalPages - 1) {
+                        page = 0;
+                    } else {
+                        page++;
+                    }
+
+                    break;
+                case "⏪":
+                    if (page == 0) {
+                        page = totalPages - 1;
+                    } else {
+                        page--;
+                    }
+
+                    break;
+                case "1️⃣":
+                    music = 0;
+                    break;
+                case "2️⃣":
+                    music = 1;
+                    break;
+                case "3️⃣":
+                    music = 2;
+                    break;
+                case "4️⃣":
+                    music = 3;
+                    break;
+                case "5️⃣":
+                    music = 4;
+                    break;
+                case "6️⃣":
+                    music = 5;
+                    break;
+                case "7️⃣":
+                    music = 6;
+                    break;
+                case "8️⃣":
+                    music = 7;
+                    break;
+                case "9️⃣":
+                    music = 8;
+                    break;
+                case "🔟":
+                    music = 9;
+                    break;
+            }
+
+            if (music != -1) {
+                if (endings[music + 10 * page]) {
+                    channelMessage.delete();
+                    message.delete();
+
+                    let animeMusicName = endings[music + 10 * page].slice(4).split("by")[0].split(" ");
+                    animeMusicName.pop();
+                    animeMusicName.unshift(`${anime.title} ending`);
+
+                    return execute(message, animeMusicName);
+                } else {
+                    message.reply("there is no song with the number you reacted to on this page, please react with another number!");
+                }
+            }
+        });
     }
 }
