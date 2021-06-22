@@ -109,9 +109,15 @@ class Queue {
     }
 
     jump(musicNumber) {
-        this.musics[0] = this.musics[musicNumber];
-        this.musics.splice(1, musicNumber);
         this.loopingMusic = false;
+
+        const removedMusics = this.musics.splice(0, musicNumber);
+
+        if (this.loopingQueue) {
+            for (const music of removedMusics) {
+                this.musics.push(music);
+            }
+        }
 
         this.play();
     }
