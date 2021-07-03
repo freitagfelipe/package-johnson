@@ -16,13 +16,13 @@
   "dependencies": {
     "discord.js": "^12.5.3",
     "discord.js-pagination": "^1.0.3",
-    "dotenv": "^8.2.0",
-    "ffmpeg-static": "^4.3.0",
+    "dotenv": "^10.0.0",
+    "ffmpeg-static": "^4.4.0",
     "jikan-node": "^1.2.1",
     "lyrics-finder": "^21.7.0",
     "node-fetch": "^2.6.1",
     "opusscript": "0.0.8",
-    "ytdl-core": "^4.8.2",
+    "ytdl-core": "^4.8.3",
     "ytsr": "^3.5.0"
   },
   "devDependencies": {
