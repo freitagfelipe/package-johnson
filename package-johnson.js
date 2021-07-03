@@ -34,8 +34,6 @@ client.on("ready", () => {
 
 client.on("message", message => {
     if (message.author.id != client.user.id && message.content.startsWith(prefix)) {
-        console.log(`${message.author.username}: ${message.content}`);
-
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
 
@@ -50,21 +48,10 @@ client.on("message", message => {
         }
 
     } else if(message.author.id != client.user.id && message.mentions.users.first() && message.mentions.users.first().id == client.user.id) {
-        console.log(`${message.author.username}: ${message.content}`);
+        const interactionName = message.content.split(" ");
+        interactionName.pop();
 
-        let interactionName = "";
-
-        if (message.content.toLowerCase().startsWith("hi")) {
-            interactionName = "greeting message";
-        } else if (message.content.toLowerCase().includes("good morning")) {
-            interactionName = "good morning";
-        } else if (message.content.toLowerCase().includes("good afternoon")) {
-            interactionName = "good afternoon";
-        } else if (message.content.toLowerCase().includes("good night")) {
-            interactionName = "good night";
-        }
-
-        const interaction = client.interactions.get(interactionName);
+        const interaction = client.interactions.get(interactionName.join(" "));
 
         try {
             interaction.execute(message);
