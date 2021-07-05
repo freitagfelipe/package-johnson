@@ -1,7 +1,5 @@
 const ytdl = require("ytdl-core");
-const { sendMusicEmbed } = require("./sendMusicEmbed");
-const { sendQueueEmbed } = require("./sendQueueEmbed");
-const { sendNowPlayingMusicEmbed } = require("./sendNowPlayingMusicEmbed");
+const { sendMusicEmbed, sendQueueEmbed, sendNowPlayingMusicEmbed } = require("./musicEmbeds");
 const { shuffleArray } = require("./shuffleArray");
 
 class Queue {
