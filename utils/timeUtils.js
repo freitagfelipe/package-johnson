@@ -45,7 +45,7 @@ module.exports = {
         }
 
         if (seconds < 10) {
-            minutes = "0" + seconds;
+            seconds = "0" + seconds;
         }
 
         return `${days} days and ${hours}:${minutes}:${seconds}`
