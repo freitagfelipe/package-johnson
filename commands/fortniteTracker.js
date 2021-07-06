@@ -14,7 +14,7 @@ module.exports = {
 
     async execute(message, args) {
         if (!(args[0] == "kbm") && !(args[0] == "gamepad") && !(args[0] == "touch")) {
-            return message.reply('you need to insert "kbm", "gamepad" or "touch" as a plataform!')
+            return message.reply('you need to insert "kbm", "gamepad" or "touch" as a plataform!');
         }
 
         const getPlayer = async (platform, nickName) => {
@@ -51,7 +51,7 @@ module.exports = {
             totalMinutesPlayed += playerInfo.stats[object].minutesPlayed.valueInt;
         }
 
-        message.channel.send(new MessageEmbed()
+        return message.channel.send(new MessageEmbed()
             .setAuthor(
                 `${message.client.user.username}`,
                 `${message.client.user.displayAvatarURL()}`
@@ -70,6 +70,6 @@ module.exports = {
                 { name: "Score:", value: `\`${playerInfo.lifeTimeStats[6].value}\``, inline: true},
             )
             .setTimestamp()
-        )
+        );
     }
 }

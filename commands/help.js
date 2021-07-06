@@ -33,6 +33,6 @@ module.exports = {
             )
             .setThumbnail(`${client.user.displayAvatarURL()}`)
             .setTimestamp()
-        )
+        );
     }
 }

@@ -36,6 +36,6 @@ module.exports = {
             )
             .setThumbnail(`${winnerAvatar}`)
             .setTimestamp()
-        )
+        );
     }
 }

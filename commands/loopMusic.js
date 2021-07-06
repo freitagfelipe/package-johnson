@@ -19,12 +19,12 @@ module.exports = {
             return message.reply("I'm not playing anything in this server!");
         }
 
-        if (!queue.loopingMusic) {
-            message.channel.send("**Enabled music loop!🔂**");
-        } else  {
-            message.channel.send("**Disabled music loop!🔂**");
-        }
-
         queue.loopMusic();
+
+        if (!queue.loopingMusic) {
+            return message.channel.send("**Enabled music loop!🔂**");
+        } else  {
+            return message.channel.send("**Disabled music loop!🔂**");
+        }
     }
 }
