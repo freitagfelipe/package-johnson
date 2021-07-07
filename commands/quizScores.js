@@ -40,7 +40,6 @@ module.exports = {
         } else {
             pontuationEmbed.addField("\u200B", "Congratulations to everyone!");
         }
-        
 
         return message.channel.send(pontuationEmbed);
     }

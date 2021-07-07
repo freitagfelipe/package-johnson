@@ -36,7 +36,7 @@ module.exports = {
                 .setDescription(`Reason: ${reason}`)
                 .setThumbnail(member.user.displayAvatarURL())
                 .setTimestamp()
-            )
+            );
         }).catch(error => {
             console.log(error);
 

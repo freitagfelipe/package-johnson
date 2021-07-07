@@ -37,7 +37,7 @@ module.exports = {
                         `${message.client.user.displayAvatarURL()}`
                     )
                     .setColor(embedColor)
-                    .setTimestamp()
+                    .setTimestamp();
             }
         }
 
@@ -47,7 +47,7 @@ module.exports = {
                     msg.delete();
                     message.delete();
                 }
-            }, 60000)
+            }, 60000);
         });
     }
 }

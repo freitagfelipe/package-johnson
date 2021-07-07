@@ -51,6 +51,6 @@ module.exports = {
                 { name: "Source:", value: `\`${anime.source}\``, inline: true}
             )
             .setTimestamp()
-        )
+        );
     }
 }
