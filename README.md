@@ -2,7 +2,7 @@
 
 - Initially, Package Johnson was an inside joke, caused by my confusion around the name package.json, which I misread as "package johnson". But then I saw an opportunity: what if I could make a Bot that would help me learn more about programming and that could honor that joke? With all that in mind, I decided to transform Package Johnson, that was just an inside joke, into a real thing!
 
-### How Package Johnson - Discord was made
+## How Package Johnson - Discord was made
 
 - Package Johnson is written in NodeJS, using [Discord.Js](https://discord.js.org/#/) lib to communicate with Discord API and other libs like:
 	- [Discord.js-pagination](https://www.npmjs.com/package/discord.js-pagination)
@@ -15,7 +15,7 @@
 	- [Ytdl-core](https://www.npmjs.com/package/ytdl-core)
 	- [Ytsr](https://www.npmjs.com/package/ytsr)
 
-### Command list
+## Command list
 
 | Page one                              | Page two                  | Page three                 | Page four                       | 
 | --------------------------------------| --------------------------| ---------------------------| --------------------------------|
@@ -30,7 +30,8 @@
 | [fortnite-store](#fortnite-store)     | [loop-queue](#loop-queue) | [queue](#queue)            |
 | [fortnite-tracker](#fortnite-tracker) | [lyrics](#lyrics)         | [quiz](#quiz)              |
 
-### Interaction list
+## Interaction list
+
 | Page one                              |
 | --------------------------------------|
 | [good afternoon](#good-afternoon)     |
@@ -38,7 +39,7 @@
 | [good night](#good-night)             |
 | [greeting message](#greeting-message) |
 
-### How to host
+## How to host
 
 1. Go in [Discord applications](https://discord.com/developers/applications).
 2. Create a new application and save the bot token.
@@ -58,7 +59,7 @@
 
 **Don't share your keys with anyone!**
 
-### Commands help
+## Commands help
 
 #### anime-endings
 - Description: searches the anime that you requested and send his endings musics
@@ -242,7 +243,7 @@
 - Aliases: vol, v
 - Usage: .pj volume or .pj volume <volume number\>
 
-### Interactions help
+## Interactions help
 
 #### <a name="good-afternoon"></a>good afternoon
 - good afternoon @Package Johnson
