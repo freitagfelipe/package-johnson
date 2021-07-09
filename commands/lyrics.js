@@ -30,8 +30,10 @@ module.exports = {
 
         lyrics = await lyricsFinder(authorName, musicName) || "Not Found!";
 
-        if (lyrics == "Not Found!") {
+        if (lyrics == "Not Found!" && authorName != undefined && musicName != undefined) {
             return message.reply(`I can't find ${musicName} by ${authorName}!`);
+        } else if(lyrics == "Not Found!") {
+            return message.reply("I can't find the lyrics of your music, please try insert .pj lyrics <music name> | <author name>");
         }
 
         if (lyrics.length < 2048) {
