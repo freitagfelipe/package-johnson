@@ -49,9 +49,9 @@
 5. Download this repository.
 6. In your repository folder open a terminal and type npm install.
 7. Create a .env file and paste it inside:
-	1. TOKEN = < YOUR-DISCORD-BOT-TOKEN >
-	2. TRN = < YOUR-TRN-API-KEY >
-	3. LINK = < YOUR-DICORD-BOT-LINK >
+	1. TOKEN = <YOUR-DISCORD-BOT-TOKEN\>
+	2. TRN = <YOUR-TRN-API-KEY\>
+	3. LINK = <YOUR-DICORD-BOT-LINK\>
 8. Create a [Heroku](https://heroku.com) account.
 9. Create a new app in Heroku.
 10. Deploy this repository using Github or Heroku CLI.
@@ -64,7 +64,7 @@
 #### anime-endings
 - Description: searches the anime that you requested and send his endings musics
 - Aliases: animeendings, ae
-- Usage: .pj anime-endings < anime name >
+- Usage: .pj anime-endings <anime name\>
 
 #### anime-openings
 - Description: searches the anime that you requested and send his openings musics
@@ -152,9 +152,9 @@
 - Usage: .pj loop-queue
 
 #### lyrics
-- Description: shows the lyrics of a music
+- Description: Shows the lyrics of the currently playing song or the current song of the queue.
 - Aliase: l
-- Usage: .pj lyrics <music name\> | <author name\>
+- Usage: .pj lyrics or .pj lyrics <music name> | <author name>
 
 #### next
 - Description: skip to the next song
