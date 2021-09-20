@@ -28,7 +28,7 @@ module.exports = {
             descriptionText += `- \`${commandsName[i]}\`\n`;
 
             if (((i + 1) % 10 == 0 && i != 0) || i == commandsName.length - 1) {
-                currentPage.setDescription(descriptionText).addField("\u200B", "If you have any questions about a command use \`!help <command name>!\`");
+                currentPage.setDescription(descriptionText).addField("\u200B", "If you have any questions about a command use \`.pj help <command name>!\`");
                 pages.push(currentPage);
                 descriptionText = "";
                 currentPage = new MessageEmbed()
