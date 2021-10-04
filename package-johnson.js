@@ -33,7 +33,7 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", message => {
-    if (message.author.id != client.user.id && message.content.startsWith(prefix)) {
+    if (message.author.id !== client.user.id && message.content.startsWith(prefix)) {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
 
@@ -47,7 +47,7 @@ client.on("messageCreate", message => {
             message.reply("An error occurred while trying to execute your command, please try again!");
         }
 
-    } else if(message.author.id != client.user.id && message.mentions.users.first() && message.mentions.users.first().id == client.user.id) {
+    } else if(message.author.id !== client.user.id && message.mentions.users.first() && message.mentions.users.first().id === client.user.id) {
         const interactionName = message.content.split(" ");
         interactionName.pop();
 

@@ -41,7 +41,7 @@ class Queue {
 
         await sendMusicEmbed(userMessage, this.musics, songInfo, wichPlay);
         
-        if (this.musics.length == 1) {
+        if (this.musics.length === 1) {
             this.play();
         }
     }
@@ -51,7 +51,7 @@ class Queue {
             this.loopingMusic = false;
             this.musics.shift();
 
-            if (this.musics.length != 0) {
+            if (this.musics.length !== 0) {
                 this.play();
             } else {
                 this.playing = false;
@@ -144,7 +144,7 @@ class Queue {
     }
 
     leave() {
-        global.queues = global.queues.filter(obj => obj.id != this.id);
+        global.queues = global.queues.filter(obj => obj.id !== this.id);
 
         this.connection.destroy();
     }

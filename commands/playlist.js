@@ -12,7 +12,7 @@ module.exports = {
     async execute(message) {
         if (!message.member.voice.channel) {
             return message.reply("You need to be in a voice channel to execute this command!");
-        } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == message.member.voice.channel.name)) {
+        } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name === message.member.voice.channel.name)) {
             return message.reply("I'm already in another voice channel in this server, please join it to execute this command!");
         }
 
@@ -98,7 +98,7 @@ module.exports = {
         collector.on("collect", collected => {
             switch (collected.emoji.name) {
                 case "⏩":
-                    if (page == 2) {
+                    if (page === 2) {
                         page = 0;
                     } else {
                         page++;
@@ -106,7 +106,7 @@ module.exports = {
 
                     break;
                 case "⏪":
-                    if (page == 0) {
+                    if (page === 0) {
                         page = 2;
                     } else {
                         page--;

@@ -55,9 +55,9 @@ module.exports = {
             .setTimestamp();
 
         for (let i = 0; i < store.length; i++) {
-            descriptionText += `[${store[i].name}](${store[i].imageUrl}) | \`vBucks: ${store[i].vBucks == 0 ? "please look the store!" : store[i].vBucks}\`\n`;
+            descriptionText += `[${store[i].name}](${store[i].imageUrl}) | \`vBucks: ${store[i].vBucks === 0 ? "please look the store!" : store[i].vBucks}\`\n`;
 
-            if ((i + 1) % 10 == 0 || i == store.length - 1) {
+            if ((i + 1) % 10 === 0 || i === store.length - 1) {
                 currentPage.setDescription(descriptionText);
                 pages.push(currentPage);
                 descriptionText = "";

@@ -13,7 +13,7 @@ module.exports = {
             const response = await axios.get("https://opentdb.com/api.php?amount=50&type=multiple");
 
             try {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     const results = await response.data.results;
 
                     let verifyQuestion;
@@ -23,20 +23,20 @@ module.exports = {
                         isGood = true;
 
                         for (let i = 0; i < verifyQuestion.question.length; i++) {
-                            if (verifyQuestion.question[i] == "&") {
+                            if (verifyQuestion.question[i] === "&") {
                                 isGood = false;
                             }
                         }
 
                         for (let i = 0; i < verifyQuestion.correct_answer.length; i++) {
-                            if (verifyQuestion.correct_answer[i] == "&") {
+                            if (verifyQuestion.correct_answer[i] === "&") {
                                 isGood = false;
                             }
                         }
 
                         for (let i = 0; i < 3; i++) {
                             for (let j = 0; j < verifyQuestion.incorrect_answers[i].length; j++) {
-                                if (verifyQuestion.incorrect_answers[i][j] == "&") {
+                                if (verifyQuestion.incorrect_answers[i][j] === "&") {
                                     isGood = false;
                                 }
                             }
@@ -84,12 +84,12 @@ module.exports = {
         collector.on("collect", (reaction, user) => {
             reaction.users.remove(user);
 
-            if(user.id != message.author.id) {
+            if(user.id !== message.author.id) {
                 return;
             }
 
             let isCorrect;
-            let player = global.quizScores.find(player => message.author.username == player.name);
+            let player = global.quizScores.find(player => message.author.username === player.name);
 
             if (!player) {
                 global.quizScores.push([0, message.author.username]);
@@ -98,24 +98,24 @@ module.exports = {
 
             switch (reaction.emoji.name) {
                 case "1️⃣":
-                    answers[0] == question.correct_answer ? isCorrect = true : isCorrect = false;
+                    answers[0] === question.correct_answer ? isCorrect = true : isCorrect = false;
 
                     break;
                 case "2️⃣":
-                    answers[1] == question.correct_answer ? isCorrect = true : isCorrect = false;
+                    answers[1] === question.correct_answer ? isCorrect = true : isCorrect = false;
 
                     break;
                 case "3️⃣":
-                    answers[2] == question.correct_answer ? isCorrect = true : isCorrect = false;
+                    answers[2] === question.correct_answer ? isCorrect = true : isCorrect = false;
 
                     break;
                 case "4️⃣":
-                    answers[3] == question.correct_answer ? isCorrect = true : isCorrect = false;
+                    answers[3] === question.correct_answer ? isCorrect = true : isCorrect = false;
 
                     break;
             }
 
-            if (isCorrect != undefined) {
+            if (isCorrect !== undefined) {
                 if (isCorrect) {
                     if (!msg.deleted) {
                         msg.edit({ embeds: [

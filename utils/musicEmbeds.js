@@ -11,7 +11,7 @@ module.exports = {
         let timeBar = "";
 
         for (let i = 0; i < 30; i++) {
-            if (i == percentTime) {
+            if (i === percentTime) {
                 timeBar += "🔘";
             } else {
                 timeBar += "▬";
@@ -59,15 +59,15 @@ module.exports = {
         for (let i = 0; i < musics.length; i++) {
             const durationTime = formatMusicTime(musics[i].songInfo.videoDetails.lengthSeconds);
 
-            if (i == 0) {
+            if (i === 0) {
                 currentPage.addField("Now Playing:", `[${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`${durationTime} Requested by: ${musics[i].user.username}#${musics[i].user.discriminator}\`\n`);
-            } else if(i == 1) {
+            } else if(i === 1) {
                 currentPage.addField("Up Next:", `\`${i})\` [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`Requested by: ${musics[i].user.username}#${musics[i].user.discriminator}\`\n`);
             } else {
                 currentPage.addField("\u200B", `\`${i})\` [${musics[i].songInfo.videoDetails.title}](${musics[i].songInfo.videoDetails.video_url}) | \`Requested by: ${musics[i].user.username}#${musics[i].user.discriminator}\`\n`);
             }
 
-            if ((i % 10 == 0 && i != 0) || i == musics.length - 1) {
+            if ((i % 10 === 0 && i !== 0) || i === musics.length - 1) {
                 currentPage.addField("\u200B", `Queue loop: ${loopingQueue ? "✅" : "❎"} || Music loop: ${loopingMusic ? "✅" : "❎"}`);
                 pages.push(currentPage);
 
@@ -103,7 +103,7 @@ module.exports = {
                     { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
                 )
                 .setThumbnail(songInfo.videoDetails.thumbnails[0].url)
-                .setFooter(`• Queue position: ${musics.length - 1 == 0 || wichPlay == 2 ? "now playing" : wichPlay == 1 ? "1" : musics.length - 1} || `)
+                .setFooter(`• Queue position: ${musics.length - 1 === 0 || wichPlay === 2 ? "now playing" : wichPlay === 1 ? "1" : musics.length - 1} || `)
                 .setTimestamp()
         ] });
     }

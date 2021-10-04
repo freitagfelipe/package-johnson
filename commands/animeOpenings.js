@@ -11,7 +11,7 @@ module.exports = {
     usage: ".pj anime-openings <anime name>",
 
     async execute(message, args) {
-        if (args.length == 0) {
+        if (args.length === 0) {
             return message.reply("You need to insert an anime name!");
         }
 
@@ -21,7 +21,7 @@ module.exports = {
 
         searchingMessage.delete();
 
-        if (results.length == 0) {
+        if (results.length === 0) {
             searchingMessage.delete();
 
             return message.reply(`I couldn't find anything with the name ${args.join(" ")}!`);
@@ -30,7 +30,7 @@ module.exports = {
         const anime = await mal.findAnime(results[0].mal_id);
         const openings = anime.opening_themes;
 
-        if (openings.length == 0 || !openings) {
+        if (openings.length === 0 || !openings) {
             return message.reply(`I couldn't find an opening for the anime ${anime.title}!`);
         }
 
@@ -55,7 +55,7 @@ module.exports = {
         for (let i = 0, number = 1; i < openings.length; i++, number++) {
             currentPage.addField("\u200B", `\`${number})\` ${openings[i].slice(2)}`);
 
-            if (((i + 1) % 10 == 0) || i == openings.length - 1) {
+            if (((i + 1) % 10 === 0) || i === openings.length - 1) {
                 pages.push(currentPage);
                 number = 0;
                 currentPage = new MessageEmbed()

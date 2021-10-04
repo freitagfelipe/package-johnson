@@ -13,13 +13,13 @@ module.exports = {
             return message.reply("You don't have permission to manage messages!");
         }
 
-        const messageWord = args[0] == 1 ? "message" : "messages";
+        const messageWord = args[0] === 1 ? "message" : "messages";
 
         args[0]++;
 
         await message.channel.messages.fetch({limit: args[0]}).then(messages => {
             message.channel.bulkDelete(messages, true).then(messageCollection => {
-                return message.channel.send(`The chat had ${messageCollection.size - 1} ${messageWord} deleted by <@!${message.author.id}>!🚮${messageCollection.size == parseInt(args[0]) ? "\u200B" : `\n${parseInt(args[0]) - messageCollection.size} messages can't be deleted because they are too old or they don't exist!`}`);
+                return message.channel.send(`The chat had ${messageCollection.size - 1} ${messageWord} deleted by <@!${message.author.id}>!🚮${messageCollection.size === parseInt(args[0]) ? "\u200B" : `\n${parseInt(args[0]) - messageCollection.size} messages can't be deleted because they are too old or they don't exist!`}`);
             }).catch(error => {
                 console.log(error);
 

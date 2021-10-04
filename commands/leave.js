@@ -11,11 +11,11 @@ module.exports = {
             return message.reply("You need to be in a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
             return message.reply("I'm not in any voice channel!");
-        } else if (!(message.guild.me.voice.channel.name == userVoiceChannel.name)) {
+        } else if (!(message.guild.me.voice.channel.name === userVoiceChannel.name)) {
             return message.reply("We aren't at the same voice channel!");
         }
 
-        const queue = global.queues.find(obj => obj.id == message.guild.id);
+        const queue = global.queues.find(obj => obj.id === message.guild.id);
 
         queue.leave();
 

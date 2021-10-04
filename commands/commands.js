@@ -34,7 +34,7 @@ module.exports = {
         for (let i = 0; i < commandsName.length; i++) {
             descriptionText += `- \`${commandsName[i]}\`\n`;
 
-            if (((i + 1) % 10 == 0 && i != 0) || i == commandsName.length - 1) {
+            if (((i + 1) % 10 === 0 && i != 0) || i === commandsName.length - 1) {
                 currentPage.setDescription(descriptionText).addField("\u200B", `<@${message.author.id}>, if you have any questions about a command use:\n \`!help <command name>!\``);
                 pages.push(currentPage);
                 descriptionText = "";

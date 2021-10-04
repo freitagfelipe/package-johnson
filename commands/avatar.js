@@ -15,9 +15,9 @@ module.exports = {
             user = message.author;
         }
 
-        const userAvatar = user.avatarURL() != null ? user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 }) : "https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/main/medias/defaultUserAvatar.png";
-        const userAvatarLink = user.avatarURL() != null ? user.avatarURL() : "";
-        const avatarTitle = user.avatarURL() != null ? "Click to open the avatar in your browser!" : "User doesn't have a profile photo!";
+        const userAvatar = user.avatarURL() !== null ? user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 }) : "https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/main/medias/defaultUserAvatar.png";
+        const userAvatarLink = user.avatarURL() !== null ? user.avatarURL() : "";
+        const avatarTitle = user.avatarURL() !== null ? "Click to open the avatar in your browser!" : "User doesn't have a profile photo!";
 
         message.channel.send({ embeds: [
             new MessageEmbed()

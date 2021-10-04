@@ -9,10 +9,10 @@ module.exports = {
     
     execute(message) {
         const scores = global.quizScores.sort((a, b) => b[0] - a[0]);
-        const playerScore = global.quizScores.find(player => message.author.username == player[1]);
+        const playerScore = global.quizScores.find(player => message.author.username === player[1]);
         let descriptionText = "";
 
-        if (scores.length == 0) {
+        if (scores.length === 0) {
             return message.reply("It looks like I don't have a ranking yet!");
         }
 

@@ -13,7 +13,7 @@ module.exports = {
     usage: ".pj fortnite-tracker <platform> <fortnite nickname>",
 
     async execute(message, args) {
-        if (!(args[0] == "kbm") && !(args[0] == "gamepad") && !(args[0] == "touch")) {
+        if (!(args[0] === "kbm") && !(args[0] === "gamepad") && !(args[0] === "touch")) {
             return message.reply('You need to insert "kbm", "gamepad" or "touch" as a plataform!');
         }
 

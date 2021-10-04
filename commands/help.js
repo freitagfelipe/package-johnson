@@ -9,7 +9,7 @@ module.exports = {
     usage: ".pj help <command name>",
 
     execute(message, args) {
-        if (args.length == 0) {
+        if (args.length === 0) {
             return message.reply("You need to insert the command name to get help!");
         }
 

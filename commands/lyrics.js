@@ -15,8 +15,8 @@ module.exports = {
         if (args.includes("|")) {
             musicName = args.slice(0, args.indexOf("|")).join(" ");
             authorName = args.slice(args.indexOf("|") + 1).join(" ");
-        } else if(args.length == 0) {
-            const queue = global.queues.find(obj => obj.id == message.guild.id);
+        } else if(args.length === 0) {
+            const queue = global.queues.find(obj => obj.id === message.guild.id);
             
             if(!queue) {
                 return message.reply("You need a music queue so I can send the lyrics of the current song!");
@@ -30,9 +30,9 @@ module.exports = {
 
         lyrics = await lyricsFinder(authorName, musicName) || "Not Found!";
 
-        if (lyrics == "Not Found!" && authorName != undefined && musicName != undefined) {
+        if (lyrics === "Not Found!" && authorName != undefined && musicName != undefined) {
             return message.reply(`I can't find ${musicName} by ${authorName}!`);
-        } else if(lyrics == "Not Found!") {
+        } else if(lyrics === "Not Found!") {
             return message.reply("I can't find the lyrics of your music, please try insert .pj lyrics <music name> | <author name>");
         }
 
@@ -57,7 +57,7 @@ module.exports = {
         for (let i = 0; i < lyrics.length; i++) {
             currentPage.addField("\u200B", `${lyrics[i]}`);
 
-            if (((i + 1) % 10 == 0 && i != 0) || i == lyrics.length - 1) {
+            if (((i + 1) % 10 === 0 && i !== 0) || i === lyrics.length - 1) {
                 pages.push(currentPage);
                 currentPage = new MessageEmbed()
                     .setAuthor(

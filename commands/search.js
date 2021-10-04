@@ -13,7 +13,7 @@ module.exports = {
         if (!message.member.voice.channel) {
             return message.reply("You need to be in a voice channel to execute this command!");
         } else if (!(args.length > 0) || args[0].startsWith("https://")) {
-            return message.reply("You need to insert a music name!");
+            return message.reply("You need to insert a music name! If you already have a link you can use .pj play!");
         }
 
         const searchingMessage = await message.channel.send("**Searching!🔎**");
@@ -25,7 +25,7 @@ module.exports = {
             return message.reply("No song ware found! Please try again.");
         }
 
-        const musics = result.items.filter(item => item.type == "video");
+        const musics = result.items.filter(item => item.type === "video");
 
         const page = [
             new MessageEmbed()

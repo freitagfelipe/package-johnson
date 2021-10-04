@@ -10,14 +10,14 @@ module.exports = {
     usage: ".pj search-anime <anime name>",
 
     async execute(message, args) {
-        if (args.length == 0) {
+        if (args.length === 0) {
             return message.reply("You need to insert an anime name!");
         }
 
         const searchingMessage = await message.channel.send("**Searching your anime!🔎**");
         const { results } = await mal.search("anime", args.join(" "));
 
-        if(results.length == 0) {
+        if(results.length === 0) {
             searchingMessage.delete();
         
             return message.reply(`I couldn't find anything with the name ${args.join(" ")}!`);

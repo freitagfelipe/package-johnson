@@ -7,7 +7,7 @@ module.exports = {
     usage: ".pj ban <user mention> or .pj ban <user mention> <reason>",
 
     execute(message, args) {
-        if (args.length == 0) {
+        if (args.length === 0) {
             return message.reply("You need to mention the member you want to ban and if you want you can insert the reason!");
         } else if (!message.member.permissions.has("BAN_MEMBERS")) {
             return message.reply("You don't have permissions to ban anyone from this server!");
@@ -17,9 +17,9 @@ module.exports = {
 
         if (!member) {
             return message.reply("The correct usage of this command is .pj ban <user mention> or .pj ban <user mention> <reason>!");
-        } else if (member.id == message.author.id) {
+        } else if (member.id === message.author.id) {
             return message.reply("You can't ban yourself!");
-        } else if (member.id == message.client.user.id) {
+        } else if (member.id === message.client.user.id) {
             return message.reply("I can't ban myself!");
         }
 
