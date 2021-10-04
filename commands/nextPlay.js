@@ -8,20 +8,23 @@ module.exports = {
 
     async execute(message, args) {
         if (!message.member.voice.channel) {
-            return message.reply("you need to be in a voice channel to execute this command!");
+            return message.reply("You need to be in a voice channel to execute this command!");
         } else if (!message.guild.me.voice.channel) {
             return message.reply("I'm not in any voice channel in this server!");
         } else if (!(message.guild.me.voice.channel.name == message.member.voice.channel.name)) {
-            return message.reply("we aren't at the same voice channel!");
+            return message.reply("We aren't at the same voice channel!");
+        } else if (args.length === 0) {
+            return message.reply("You need to insert a music name or a music link!");
         }
 
-        const queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
+        const queue = global.queues.find(obj => obj.id == message.guild.id);
 
         if (!queue) {
-            return message.reply("you need to have a queue!");
+            return message.reply("You need to have a queue!");
         }
 
         await execute(message, args, 2);
-        queue.next();
+
+        return queue.next();
     }
 }

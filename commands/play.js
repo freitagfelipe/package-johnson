@@ -1,3 +1,4 @@
+const voiceDiscord = require("@discordjs/voice");
 const ytdl = require("ytdl-core");
 const ytsr = require("ytsr");
 const { Queue } = require("../utils/queue")
@@ -9,22 +10,18 @@ module.exports = {
     usage: ".pj play <music name or music link>",
 
     async execute(message, args, wichPlay = 0) {
-        const voiceChannel = message.member.voice.channel;
+        const channel = message.member.voice.channel;
         let songInfo;
 
         if (!(args.length > 0)) {
-            return message.reply("you need to insert a music name or a music link!");
-        } else if (!voiceChannel) {
-            return message.reply("you need to be in a voice channel to execute this command!");
-        } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == voiceChannel.name)) {
-            return message.reply("we aren't at the same voice channel!!");
+            return message.reply("You need to insert a music name or a music link!");
+        } else if (!channel) {
+            return message.reply("You need to be in a voice channel to execute this command!");
+        } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name == channel.name)) {
+            return message.reply("We aren't at the same voice channel!!");
         }
 
-        let searchingMessage;
-        
-        message.channel.send("**Searching your music!🔎**").then(msg => {
-            searchingMessage = msg;
-        });
+        const searchingMessage = await message.channel.send("**Searching your music!🔎**");
         
         if (ytdl.validateURL(args[0])) {
             songInfo = await ytdl.getInfo(args[0]);
@@ -32,28 +29,24 @@ module.exports = {
             const musics = await ytsr(args.join(" "), {page: 1});
 
             if (!musics.items.length) {
-                return message.reply("no songs were found! Please try again.");
+                return message.reply("No songs were found! Please try again.");
             }
 
-            songInfo = await ytdl.getInfo(musics.items.find(item => item.type == "video").url);
+            songInfo = await ytdl.getInfo(musics.items.find(item => item.type === "video").url);
         }
-
-        let connection = await voiceChannel.join();
-    
-        let queue = global.queues.find(obj => obj.connection.channel.guild.id == message.guild.id);
 
         searchingMessage.delete();
+    
+        let queue = global.queues.find(obj => obj.id == message.guild.id);
 
         if (queue) {
-            queue.add(songInfo, message, wichPlay);
+            return queue.add(songInfo, message, wichPlay);
         } else {
-            queue = new Queue(connection);
-            global.queues.push(queue);
-            queue.add(songInfo, message, wichPlay);
-        }
+            queue = new Queue(channel, message.guild.id);
 
-        connection.on("disconnect", () => {
-            global.queues = global.queues.filter(obj => obj.connection.channel.guild.id != message.guild.id);
-        });
+            global.queues.push(queue);
+            
+            return queue.add(songInfo, message, wichPlay);
+        }
     }
 }

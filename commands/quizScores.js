@@ -13,7 +13,7 @@ module.exports = {
         let descriptionText = "";
 
         if (scores.length == 0) {
-            return message.reply("it looks like I don't have a ranking yet!");
+            return message.reply("It looks like I don't have a ranking yet!");
         }
 
         for (let i = 0; i < 10 && i < scores.length; i++) {
@@ -23,7 +23,7 @@ module.exports = {
         }
 
         if (!descriptionText) {
-            return message.reply("it looks like I don't have a top yet!");
+            return message.reply("It looks like I don't have a top yet!");
         }
 
         let pontuationEmbed = new MessageEmbed()
@@ -41,6 +41,6 @@ module.exports = {
             pontuationEmbed.addField("\u200B", "Congratulations to everyone!");
         }
 
-        return message.channel.send(pontuationEmbed);
+        return message.channel.send({ embeds: [pontuationEmbed] });
     }
 }

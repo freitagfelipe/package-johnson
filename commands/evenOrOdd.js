@@ -9,7 +9,7 @@ module.exports = {
 
     execute(message, args) {
         if (args.length < 2 || (args[0] != "even" && args[0] != "odd") || isNaN(args[1])) {
-            return message.reply("the correct usage of this command is .pj even-or-odd <even or odd> <number>!");
+            return message.reply("The correct usage of this command is .pj even-or-odd <even or odd> <number>!");
         }
 
         const packageNumber = Math.floor(Math.random() * 11);
@@ -23,19 +23,20 @@ module.exports = {
             winnerAvatar = (packageNumber + parseInt(args[1])) % 2 != 0 ? `${message.author.displayAvatarURL()}` : `${message.client.user.displayAvatarURL()}`;
         }
 
-        return message.channel.send(new MessageEmbed()
-            .setAuthor(
-                `${message.client.user.username}`,
-                `${message.client.user.displayAvatarURL()}`
-            )
-            .setColor(embedColor)
-            .setTitle(`${winnerName} won this match!`)
-            .addFields(
-                { name: `${message.author.username} played:`, value: `${args[0]} and choose the number ${args[1]}!`},
-                { name: "Package Johnson played:", value: `${args[0] == "even" ? "odd" : "even"} and choose the number ${packageNumber}!`}
-            )
-            .setThumbnail(`${winnerAvatar}`)
-            .setTimestamp()
-        );
+        return message.channel.send({ embeds: [
+            new MessageEmbed()
+                .setAuthor(
+                    `${message.client.user.username}`,
+                    `${message.client.user.displayAvatarURL()}`
+                )
+                .setColor(embedColor)
+                .setTitle(`${winnerName} won this match!`)
+                .addFields(
+                    { name: `${message.author.username} played:`, value: `${args[0]} and choose the number ${args[1]}!`},
+                    { name: "Package Johnson played:", value: `${args[0] == "even" ? "odd" : "even"} and choose the number ${packageNumber}!`}
+                )
+                .setThumbnail(`${winnerAvatar}`)
+                .setTimestamp()
+        ] });
     }
 }

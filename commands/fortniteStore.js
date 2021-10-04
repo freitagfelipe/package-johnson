@@ -1,6 +1,6 @@
-const fetch = require("node-fetch");
+const axios = require("axios").default;
 const dotenv = require("dotenv");
-const pagination = require("discord.js-pagination");
+const pagination = require("@freitagfelipe/discord.js-pagination");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 
@@ -15,29 +15,35 @@ module.exports = {
     async execute(message) {
         const getStore = async () => {
             try {
-                const response = await fetch("https://api.fortnitetracker.com/v1/store", {
+                const response = await axios.get("https://api.fortnitetracker.com/v1/store", {
                     headers: {
                         "TRN-Api-Key": `${process.env.TRN}`
                     }
                 });
 
-                if (response.ok) {
-                    const jsonResponse = await response.json();
+                if (response.status === 200) {
+                    const data = await response.data;
 
-                    return jsonResponse.sort((a, b) => b.vBucks - a.vBucks);
+                    return data.sort((a, b) => b.vBucks - a.vBucks);
                 } else {
                     throw new Error("Request failed!");
                 }
             } catch(error) {
                 console.log(error);
                 
-                return message.reply("an error occurred while trying to execute your command, please try again!");
+                return message.reply("An error occurred while trying to execute your command, please try again!");
             }
-            
         }
 
         const store = await getStore();
         const pages = [];
+        const endPage = new MessageEmbed()
+            .setAuthor(
+                `${message.client.user.username}`,
+                `${message.client.user.displayAvatarURL()}`
+            )
+            .setColor(`${embedColor}`)
+            .setDescription("**Timeout!⌛**");
         let descriptionText = "";
         let currentPage = new MessageEmbed()
             .setAuthor(
@@ -66,13 +72,6 @@ module.exports = {
             }
         }
 
-        return pagination(message, pages, ['⏪', '⏩'], 60000).then(msg => {
-            setTimeout(() => {
-                if (!msg.deleted) {
-                    msg.delete();
-                    message.delete();
-                }
-            }, 60000);
-        });
+        return pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
     }
 }

@@ -1,5 +1,5 @@
 const client = require("../package-johnson");
-const pagination = require("discord.js-pagination");
+const pagination = require("@freitagfelipe/discord.js-pagination");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 
@@ -11,6 +11,13 @@ module.exports = {
     execute(message) {
         const commandsName = [];
         const pages = [];
+        const endPage = new MessageEmbed()
+            .setAuthor(
+                `${message.client.user.username}`,
+                `${message.client.user.displayAvatarURL()}`
+            )
+            .setColor(`${embedColor}`)
+            .setDescription("**Timeout!⌛**");
         let descriptionText = "";
         let currentPage = new MessageEmbed()
             .setAuthor(
@@ -18,7 +25,7 @@ module.exports = {
                 `${message.client.user.displayAvatarURL()}`
             )
             .setColor(embedColor)
-            .setTimestamp()
+            .setTimestamp();
 
         for (object of client.commands) {
             commandsName.push(object[1].name);
@@ -28,7 +35,7 @@ module.exports = {
             descriptionText += `- \`${commandsName[i]}\`\n`;
 
             if (((i + 1) % 10 == 0 && i != 0) || i == commandsName.length - 1) {
-                currentPage.setDescription(descriptionText).addField("\u200B", "If you have any questions about a command use \`!help <command name>!\`");
+                currentPage.setDescription(descriptionText).addField("\u200B", `<@${message.author.id}>, if you have any questions about a command use:\n \`!help <command name>!\``);
                 pages.push(currentPage);
                 descriptionText = "";
                 currentPage = new MessageEmbed()
@@ -41,13 +48,6 @@ module.exports = {
             }
         }
 
-        return pagination(message, pages, ['⏪', '⏩'], 60000).then(msg => {
-            setTimeout(() => {
-                if (!msg.deleted) {
-                    msg.delete();
-                    message.delete();
-                }
-            }, 60000);
-        });
+        return pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
     }
 }
