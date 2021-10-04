@@ -29,18 +29,18 @@ client.on('guildCreate', async guild => {
         role.setHoist(true);
     });
 
-    guild.members.fetch(guild.ownerId).then(owner => {
-        owner.send({ embeds: [
-            new MessageEmbed()
-                .setAuthor(
-                    `${client.user.username}`,
-                    `${client.user.displayAvatarURL()}`
-                )
-                .setColor(`${embedColor}`)
-                .setTitle(`Acknowledgments and informations.`)
-                .setDescription(`Hiiii, ${owner.user.username}! Thank you for add me in your discord server and if you want to see my command list you just need to click on this link: [Package Johnson repository](https://github.com/freitagfelipe/package-johnson-discord)!`)
-                .setImage(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
-                .setTimestamp()
-        ] });
-    })
+    const owner = await guild.members.fetch(guild.ownerId);
+
+    return owner.send({ embeds: [
+        new MessageEmbed()
+            .setAuthor(
+                `${client.user.username}`,
+                `${client.user.displayAvatarURL()}`
+            )
+            .setColor(`${embedColor}`)
+            .setTitle(`Acknowledgments and informations.`)
+            .setDescription(`Hiiii, ${owner.user.username}! Thank you for add me in your discord server and if you want to see my command list you just need to click on this link: [Package Johnson repository](https://github.com/freitagfelipe/package-johnson-discord)!`)
+            .setImage(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
+            .setTimestamp()
+    ] });
 });

@@ -13,12 +13,12 @@ module.exports = {
                 `${getCurrentInteraction()}`,
                 `${prefix}commands to see my command list!`,
                 `${prefix}playlist to see my favorites lofi!`,
-                "Do you know that I'm open source?https://github.com/freitagfelipe/package-johnson-discord",
+                "Do you know that I'm open source? https://github.com/freitagfelipe/package-johnson-discord",
                 `${prefix}help if you have any questions about a command!`,
                 `I've been awake for ${getAwakeTime()}!`,
             ]
 
-            client.user.setActivity(`${activities[i++ % activities.length]}`);
+            return client.user.setActivity(`${activities[i++ % activities.length]}`);
         }, 10000);
     }
 }
