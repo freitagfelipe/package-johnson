@@ -13,7 +13,7 @@ module.exports = {
                 )
                 .setColor(`${embedColor}`)
                 .setTitle(`Kon'nichiwaaaaaaaaaaaaaa!`)
-                .setImage("https://media1.tenor.com/images/e84edb279472c7ab49e97ec276d4ffda/tenor.gif?itemid=19354838")
+                .setImage("https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/main/medias/goodAfternoon.gif")
         ] });
     }
 }

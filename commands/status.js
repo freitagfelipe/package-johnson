@@ -20,7 +20,7 @@ module.exports = {
         if (user.bot)
             isHuman = "Bot";
 
-        const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/dev/medias/defaultUserAvatar.png";
+        const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/main/medias/defaultUserAvatar.png";
 
         return message.channel.send({ embeds: [
             new MessageEmbed()
