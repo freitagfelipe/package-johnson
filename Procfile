@@ -1,1 +1,1 @@
-worker: node package-johnson.js
+worker: node index

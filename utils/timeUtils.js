@@ -1,4 +1,4 @@
-const client = require("../package-johnson");
+const client = require("../index");
 
 module.exports = {
     formatMusicTime(musicTime) {

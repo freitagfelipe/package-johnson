@@ -1,4 +1,4 @@
-const client = require("../package-johnson");
+const client = require("../index");
 const pagination = require("@freitagfelipe/discord.js-pagination");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");

@@ -1,4 +1,4 @@
-const client = require("../package-johnson");
+const client = require("../index");
 const { prefix } = require("../config.json");
 const { getCurrentInteraction, getAwakeTime } = require("../utils/timeUtils");
 
