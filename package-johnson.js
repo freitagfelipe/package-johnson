@@ -1,9 +1,9 @@
-const Discord = require("discord.js");
+const { Client, Collection } = require("discord.js");
+const { prefix } = require("./config.json");
 const dotenv = require("dotenv");
 const fileSystem = require("fs");
-const { prefix } = require("./config.json");
 
-const client = new Discord.Client();
+const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGE_REACTIONS", "GUILD_MESSAGES", "GUILD_VOICE_STATES"] });
 
 dotenv.config();
 
@@ -15,8 +15,8 @@ client.on("ready", () => {
 
     changeStatus();
 
-    client.commands = new Discord.Collection();
-    client.interactions = new Discord.Collection();
+    client.commands = new Collection();
+    client.interactions = new Collection();
 
     const commandFiles = fileSystem.readdirSync("./commands").filter(file => file.endsWith(".js"));
     const interactionFiles = fileSystem.readdirSync("./interactions").filter(file => file.endsWith(".js"));
@@ -32,7 +32,7 @@ client.on("ready", () => {
     }
 });
 
-client.on("message", message => {
+client.on("messageCreate", message => {
     if (message.author.id != client.user.id && message.content.startsWith(prefix)) {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
@@ -44,7 +44,7 @@ client.on("message", message => {
         } catch (error) {
             console.log(error);
             
-            message.reply("an error occurred while trying to execute your command, please try again!");
+            message.reply("An error occurred while trying to execute your command, please try again!");
         }
 
     } else if(message.author.id != client.user.id && message.mentions.users.first() && message.mentions.users.first().id == client.user.id) {
