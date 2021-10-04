@@ -2,45 +2,45 @@ const client = require("../package-johnson");
 const { MessageEmbed } = require("discord.js");
 const { prefix, embedColor } = require("../config.json");
 
-client.on('guildCreate', guild => {
+client.on('guildCreate', async guild => {
     let channelMessageVerification = true;
 
     guild.channels.cache.forEach(channel => {
-        if (channel.type === "text" && channel.permissionsFor(guild.me).has("SEND_MESSAGES") && channelMessageVerification) {
-            channel.send(new MessageEmbed()
-                .setAuthor(
-                    `${client.user.username}`,
-                )
-                .setColor(`${embedColor}`)
-                .setDescription(`Thanks for adding me to your server, my prefix is: \`${prefix}\` !`)
-                .setThumbnail(`${client.user.avatarURL()}`)
-            )
+        if (channel.type === "GUILD_TEXT" && channel.name === "general") {
+            channel.send({ embeds: [
+                new MessageEmbed()
+                    .setAuthor(
+                        `${client.user.username}`,
+                    )
+                    .setColor(`${embedColor}`)
+                    .setDescription(`Thanks for adding me to your server, my prefix is: \`${prefix}\` !`)
+                    .setThumbnail(`${client.user.avatarURL()}`)
+            ] });
             
             channelMessageVerification = false;
         }
     });
 
     guild.roles.create({
-        data: {
-            name: "Package Johnson",
-            color: `${embedColor}`
-        }
+        name: "Package Johnson",
+        color: `${embedColor}`
     }).then(role => {
-        guild.member(client.user).roles.add(role)
+        guild.me.roles.add(role);
         role.setHoist(true);
     });
 
-    guild.members.fetch(guild.ownerID).then(owner => {
-        owner.send(new MessageEmbed()
-            .setAuthor(
-                `${client.user.username}`,
-                `${client.user.displayAvatarURL()}`
-            )
-            .setColor(`${embedColor}`)
-            .setTitle(`Acknowledgments and informations.`)
-            .setDescription(`Hiiii, ${guild.owner.user.username}! Thank you for add me in your discord server and if you want to see my command list you just need to click on this link: [PJ repository](https://github.com/freitagfelipe/package-johnson-discord)!`)
-            .setImage(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
-            .setTimestamp()
-        );
-    });
+    guild.members.fetch(guild.ownerId).then(owner => {
+        owner.send({ embeds: [
+            new MessageEmbed()
+                .setAuthor(
+                    `${client.user.username}`,
+                    `${client.user.displayAvatarURL()}`
+                )
+                .setColor(`${embedColor}`)
+                .setTitle(`Acknowledgments and informations.`)
+                .setDescription(`Hiiii, ${owner.user.username}! Thank you for add me in your discord server and if you want to see my command list you just need to click on this link: [Package Johnson repository](https://github.com/freitagfelipe/package-johnson-discord)!`)
+                .setImage(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
+                .setTimestamp()
+        ] });
+    })
 });
