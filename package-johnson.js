@@ -57,6 +57,8 @@ client.on("messageCreate", message => {
             interaction.execute(message);
         } catch (error) {
             console.log(error);
+
+            message.reply("An error occurred while trying to execute the interaction, please try again!");
         }
     }
 });
