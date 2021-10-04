@@ -1,29 +1,28 @@
 {
   "name": "package-johnson",
   "version": "1.0.0",
-  "description": "",
-  "engines": {
-    "node": "14.16.1"
-  },
+  "description": "A Discord bot created for educational purposes",
   "main": "package-johnson",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node package-johnson",
     "dev": "nodemon package-johnson.js"
   },
-  "author": "Felipe Freitag",
+  "author": "freitagfelipe",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.3",
-    "discord.js-pagination": "^1.0.3",
+    "@discordjs/voice": "^0.6.0",
+    "@freitagfelipe/discord.js-pagination": "^1.0.0",
+    "axios": "^0.21.4",
+    "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
     "jikan-node": "^1.2.1",
+    "libsodium-wrappers": "^0.7.9",
     "lyrics-finder": "^21.7.0",
-    "node-fetch": "^2.6.1",
     "opusscript": "0.0.8",
-    "ytdl-core": "^4.8.3",
-    "ytsr": "^3.5.0"
+    "ytdl-core": "^4.9.1",
+    "ytsr": "^3.5.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
