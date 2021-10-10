@@ -1,9 +1,9 @@
-const client = require("../index");
 const { prefix } = require("../config.json");
 const { getCurrentInteraction, getAwakeTime } = require("../utils/timeUtils");
 
 module.exports = {
     changeStatus() {
+        const client = global.client;
         let i = 0;
 
         setInterval(() => {
