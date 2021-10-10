@@ -51,7 +51,7 @@ module.exports = {
                 `${message.client.user.displayAvatarURL()}`
             )
             .setColor(embedColor)
-            .setTitle("You can click on the link to see the item image!")
+            .setTitle("You can click on the link to see the skin image!")
             .setTimestamp();
 
         for (let i = 0; i < store.length; i++) {
@@ -67,7 +67,7 @@ module.exports = {
                         `${message.client.user.displayAvatarURL()}`
                     )
                     .setColor(embedColor)
-                    .setTitle("You can click on the link to see the item image!")
+                    .setTitle("You can click on the link to see the skin image!")
                     .setTimestamp();
             }
         }

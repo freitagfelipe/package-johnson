@@ -1,4 +1,3 @@
-const voiceDiscord = require("@discordjs/voice");
 const ytdl = require("ytdl-core");
 const ytsr = require("ytsr");
 const { Queue } = require("../utils/queue")
