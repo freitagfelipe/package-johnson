@@ -1,5 +1,3 @@
-const client = require("../index");
-
 module.exports = {
     formatMusicTime(musicTime) {
         if (musicTime === "0") {
@@ -22,6 +20,7 @@ module.exports = {
     },
 
     getAwakeTime() {
+        const client = global.client;
         let upTimeSeconds, days, hours, minutes, seconds
 
         upTimeSeconds = (client.uptime / 1000);

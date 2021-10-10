@@ -1,4 +1,3 @@
-const client = require("../index");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
 
@@ -9,6 +8,8 @@ module.exports = {
     usage: ".pj help <command name>",
 
     execute(message, args) {
+        const client = global.client;
+
         if (args.length === 0) {
             return message.reply("You need to insert the command name to get help!");
         }

@@ -1,4 +1,3 @@
-const client = require("../index");
 const pagination = require("@freitagfelipe/discord.js-pagination");
 const { MessageEmbed } = require("discord.js");
 const { embedColor } = require("../config.json");
@@ -9,6 +8,7 @@ module.exports = {
     usage: ".pj commands",
 
     execute(message) {
+        const client = global.client;
         const commandsName = [];
         const pages = [];
         const endPage = new MessageEmbed()
