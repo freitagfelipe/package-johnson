@@ -1,5 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const { prefix } = require("./config.json");
+const { connect } = require("./database/connect");
 const dotenv = require("dotenv");
 const fileSystem = require("fs");
 
@@ -10,8 +11,10 @@ dotenv.config();
 global.queues = [];
 global.quizScores = [];
 
-client.on("ready", () => {
+client.on("ready", async () => {
     console.log("I'm Package Johnson and I'm ready!");
+
+    global.pgClient = await connect();
 
     changeStatus();
 
