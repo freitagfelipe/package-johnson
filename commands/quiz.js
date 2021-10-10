@@ -9,6 +9,8 @@ module.exports = {
     usage: ".pj quiz",
 
     async execute(message) {
+        const pgClient = global.pgClient;
+
         const getQuestions = async () => {
             const response = await axios.get("https://opentdb.com/api.php?amount=50&type=multiple");
 
@@ -81,19 +83,13 @@ module.exports = {
         const collector = msg.createReactionCollector({ time: 60000 });
         let answered = false;
 
-        collector.on("collect", (reaction, user) => {
+        collector.on("collect", async (reaction, user) => {
+            let isCorrect;
+
             reaction.users.remove(user);
 
             if(user.id !== message.author.id) {
                 return;
-            }
-
-            let isCorrect;
-            let player = global.quizScores.find(player => message.author.username === player.name);
-
-            if (!player) {
-                global.quizScores.push([0, message.author.username]);
-                player = global.quizScores[global.quizScores.length - 1];
             }
 
             switch (reaction.emoji.name) {
@@ -129,7 +125,13 @@ module.exports = {
                         ] });
                     }
 
-                    player[0] += 1;
+                    let player = await pgClient.query("SELECT * FROM scores WHERE id = $1", [message.author.id]);
+
+                    if (player.rowCount === 0) {
+                        await pgClient.query("INSERT INTO scores (id, score) VALUES ($1, $2)", [message.author.id, 1])   
+                    } else {
+                        await pgClient.query("UPDATE scores SET score = $1 WHERE id = $2", [player.rows[0].id + 1, message.author.id]);
+                    }
                 } else {
                     if (!msg.deleted) {
                         msg.edit({ embeds: [
@@ -162,8 +164,6 @@ module.exports = {
                         .setDescription("**Timeout!⌛**")
                 ] });
             }
-
-            
         });
     }
 }

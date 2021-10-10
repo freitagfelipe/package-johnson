@@ -9,7 +9,6 @@ const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGE_REACTIONS", "GUIL
 dotenv.config();
 
 global.queues = [];
-global.quizScores = [];
 
 client.on("ready", async () => {
     console.log("I'm Package Johnson and I'm ready!");
