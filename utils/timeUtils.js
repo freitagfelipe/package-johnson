@@ -19,11 +19,16 @@ module.exports = {
         }
     },
 
-    getAwakeTime() {
-        const client = global.client;
-        let upTimeSeconds, days, hours, minutes, seconds
+    async getAwakeTime() {
+        const pgClient = global.pgClient;
+        const upTimeQuery = await pgClient.query("SELECT * FROM awake_time");
+        const upTime = upTimeQuery.rows[0];
+        const startDate = Date.UTC(upTime.year, upTime.month, upTime.day, upTime.hours, upTime.minutes, upTime.seconds);
+        const dateNow = Date.now();
+        const upTimeMilliseconds = dateNow - startDate;
+        let upTimeSeconds, days, hours, minutes, seconds;
 
-        upTimeSeconds = (client.uptime / 1000);
+        upTimeSeconds = (upTimeMilliseconds / 1000);
         days = Math.floor(upTimeSeconds / 86400);
         upTimeSeconds %= 86400;
         hours = Math.floor(upTimeSeconds / 3600);
@@ -51,7 +56,7 @@ module.exports = {
     },
 
     getCurrentInteraction() {
-        let hour = new Date().getHours();
+        let hour = new Date().getUTCHours();
 
         return hour >= 6 && hour <= 12 ? "Say good morning to @Package Johnson!" : hour > 12 && hour <= 18 ? "Say good afternoon to @Package Johnson!" : "Say good night to @Package Johnson!";
     },
