@@ -32,8 +32,8 @@ module.exports = {
                 .setColor(embedColor)
                 .setTitle(`${winnerName} won this match!`)
                 .addFields(
-                    { name: `${message.author.username} played:`, value: `${args[0]} and choose the number ${args[1]}!`},
-                    { name: "Package Johnson played:", value: `${args[0] === "even" ? "odd" : "even"} and choose the number ${packageNumber}!`}
+                    { name: `${message.author.username} played:`, value: `${args[0]} and choose the number ${args[1]}!` },
+                    { name: "Package Johnson played:", value: `${args[0] === "even" ? "odd" : "even"} and choose the number ${packageNumber}!` }
                 )
                 .setThumbnail(`${winnerAvatar}`)
                 .setTimestamp()

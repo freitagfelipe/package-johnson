@@ -20,8 +20,8 @@ module.exports = {
                 .setTitle("To add me in your discord server you just need to click on this message!")
                 .setURL(`${process.env.LINK}`)
                 .addFields(
-                    { name: "Created by:", value: "[Felipe Freitag](https://github.com/freitagfelipe)", inline: true},
-                    { name: "Link to repository:", value: "[Github](https://github.com/freitagfelipe/package-johnson)", inline: true}
+                    { name: "Created by:", value: "[Felipe Freitag](https://github.com/freitagfelipe)", inline: true },
+                    { name: "Link to repository:", value: "[Github](https://github.com/freitagfelipe/package-johnson)", inline: true }
                 )
         ] });
     }

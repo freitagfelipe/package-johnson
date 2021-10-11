@@ -95,7 +95,11 @@ module.exports = {
         let page = 0;
         let music;
 
-        collector.on("collect", collected => {
+        collector.on("collect", (collected, user) => {
+            if (user.bot) {
+                return;
+            }
+
             switch (collected.emoji.name) {
                 case "⏩":
                     if (page === 2) {

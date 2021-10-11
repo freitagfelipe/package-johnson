@@ -39,15 +39,15 @@ module.exports = {
                 .setColor(embedColor)
                 .setDescription(`**Description:**\n${anime.synopsis}`)
                 .addFields(
-                    { name: "Type:", value: `\`${anime.type}\``, inline: true},
-                    { name: "Status:", value: `\`${anime.status}\``, inline: true},
-                    { name: "Total episodes:", value: `\`${anime.episodes}\``, inline: true},
-                    { name: "Aired:", value: `\`${anime.aired.string}\``, inline: true},
-                    { name: "Score:", value: `\`${anime.score}\``, inline: true},
-                    { name: "Rank:", value: `\`#${anime.rank}\``, inline: true},
-                    { name: "Popularity:", value: `\`#${anime.popularity}\``, inline: true},
-                    { name: "Genren", value: `\`${anime.genres.map(genre => genre.name).join(", ")}\``, inline: true},
-                    { name: "Source:", value: `\`${anime.source}\``, inline: true}
+                    { name: "Type:", value: `\`${anime.type}\``, inline: true },
+                    { name: "Status:", value: `\`${anime.status}\``, inline: true },
+                    { name: "Total episodes:", value: `\`${anime.episodes}\``, inline: true },
+                    { name: "Aired:", value: `\`${anime.aired.string}\``, inline: true },
+                    { name: "Score:", value: `\`${anime.score}\``, inline: true },
+                    { name: "Rank:", value: `\`#${anime.rank}\``, inline: true },
+                    { name: "Popularity:", value: `\`#${anime.popularity}\``, inline: true },
+                    { name: "Genren", value: `\`${anime.genres.map(genre => genre.name).join(", ")}\``, inline: true },
+                    { name: "Source:", value: `\`${anime.source}\``, inline: true }
                 )
                 .setTimestamp()
         ] });

@@ -33,7 +33,7 @@ module.exports = {
                     { name: "Discord tag:", value: `\`${user.username}#${user.discriminator}\``, inline: true },
                     { name: "Discord ID:", value: `\`${user.id}\``, inline: true },
                     { name: "Account created on:", value: `${user.createdAt.toUTCString().split(" ").slice(0, 5).join(" ")}`, inline: true },
-                    { name: "Joined on:", value: `${message.guild.members.cache.find(member => member.id === user.id).joinedAt.toUTCString().split(" ").slice(0, 5).join(" ")}`, inline: true}
+                    { name: "Joined on:", value: `${message.guild.members.cache.find(member => member.id === user.id).joinedAt.toUTCString().split(" ").slice(0, 5).join(" ")}`, inline: true }
             )
         ] });
     }

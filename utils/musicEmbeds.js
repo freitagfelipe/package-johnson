@@ -8,34 +8,39 @@ module.exports = {
         const musicTime = formatMusicTime(Number(music.songInfo.videoDetails.lengthSeconds));
         const currentTime = formatMusicTime(player.state.playbackDuration / 1000);
         const percentTime = Math.floor(30 * ((player.state.playbackDuration / 1000) / Number(music.songInfo.videoDetails.lengthSeconds)));
-        let timeBar = "";
+        let timeBar = "\u200B";
 
-        for (let i = 0; i < 30; i++) {
-            if (i === percentTime) {
-                timeBar += "🔘";
-            } else {
-                timeBar += "▬";
+        if (musicTime !== "Live music") {
+            for (let i = 0; i < 30; i++) {
+                if (i === percentTime) {
+                    timeBar += "🔘";
+                } else {
+                    timeBar += "▬";
+                }
             }
         }
 
-        return message.channel.send({ embeds: [
-            new MessageEmbed()
-                .setAuthor(
-                    `${message.client.user.username}`,
-                    `${message.client.user.displayAvatarURL()}`
-                )
-                .setColor(`${embedColor}`)
-                .setTitle(`Music name: ${music.songInfo.videoDetails.title}`)
-                .setURL(`${music.songInfo.videoDetails.video_url}`)
-                .addFields(
-                    { name: "Channel Name:", value: `[${music.songInfo.videoDetails.author.name}](${music.songInfo.videoDetails.author.user_url})`, inline: true},
-                    { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true},
-                    { name: "\u200B", value: `\`${timeBar}\``},
-                    { name: "Current time:", value: `\`${currentTime} / ${musicTime}\``},
-                )
-                .setThumbnail(music.songInfo.videoDetails.thumbnails[0].url)
-                .setTimestamp()
-        ] });
+        const nowPlayingEmbed = new MessageEmbed()
+            .setAuthor(
+                `${message.client.user.username}`,
+                `${message.client.user.displayAvatarURL()}`
+            )
+            .setColor(`${embedColor}`)
+            .setTitle(`Music name: ${music.songInfo.videoDetails.title}`)
+            .setURL(`${music.songInfo.videoDetails.video_url}`)
+            .addFields(
+                { name: "Channel Name:", value: `[${music.songInfo.videoDetails.author.name}](${music.songInfo.videoDetails.author.user_url})`, inline: true },
+                { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true },
+                { name: "Current time:", value: `\`${currentTime} / ${musicTime}\`` },
+            )
+            .setThumbnail(music.songInfo.videoDetails.thumbnails[0].url)
+            .setTimestamp();
+        
+        if (musicTime !== "Live music") {
+            nowPlayingEmbed.addField("\u200B", `\`${timeBar}\``);
+        }
+
+        return message.channel.send({ embeds: [nowPlayingEmbed] });
     },
 
     async sendQueueEmbed(message, musics, loopingMusic, loopingQueue) {
@@ -100,7 +105,7 @@ module.exports = {
                 .addFields(
                     { name: "Channel Name:", value: `[${songInfo.videoDetails.author.name}](${songInfo.videoDetails.author.user_url})`, inline: true },
                     { name: "Duration time:", value: `\`${musicTime}\``, inline: true },
-                    { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true}
+                    { name: "Requested by:", value: `\`${message.author.username}#${message.author.discriminator}\``, inline: true }
                 )
                 .setThumbnail(songInfo.videoDetails.thumbnails[0].url)
                 .setFooter(`• Queue position: ${musics.length - 1 === 0 || wichPlay === 2 ? "now playing" : wichPlay === 1 ? "1" : musics.length - 1} || `)

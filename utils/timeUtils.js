@@ -1,6 +1,6 @@
 module.exports = {
     formatMusicTime(musicTime) {
-        if (musicTime === "0") {
+        if (musicTime === 0) {
             return "Live music";
         } else {
             let musicTimeHours = Math.trunc(musicTime / 3600) || "00";

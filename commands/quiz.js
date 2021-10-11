@@ -128,7 +128,7 @@ module.exports = {
                     let player = await pgClient.query("SELECT * FROM scores WHERE id = $1", [message.author.id]);
 
                     if (player.rowCount === 0) {
-                        await pgClient.query("INSERT INTO scores (id, score) VALUES ($1, $2)", [message.author.id, 1])   
+                        await pgClient.query("INSERT INTO scores (id, score) VALUES ($1, $2)", [message.author.id, 1]);
                     } else {
                         await pgClient.query("UPDATE scores SET score = $1 WHERE id = $2", [player.rows[0].id + 1, message.author.id]);
                     }

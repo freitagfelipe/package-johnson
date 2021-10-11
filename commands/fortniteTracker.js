@@ -62,13 +62,13 @@ module.exports = {
                 .setURL(`https://fortnitetracker.com/profile/all/${playerInfo.epicUserHandle}`)
                 .setThumbnail(`${playerInfo.avatar}`)
                 .addFields(
-                    { name: "Wins:", value: `\`${playerInfo.lifeTimeStats[8].value}\``, inline: true},
-                    { name: "Win%:", value: `\`${playerInfo.lifeTimeStats[9].value}\``, inline: true},
-                    { name: "Kills:", value: `\`${playerInfo.lifeTimeStats[10].value}\``, inline: true},
-                    { name: "K/d:", value: `\`${playerInfo.lifeTimeStats[11].value}\``, inline: true},
-                    { name: "Time played:", value: `\`${getFortniteTrackerTime(totalMinutesPlayed)}\``, inline: true},
-                    { name: "Matches played:", value: `\`${playerInfo.lifeTimeStats[7].value}\``, inline: true},
-                    { name: "Score:", value: `\`${playerInfo.lifeTimeStats[6].value}\``, inline: true},
+                    { name: "Wins:", value: `\`${playerInfo.lifeTimeStats[8].value}\``, inline: true },
+                    { name: "Win%:", value: `\`${playerInfo.lifeTimeStats[9].value}\``, inline: true },
+                    { name: "Kills:", value: `\`${playerInfo.lifeTimeStats[10].value}\``, inline: true },
+                    { name: "K/d:", value: `\`${playerInfo.lifeTimeStats[11].value}\``, inline: true },
+                    { name: "Time played:", value: `\`${getFortniteTrackerTime(totalMinutesPlayed)}\``, inline: true },
+                    { name: "Matches played:", value: `\`${playerInfo.lifeTimeStats[7].value}\``, inline: true },
+                    { name: "Score:", value: `\`${playerInfo.lifeTimeStats[6].value}\``, inline: true },
                 )
                 .setTimestamp()
         ] });
