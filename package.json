@@ -2,7 +2,10 @@
   "name": "package-johnson",
   "version": "1.0.0",
   "description": "A Discord bot created for educational purposes",
-  "main": "package-johnson",
+  "engines": {
+    "node": ">=16.11.0"
+  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
