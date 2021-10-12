@@ -1,6 +1,6 @@
 const pagination = require("@freitagfelipe/discord.js-pagination");
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "commands",
@@ -34,8 +34,8 @@ module.exports = {
         for (let i = 0; i < commandsName.length; i++) {
             descriptionText += `- \`${commandsName[i]}\`\n`;
 
-            if (((i + 1) % 10 === 0 && i != 0) || i === commandsName.length - 1) {
-                currentPage.setDescription(descriptionText).addField("\u200B", `<@${message.author.id}>, if you have any questions about a command use:\n \`!help <command name>!\``);
+            if (((i + 1) % 10 === 0 && i !== 0) || i === commandsName.length - 1) {
+                currentPage.setDescription(descriptionText).addField("\u200B", `<@${message.author.id}>, if you have any questions about a command use:\n \`${prefix}help <command name>!\``);
                 pages.push(currentPage);
                 descriptionText = "";
                 currentPage = new MessageEmbed()
