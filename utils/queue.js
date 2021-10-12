@@ -1,24 +1,33 @@
+const voiceDiscord = require("@discordjs/voice");
 const ytdl = require("ytdl-core");
 const { sendMusicEmbed, sendQueueEmbed, sendNowPlayingMusicEmbed } = require("./musicEmbeds");
 const { shuffleArray } = require("./shuffleArray");
 
 class Queue {
-    constructor(connection) {
+    constructor(channel, guildId) {
         this.musics = [];
-        this.connection = connection;
-        this.dispatcher;
+        this.channel = channel;
         this.loopingQueue = false;
         this.loopingMusic = false;
         this.playing = false;
         this.volume = 100;
+        this.id = guildId;
+        this.player = voiceDiscord.createAudioPlayer();
+        this.connection = this.join();
+        this.resource;
+        this.connection.subscribe(this.player);
+        this.connection.on("disconnected", () => {
+            this.leave();
+        });
     }
 
     play() {
         this.playing = true;
 
-        this.dispatcher = this.connection.play(ytdl.downloadFromInfo(this.musics[0].songInfo, { quality: "highestaudio"}));
-        
-        this.dispatcher.on("finish", () => {
+        this.resource = voiceDiscord.createAudioResource(ytdl.downloadFromInfo(this.musics[0].songInfo, { quality: "highestaudio"}), { inlineVolume: true });
+        this.player.play(this.resource);
+
+        this.player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
             this.next();
         });
     }
@@ -32,7 +41,7 @@ class Queue {
 
         await sendMusicEmbed(userMessage, this.musics, songInfo, wichPlay);
         
-        if (this.musics.length == 1) {
+        if (this.musics.length === 1) {
             this.play();
         }
     }
@@ -42,13 +51,13 @@ class Queue {
             this.loopingMusic = false;
             this.musics.shift();
 
-            if (this.musics.length != 0) {
+            if (this.musics.length !== 0) {
                 this.play();
             } else {
                 this.playing = false;
 
                 setTimeout(() => {
-                    this.connection.disconnect();
+                    this.connection.destroy();
                 }, 2000);
             }
         } else if(this.loopingQueue && !this.loopingMusic) {
@@ -65,13 +74,13 @@ class Queue {
     pause() {
         this.playing = false;
 
-        return this.dispatcher.pause();
+        this.player.pause();
     }
 
     resume() {
         this.playing = true;
 
-        return this.dispatcher.resume();
+        this.player.unpause();
     }
 
     clearQueue() {
@@ -95,11 +104,11 @@ class Queue {
     }
 
     showQueue(message) {
-        return sendQueueEmbed(message, this.musics, this.loopingMusic, this.loopingQueue);
+        sendQueueEmbed(message, this.musics, this.loopingMusic, this.loopingQueue);
     }
 
     showNowPlaying(message) {
-        return sendNowPlayingMusicEmbed(message, this.musics[0], this.dispatcher);
+        sendNowPlayingMusicEmbed(message, this.musics[0], this.player);
     }
 
     removeMusic(musicNumber) {
@@ -123,13 +132,29 @@ class Queue {
     setVolume(volumeNumber) {
         this.volume = volumeNumber;
 
-        this.dispatcher.setVolumeLogarithmic(this.volume / 100);
+        this.resource.volume.setVolume(volumeNumber / 100);
     }
 
     shuffleQueue() {
         const nowPlaying = this.musics.shift();
+
         shuffleArray(this.musics);
+
         this.musics.unshift(nowPlaying);
+    }
+
+    leave() {
+        global.queues = global.queues.filter(obj => obj.id !== this.id);
+
+        this.connection.destroy();
+    }
+
+    join() {
+        return voiceDiscord.joinVoiceChannel({
+            channelId: this.channel.id,
+            guildId: this.channel.guildId,
+            adapterCreator: this.channel.guild.voiceAdapterCreator
+        });
     }
 }
 

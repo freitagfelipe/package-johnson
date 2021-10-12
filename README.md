@@ -1,34 +1,38 @@
-# Package Johnson - Discord
+# [Package Johnson](http://gg.gg/package-johnson)
 
 - Initially, Package Johnson was an inside joke, caused by my confusion around the name package.json, which I misread as "package johnson". But then I saw an opportunity: what if I could make a Bot that would help me learn more about programming and that could honor that joke? With all that in mind, I decided to transform Package Johnson, that was just an inside joke, into a real thing!
 
 ## How Package Johnson - Discord was made
 
-- Package Johnson is written in NodeJS, using [Discord.Js](https://discord.js.org/#/) lib to communicate with Discord API and other libs like:
-	- [Discord.js-pagination](https://www.npmjs.com/package/discord.js-pagination)
-	- [Dotenv](https://www.npmjs.com/package/dotenv)
-	- [Ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)
-	- [Jikan-node](https://www.npmjs.com/package/jikan-node)
-	- [Lyrics-finder](https://www.npmjs.com/package/lyrics-finder)
-	- [Node-fetch](https://www.npmjs.com/package/node-fetch)
-	- [Opusscript](https://www.npmjs.com/package/opusscript)
-	- [Ytdl-core](https://www.npmjs.com/package/ytdl-core)
-	- [Ytsr](https://www.npmjs.com/package/ytsr)
+- Package Johnson is written in NodeJS, using [discord.js](https://discord.js.org/#/) lib to communicate with Discord API and other libs like:
+	- [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
+	- [@freitagfelipe/discord.js-pagination](https://www.npmjs.com/package/@freitagfelipe/discord.js-pagination)
+	- [axios](https://www.npmjs.com/package/axios)
+	- [dotenv](https://www.npmjs.com/package/dotenv)
+	- [ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)
+	- [jikan-node](https://www.npmjs.com/package/jikan-node)
+	- [libsodium-wrappers](https://www.npmjs.com/package/libsodium-wrappers)
+	- [lyrics-finder](https://www.npmjs.com/package/lyrics-finder)
+	- [opusscript](https://www.npmjs.com/package/opusscript)
+	- [node-postgres](https://www.npmjs.com/package/pg)
+	- [ytdl-core](https://www.npmjs.com/package/ytdl-core)
+	- [ytsr](https://www.npmjs.com/package/ytsr)
+	- [nodemon](https://www.npmjs.com/package/nodemon)
 
 ## Command list
 
-| Page one                              | Page two                  | Page three                 | Page four                       | 
-| --------------------------------------| --------------------------| ---------------------------| --------------------------------|
-| [anime-endings](#anime-endings)       | [grab-music](#grab-music) | [netx](#next)              | [quiz-scores](#quiz-scores)     |
-| [anime-openings](#anime-openings)     | [help](#help)             | [next-play](#next-play)    | [remove](#remove-section)       |
-| [avatar](#avatar)                     | [join](#join)             | [now-playing](#now-playing)| [resume](#resume)               |
-| [ban](#ban)                           | [jump](#jump)             | [pause](#pause)            | [search](#search)               |
-| [clear](#clear-section)               | [kick](#kick)             | [ping](#ping)              | [search-anime](#search-anime)   |
-| [clear-queue](#clear-queue)           | [leave](#leave)           | [play](#play)              | [shuffle-queue](#shuffle-queue) |
-| [commands](#commands)                 | [link](#link)             | [play-top](#play-top)      | [status](#status)               |
-| [even-or-odd](#even-or-odd)           | [loop-music](#loop-music) | [playlist](#playlist)      | [volume](#volume)               |
-| [fortnite-store](#fortnite-store)     | [loop-queue](#loop-queue) | [queue](#queue)            |
-| [fortnite-tracker](#fortnite-tracker) | [lyrics](#lyrics)         | [quiz](#quiz)              |
+| Page one                           | Page two                  			  | Page three                 	 | Page four                        | 
+| -----------------------------------| ---------------------------------------| -----------------------------| ---------------------------------|
+| [about](#about)       			 | [fortnite-tracker](#fortnite-tracker)  | [lyrics](#lyrics)            | [quiz](#quiz)              	    |
+| [anime-endings](#anime-endings)    | [grab-music](#grab-music) 			  | [netx](#next)                | [quiz-scores](#quiz-scores)      |
+| [anime-openings](#anime-openings)  | [help](#help)             			  | [next-play](#next-play)      | [remove](#remove-section)        |
+| [avatar](#avatar)                  | [join](#join)             			  | [now-playing](#now-playing)  | [resume](#resume)                |
+| [ban](#ban)                        | [jump](#jump)             			  | [pause](#pause)            	 | [search](#search)                |
+| [clear](#clear-section)            | [kick](#kick)             			  | [ping](#ping)              	 | [search-anime](#search-anime)    |
+| [clear-queue](#clear-queue)        | [leave](#leave)           			  | [play](#play)              	 | [shuffle-queue](#shuffle-queue)  |
+| [commands](#commands)              | [link](#link)             			  | [play-top](#play-top)      	 | [status](#status)                |
+| [even-or-odd](#even-or-odd)        | [loop-music](#loop-music) 			  | [playlist](#playlist)      	 | [volume](#volume)                |
+| [fortnite-store](#fortnite-store)  | [loop-queue](#loop-queue) 			  | [queue](#queue)            	 |
 
 ## Interaction list
 
@@ -45,22 +49,27 @@
 2. Create a new application and save the bot token.
 3. Go in [Tracker](https://tracker.gg/developers/apps).
 4. Create a new application and save the API Key.
-5. Create a link to your bot in [Permissions Calculator](https://discordapi.com/permissions.html) with administrator permissions.
+5. Create a link to your bot in with administrator permissions.
 5. Download this repository.
 6. In your repository folder open a terminal and type npm install.
 7. Create a .env file and paste it inside:
-	1. TOKEN = <YOUR-DISCORD-BOT-TOKEN\>
-	2. TRN = <YOUR-TRN-API-KEY\>
-	3. LINK = <YOUR-DICORD-BOT-LINK\>
+	1. TOKEN=<YOUR-DISCORD-BOT-TOKEN\>
+	2. TRN=<YOUR-TRN-API-KEY\>
+	3. LINK=<YOUR-DICORD-BOT-LINK\>
 8. Create a [Heroku](https://heroku.com) account.
 9. Create a new app in Heroku.
 10. Deploy this repository using Github or Heroku CLI.
-11. Set the bot token in Heroku's eviroment variables.
+11. Add Heroku Postgres in add-ons and past it inside .env:
+	1. DB_URI=<YOUR-DATABASE-URI\>
+11. Set the bot tokens in Heroku's eviroment variables.
 
 **Don't share your keys with anyone!**
 
 ## Commands help
 
+#### about
+- Description: send a message with informations about Package Johnson creation.
+- Usage: .pj about
 #### anime-endings
 - Description: searches the anime that you requested and send his endings musics
 - Aliases: animeendings, ae

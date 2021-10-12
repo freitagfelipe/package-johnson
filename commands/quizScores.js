@@ -7,23 +7,24 @@ module.exports = {
     aliases: ["qs", "quizscores"],
     usage: ".pj quiz-scores",
     
-    execute(message) {
-        const scores = global.quizScores.sort((a, b) => b[0] - a[0]);
-        const playerScore = global.quizScores.find(player => message.author.username == player[1]);
+    async execute(message) {
+        const pgClient = global.pgClient;
+        const scores = await pgClient.query("SELECT * FROM scores");
+        const playerScore = await pgClient.query("SELECT score FROM scores WHERE id = $1", [message.author.id]);
         let descriptionText = "";
 
-        if (scores.length == 0) {
-            return message.reply("it looks like I don't have a ranking yet!");
+        if (scores.rowCount === 0) {
+            return message.reply("It looks like I don't have a ranking yet!");
         }
 
-        for (let i = 0; i < 10 && i < scores.length; i++) {
-            if (scores[i][0] > 0) {
-                descriptionText += `${i + 1}°) \`${scores[i][1]}\` | \`Points: ${scores[i][0]}\`\n`;
+        for (let i = 0; i < 10 && i < scores.rowCount; i++) {
+            if (scores.rows[i].score > 0) {
+                descriptionText += `${i + 1}°) <@${scores.rows[i].id}> | Points: ${scores.rows[i].score}\n`;
             }
         }
 
         if (!descriptionText) {
-            return message.reply("it looks like I don't have a top yet!");
+            return message.reply("It looks like I don't have a top yet!");
         }
 
         let pontuationEmbed = new MessageEmbed()
@@ -35,12 +36,12 @@ module.exports = {
             .setDescription(descriptionText)
             .setTimestamp()
 
-        if (playerScore) {
-            pontuationEmbed.addField("\u200B", `Your stats: \`${playerScore[1]}\` | \`Points: ${playerScore[0]}\`\nCongratulations to everyone!`);
+        if (playerScore.rowsCount !== 0) {
+            pontuationEmbed.addField("\u200B", `Your stats: <@${message.author.id}> | Points: ${playerScore.rows[0].score}\nCongratulations to everyone!`);
         } else {
             pontuationEmbed.addField("\u200B", "Congratulations to everyone!");
         }
 
-        return message.channel.send(pontuationEmbed);
+        return message.channel.send({ embeds: [pontuationEmbed] });
     }
 }

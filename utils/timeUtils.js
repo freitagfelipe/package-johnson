@@ -1,19 +1,17 @@
-const client = require("../package-johnson");
-
 module.exports = {
     formatMusicTime(musicTime) {
-        if (musicTime == "0") {
+        if (musicTime === 0) {
             return "Live music";
         } else {
             let musicTimeHours = Math.trunc(musicTime / 3600) || "00";
             let musicTimeMinuts = Math.trunc((musicTime - Number(musicTimeHours) * 3600) / 60) || "00";
             let musicTimeSeconds =  Math.trunc(musicTime - (Number(musicTimeHours) * 3600 + Number(musicTimeMinuts) * 60));
 
-            if (musicTimeMinuts < 10 && musicTimeMinuts != "00") {
+            if (musicTimeMinuts < 10 && musicTimeMinuts !== "00") {
                 musicTimeMinuts = "0" + musicTimeMinuts;
             }
         
-            if (musicTimeSeconds < 10 && musicTimeSeconds != "00") {
+            if (musicTimeSeconds < 10 && musicTimeSeconds !== "00") {
                 musicTimeSeconds = "0" + musicTimeSeconds;
             }
 
@@ -21,10 +19,16 @@ module.exports = {
         }
     },
 
-    getAwakeTime() {
-        let upTimeSeconds, days, hours, minutes, seconds
+    async getAwakeTime() {
+        const pgClient = global.pgClient;
+        const upTimeQuery = await pgClient.query("SELECT * FROM awake_time");
+        const upTime = upTimeQuery.rows[0];
+        const startDate = Date.UTC(upTime.year, upTime.month, upTime.day, upTime.hours, upTime.minutes, upTime.seconds);
+        const dateNow = Date.now();
+        const upTimeMilliseconds = dateNow - startDate;
+        let upTimeSeconds, days, hours, minutes, seconds;
 
-        upTimeSeconds = (client.uptime / 1000);
+        upTimeSeconds = (upTimeMilliseconds / 1000);
         days = Math.floor(upTimeSeconds / 86400);
         upTimeSeconds %= 86400;
         hours = Math.floor(upTimeSeconds / 3600);
@@ -52,7 +56,7 @@ module.exports = {
     },
 
     getCurrentInteraction() {
-        let hour = new Date().getHours();
+        let hour = new Date().getUTCHours();
 
         return hour >= 6 && hour <= 12 ? "Say good morning to @Package Johnson!" : hour > 12 && hour <= 18 ? "Say good afternoon to @Package Johnson!" : "Say good night to @Package Johnson!";
     },

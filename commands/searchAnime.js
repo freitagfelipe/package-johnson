@@ -10,18 +10,16 @@ module.exports = {
     usage: ".pj search-anime <anime name>",
 
     async execute(message, args) {
-        if (args.length == 0) {
-            return message.reply("you need to insert an anime name!");
+        if (args.length === 0) {
+            return message.reply("You need to insert an anime name!");
         }
 
-        let searchingMessage;
-
-        message.channel.send("**Searching your anime!🔎**").then(msg => searchingMessage = msg);
-
+        const searchingMessage = await message.channel.send("**Searching your anime!🔎**");
         const { results } = await mal.search("anime", args.join(" "));
 
-        if(results.length == 0) {
+        if(results.length === 0) {
             searchingMessage.delete();
+        
             return message.reply(`I couldn't find anything with the name ${args.join(" ")}!`);
         }
 
@@ -29,28 +27,29 @@ module.exports = {
 
         searchingMessage.delete();
 
-        return message.channel.send(new MessageEmbed()
-            .setAuthor(
-                `${message.client.user.username}`,
-                `${message.client.user.displayAvatarURL()}`
-            )
-            .setTitle(`Anime: ${anime.title}`)
-            .setURL(`${anime.url}`)
-            .setThumbnail(`${anime.image_url}`)
-            .setColor(embedColor)
-            .setDescription(`**Description:**\n${anime.synopsis}`)
-            .addFields(
-                { name: "Type:", value: `\`${anime.type}\``, inline: true},
-                { name: "Status:", value: `\`${anime.status}\``, inline: true},
-                { name: "Total episodes:", value: `\`${anime.episodes}\``, inline: true},
-                { name: "Aired:", value: `\`${anime.aired.string}\``, inline: true},
-                { name: "Score:", value: `\`${anime.score}\``, inline: true},
-                { name: "Rank:", value: `\`#${anime.rank}\``, inline: true},
-                { name: "Popularity:", value: `\`#${anime.popularity}\``, inline: true},
-                { name: "Genren", value: `\`${anime.genres.map(genre => genre.name).join(", ")}\``, inline: true},
-                { name: "Source:", value: `\`${anime.source}\``, inline: true}
-            )
-            .setTimestamp()
-        );
+        return message.channel.send({ embeds: [
+            new MessageEmbed()
+                .setAuthor(
+                    `${message.client.user.username}`,
+                    `${message.client.user.displayAvatarURL()}`
+                )
+                .setTitle(`Anime: ${anime.title}`)
+                .setURL(`${anime.url}`)
+                .setThumbnail(`${anime.image_url}`)
+                .setColor(embedColor)
+                .setDescription(`**Description:**\n${anime.synopsis}`)
+                .addFields(
+                    { name: "Type:", value: `\`${anime.type}\``, inline: true },
+                    { name: "Status:", value: `\`${anime.status}\``, inline: true },
+                    { name: "Total episodes:", value: `\`${anime.episodes}\``, inline: true },
+                    { name: "Aired:", value: `\`${anime.aired.string}\``, inline: true },
+                    { name: "Score:", value: `\`${anime.score}\``, inline: true },
+                    { name: "Rank:", value: `\`#${anime.rank}\``, inline: true },
+                    { name: "Popularity:", value: `\`#${anime.popularity}\``, inline: true },
+                    { name: "Genren", value: `\`${anime.genres.map(genre => genre.name).join(", ")}\``, inline: true },
+                    { name: "Source:", value: `\`${anime.source}\``, inline: true }
+                )
+                .setTimestamp()
+        ] });
     }
 }

@@ -5,14 +5,15 @@ module.exports = {
     name: "good night",
 
     execute(message) {
-        return message.channel.send(new MessageEmbed()
-            .setAuthor(
-                "Package Johnson",
-                "https://i.imgur.com/vDVSu00.png"
-            )
-            .setColor(`${embedColor}`)
-            .setTitle(`Konbanwaaaaaaaaaaaa!`)
-            .setImage("https://data.whicdn.com/images/335787701/original.gif")
-        );
+        return message.channel.send({ embeds: [
+            new MessageEmbed()
+                .setAuthor(
+                    `${message.client.user.username}`,
+                    `${message.client.user.displayAvatarURL()}`
+                )
+                .setColor(`${embedColor}`)
+                .setTitle(`Konbanwaaaaaaaaaaaa!`)
+                .setImage("https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/main/medias/goodNight.gif")
+        ] });
     }
 }

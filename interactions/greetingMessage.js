@@ -4,6 +4,6 @@ module.exports = {
     name: "hi",
     
     execute(message) {
-        message.reply(`hiii!!!! If you wanna see my command list just type: "${prefix}commands"!`);
+        message.reply(`Hiii!!!! If you wanna see my command list just type: "${prefix}commands"!`);
     }
 }
