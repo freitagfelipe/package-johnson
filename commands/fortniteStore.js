@@ -33,7 +33,7 @@ module.exports = {
                 
                 return message.reply("An error occurred while trying to execute your command, please try again!");
             }
-        }
+        };
 
         const store = await getStore();
         const pages = [];
