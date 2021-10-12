@@ -8,8 +8,16 @@
     "start": "node index",
     "dev": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freitagfelipe/package-johnson-discord"
+  },
   "author": "freitagfelipe",
-  "license": "ISC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freitagfelipe/package-johnson-discord/issues"
+  },
+  "homepage": "https://github.com/freitagfelipe/package-johnson-discord#readme",
   "dependencies": {
     "@discordjs/voice": "^0.6.0",
     "@freitagfelipe/discord.js-pagination": "^1.0.2",
