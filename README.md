@@ -60,7 +60,7 @@
 9. Create a new app in Heroku.
 10. Deploy this repository using Github or Heroku CLI.
 11. Add Heroku Postgres in add-ons and past it inside .env:
-	1. DB_URI=<YOUR-DATABASE-URI\>
+	1. DATABASE_URL=<YOUR-DATABASE-URI\>
 11. Set the bot tokens in Heroku's eviroment variables.
 
 **Don't share your keys with anyone!**

@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const pgClient = new Client({
-    connectionString: process.env.DB_URI,
+    connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
