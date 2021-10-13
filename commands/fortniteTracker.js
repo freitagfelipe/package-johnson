@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const axios = require("axios").default;
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 const { getFortniteTrackerTime } = require("../utils/timeUtils");
 
 dotenv.config();
@@ -10,7 +10,7 @@ module.exports = {
     name: "fortnite-tracker",
     description: "Shows the status of a player on fortnite.",
     aliases: ["fntracker", "fn-tracker"],
-    usage: ".pj fortnite-tracker <platform> <fortnite nickname>",
+    usage: `${prefix}fortnite-tracker <platform> <fortnite nickname>`,
 
     async execute(message, args) {
         if (!(args[0] === "kbm") && !(args[0] === "gamepad") && !(args[0] === "touch")) {

@@ -1,13 +1,13 @@
 const pagination = require("@freitagfelipe/discord.js-pagination");
 const { execute } = require("./play");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "playlist",
     description: "Shows my favorite lofi playlist.",
     aliases: ["pl"],
-    usage: ".pj playlist",
+    usage: `${prefix}playlist`,
 
     async execute(message) {
         if (!message.member.voice.channel) {

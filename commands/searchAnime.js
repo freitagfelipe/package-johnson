@@ -1,13 +1,13 @@
 const Jikan = require("jikan-node");
 const mal = new Jikan();
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "search-anime",
     description: "Searches the anime that you requested and send it's information.",
     aliases: ["searchanime", "sa"],
-    usage: ".pj search-anime <anime name>",
+    usage: `${prefix}search-anime <anime name>`,
 
     async execute(message, args) {
         if (args.length === 0) {

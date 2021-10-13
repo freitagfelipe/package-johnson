@@ -1,11 +1,11 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "help",
     description: "Teaches you how to use a command.",
     aliases: ["h"],
-    usage: ".pj help <command name>",
+    usage: `${prefix}help <command name>`,
 
     execute(message, args) {
         const client = global.client;
@@ -17,7 +17,7 @@ module.exports = {
         const command = client.commands.get(args[0]) || client.commands.find(command => command.aliases && command.aliases.includes(args[0]));
 
         if (!command) {
-            return message.reply(`I couldn't find the command ${args[0]}! If you want to see a complete list of my commands type \`.pj commands\`!`);
+            return message.reply(`I couldn't find the command ${args[0]}! If you want to see a complete list of my commands type \`${prefix}commands\`!`);
         }
 
         return message.channel.send({ embeds: [

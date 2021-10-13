@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "now-playing",
     description: "Show informations about the song that is currently playing.",
     aliases: ["np", "nowplaying"],
-    usage: ".pj now-playing",
+    usage: `${prefix}now-playing`,
 
     execute(message) {
         if (!message.member.voice.channel) {

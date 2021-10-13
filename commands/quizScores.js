@@ -1,11 +1,11 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "quiz-scores",
     description: "Shows the top 10 quiz scores.",
     aliases: ["qs", "quizscores"],
-    usage: ".pj quiz-scores",
+    usage: `${prefix}quiz-scores`,
     
     async execute(message) {
         const pgClient = global.pgClient;

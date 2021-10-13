@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "clear",
     description: "Clear messages in the channel.",
     aliases: ["c"],
-    usage: ".pj clear <number of messages>",
+    usage: `${prefix}clear <number of messages>`,
 
     async execute(message, args) {
         if (!args.length || isNaN(args[0]) || args[0] < 1 || args[0] > 99) {

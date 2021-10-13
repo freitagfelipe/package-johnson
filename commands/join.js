@@ -1,10 +1,11 @@
 const { Queue } = require("../utils/queue");
+const { prefix } = require("../config.json");
 
 module.exports = {
     name: "join",
     description: "Package Johnson will join in your current voice channel.",
     aliases: ["connect", "summon"],
-    usage: ".pj join",
+    usage: `${prefix}join`,
 
     execute(message) {
         const channel = message.member.voice.channel;

@@ -1,10 +1,11 @@
 const { execute } = require("./play");
+const { prefix } = require("../config.json");
 
 module.exports = {
     name: "play-top",
     description: "Add a song on the top of the queue.",
     aliases: ["pt", "playtop"],
-    usage: ".pj play-top <music name or music link>",
+    usage: `${prefix}play-top <music name or music link>`,
 
     execute(message, args) {
         if (!message.member.voice.channel) {

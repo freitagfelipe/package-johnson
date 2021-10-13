@@ -1,12 +1,13 @@
 const ytdl = require("ytdl-core");
 const ytsr = require("ytsr");
-const { Queue } = require("../utils/queue")
+const { Queue } = require("../utils/queue");
+const { prefix } = require("../config.json");
 
 module.exports = {
     name: "play",
     description: "Play a song in your current voice channel.",
     aliases: ["p"],
-    usage: ".pj play <music name or music link>",
+    usage: `${prefix}play <music name or music link>`,
 
     async execute(message, args, wichPlay = 0) {
         const channel = message.member.voice.channel;

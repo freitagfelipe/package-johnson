@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "loop-music",
     description: "Loop the actual music.",
     aliases: ["lm", "loopmusic"],
-    usage: ".pj loop-music",
+    usage: `${prefix}loop-music`,
 
     execute(message) {
         if (!message.member.voice.channel) {

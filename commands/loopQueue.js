@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "loop-queue",
     description: "Loop the actual queue.",
     aliases: ["lq", "loopqueue"],
-    usage: ".pj loop-queue",
+    usage: `${prefix}loop-queue`,
 
     execute(message) {
         if (!message.member.voice.channel) {

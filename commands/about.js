@@ -1,10 +1,10 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "about",
     description: "Send a message with informations about Package Johnson creation.",
-    usage: ".pj about",
+    usage: `${prefix}about`,
 
     execute(message) {
         return message.channel.send({ embeds: [

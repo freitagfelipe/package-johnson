@@ -1,10 +1,11 @@
 const { execute } = require("./play");
+const { prefix } = require("../config.json");
 
 module.exports = {
     name: "next-play",
     description: "Add a song on the top of the queue and skip the current song.",
     aliases: ["skip-play", "sp"],
-    usage: ".pj next-play <music name or music link>",
+    usage: `${prefix}next-play <music name or music link>`,
 
     async execute(message, args) {
         if (!message.member.voice.channel) {

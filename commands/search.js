@@ -2,18 +2,18 @@ const ytsr = require("ytsr");
 const pagination = require("@freitagfelipe/discord.js-pagination");
 const { execute } = require("./play");
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "search",
     description: "Searches for a music name and send a list to you choose wich one will play.",
-    usage: ".pj search",
+    usage: `${prefix}search`,
 
     async execute(message, args) {
         if (!message.member.voice.channel) {
             return message.reply("You need to be in a voice channel to execute this command!");
         } else if (!(args.length > 0) || args[0].startsWith("https://")) {
-            return message.reply("You need to insert a music name! If you already have a link you can use .pj play!");
+            return message.reply(`You need to insert a music name! If you already have a link you can use ${prefix}play!`);
         }
 
         const searchingMessage = await message.channel.send("**Searching!🔎**");

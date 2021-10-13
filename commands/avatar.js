@@ -1,10 +1,10 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "avatar",
     description: "Shows your avatar or the avatar of who you have tagged.",
-    usage: ".pj avatar or .pj avatar <user mention>",
+    usage: `${prefix}avatar or ${prefix}avatar <user mention>`,
 
     execute(message, args) {
         let user;
