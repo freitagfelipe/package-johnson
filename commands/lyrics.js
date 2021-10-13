@@ -7,7 +7,7 @@ module.exports = {
     name: "lyrics",
     description: "Shows the lyrics of the currently playing song or the current song of the queue.",
     aliases: ["l"],
-    usage: `${prefix}lyrics or ${prefix}}lyrics <music name> | <author name>`,
+    usage: `${prefix}lyrics or ${prefix}lyrics <music name> | <author name>`,
 
     async execute(message, args) {
         let lyrics, authorName, musicName;
