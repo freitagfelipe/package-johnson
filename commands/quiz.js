@@ -1,12 +1,12 @@
 const axios = require("axios").default;
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 const { shuffleArray } = require("../utils/shuffleArray");
 
 module.exports = {
     name: "quiz",
     description: "Package Johnson will send a question in the channel.",
-    usage: ".pj quiz",
+    usage: `${prefix}quiz`,
 
     async execute(message) {
         const pgClient = global.pgClient;

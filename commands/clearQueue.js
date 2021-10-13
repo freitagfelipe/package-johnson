@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "clear-queue",
     description: "Clear the current server music queue.",
     aliases: ["cq", "clearqueue"],
-    usage: ".pj clear-queue",
+    usage: `${prefix}clear-queue`,
 
     execute(message) {
         if (!message.member.voice.channel) {

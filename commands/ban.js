@@ -1,10 +1,10 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "ban",
     description: "Ban a user from your discord server.",
-    usage: ".pj ban <user mention> or .pj ban <user mention> <reason>",
+    usage: `${prefix}ban <user mention> or ${prefix}ban <user mention> <reason>`,
 
     execute(message, args) {
         if (args.length === 0) {
@@ -16,7 +16,7 @@ module.exports = {
         const member = message.mentions.members.first();
 
         if (!member) {
-            return message.reply("The correct usage of this command is .pj ban <user mention> or .pj ban <user mention> <reason>!");
+            return message.reply(`The correct usage of this command is ${prefix}ban <user mention> or ${prefix}ban <user mention> <reason>!`);
         } else if (member.id === message.author.id) {
             return message.reply("You can't ban yourself!");
         } else if (member.id === message.client.user.id) {

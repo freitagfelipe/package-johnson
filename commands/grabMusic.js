@@ -1,12 +1,12 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 const { formatMusicTime } = require("../utils/timeUtils");
 
 module.exports = {
     name: "grab-music",
     description: "Send the current music in your private chat.",
     aliases: ["grab"],
-    usage: ".pj grab-music",
+    usage: `${prefix}grab-music`,
 
     execute(message) {
         if (!message.member.voice.channel) {

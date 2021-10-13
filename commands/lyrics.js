@@ -1,13 +1,13 @@
 const lyricsFinder = require("lyrics-finder");
 const pagination = require("@freitagfelipe/discord.js-pagination");
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "lyrics",
     description: "Shows the lyrics of the currently playing song or the current song of the queue.",
     aliases: ["l"],
-    usage: ".pj lyrics or .pj lyrics <music name> | <author name>",
+    usage: `${prefix}lyrics or ${prefix}}lyrics <music name> | <author name>`,
 
     async execute(message, args) {
         let lyrics, authorName, musicName;
@@ -25,7 +25,7 @@ module.exports = {
             authorName = queue.musics[0].songInfo.videoDetails.media.artist;
             musicName = queue.musics[0].songInfo.videoDetails.media.song;
         } else {
-            return message.reply("You need a music queue so I can send the lyrics of the current song or you need to insert .pj lyrics <music name> | <author name>!");
+            return message.reply(`You need a music queue so I can send the lyrics of the current song or you need to insert ${prefix}lyrics <music name> | <author name>!`);
         }
 
         lyrics = await lyricsFinder(authorName, musicName) || "Not Found!";
@@ -33,7 +33,7 @@ module.exports = {
         if (lyrics === "Not Found!" && authorName != undefined && musicName != undefined) {
             return message.reply(`I can't find ${musicName} by ${authorName}!`);
         } else if(lyrics === "Not Found!") {
-            return message.reply("I can't find the lyrics of your music, please try insert .pj lyrics <music name> | <author name>");
+            return message.reply(`I can't find the lyrics of your music, please try insert ${prefix}lyrics <music name> | <author name>`);
         }
 
         const pages = [];

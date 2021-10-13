@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "remove",
     description: "Removes the selected song from the queue.",
     aliases: ["delete", "del", "rm"],
-    usage: ".pj remove <music number>",
+    usage: `${prefix}remove <music number>`,
 
     execute(message, args) {
         if (!message.member.voice.channel) {

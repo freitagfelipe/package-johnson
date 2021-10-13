@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "next",
     description: "Skip to the next song.",
     aliases: ["skip"],
-    usage: ".pj next",
+    usage: `${prefix}next`,
 
     execute(message) {
         if (!message.member.voice.channel) {

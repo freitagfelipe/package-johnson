@@ -2,7 +2,7 @@ const axios = require("axios").default;
 const dotenv = require("dotenv");
 const pagination = require("@freitagfelipe/discord.js-pagination");
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ module.exports = {
     name: "fortnite-store",
     description: "Shows the current fortnite store.",
     aliases: ["fnstore", "fn-store", "store"],
-    usage: ".pj fortnite-store",
+    usage: `${prefix}fortnite-store`,
 
     async execute(message) {
         const getStore = async () => {

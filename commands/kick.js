@@ -1,10 +1,10 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "kick",
     description: "Kick a member from your discord server.",
-    usage: ".pj kick <user mention> or .pj kick <user mention> <reason>",
+    usage: `${prefix}kick <user mention> or ${prefix}kick <user mention> <reason>`,
 
     execute(message, args) {
         if (args.length === 0) {
@@ -16,7 +16,7 @@ module.exports = {
         const member = message.mentions.members.first();
 
         if (!member) {
-            return message.reply("The correct usage of this command is .pj kick <user mention> or .pj kick <user mention> <reason>!");
+            return message.reply(`The correct usage of this command is ${prefix}kick <user mention> or ${prefix}kick <user mention> <reason>!`);
         } else if (member.id === message.author.id) {
             return message.reply("You can't kick yourself!");
         } else if (member.id === message.client.user.id) {

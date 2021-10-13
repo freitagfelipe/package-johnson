@@ -5,7 +5,7 @@ const { embedColor, prefix } = require("../config.json");
 module.exports = {
     name: "commands",
     description: "Shows the name of all commands.",
-    usage: ".pj commands",
+    usage: `${prefix}commands`,
 
     execute(message) {
         const client = global.client;

@@ -1,13 +1,13 @@
 const dotenv = require("dotenv");
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 dotenv.config();
 
 module.exports = {
     name: "link",
     description: "Shows the link to add Package Johnson in your discord server.",
-    usage: ".pj link",
+    usage: `${prefix}link`,
 
     execute(message) {
         return message.channel.send({ embeds: [

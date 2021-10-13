@@ -1,15 +1,15 @@
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "even-or-odd",
     description: "Package Johnson will play even or odd with you.",
     aliases: ["eo", "evenorodd"],
-    usage: ".pj even-or-odd <even or odd> <number>",
+    usage: `${prefix}even-or-odd <even or odd> <number>`,
 
     execute(message, args) {
         if (args.length < 2 || (args[0] !== "even" && args[0] !== "odd") || isNaN(args[1])) {
-            return message.reply("The correct usage of this command is .pj even-or-odd <even or odd> <number>!");
+            return message.reply(`The correct usage of this command is ${prefix}even-or-odd <even or odd> <number>!`);
         }
 
         const packageNumber = Math.floor(Math.random() * 11);

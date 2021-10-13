@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "leave",
     description: "Forces Package Johnson to leave the voice channel.",
     aliases: ["disconnect", "dc", "lv"],
-    usage: ".pj leave",
+    usage: `${prefix}leave`,
 
     execute(message) {
         const userVoiceChannel = message.member.voice.channel;

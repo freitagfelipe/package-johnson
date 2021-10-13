@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "pause",
     description: "Pauses the current song.",
     aliases: ["stop"],
-    usage: ".pj pause",
+    usage: `${prefix}pause`,
 
     execute(message) {
         if (!message.member.voice.channel) {

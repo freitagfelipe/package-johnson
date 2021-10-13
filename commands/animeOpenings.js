@@ -2,13 +2,13 @@ const pagination = require("@freitagfelipe/discord.js-pagination");
 const Jikan = require("jikan-node");
 const mal = new Jikan();
 const { MessageEmbed } = require("discord.js");
-const { embedColor } = require("../config.json");
+const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "anime-openings",
     description: "Searches the anime that you requested and send his openings musics.",
     aliases: ["animeopenings", "ao"],
-    usage: ".pj anime-openings <anime name>",
+    usage: `${prefix}anime-openings <anime name>`,
 
     async execute(message, args) {
         if (args.length === 0) {

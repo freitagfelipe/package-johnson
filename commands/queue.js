@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "queue",
     description: "Shows the current music queue.",
     aliases: ["q", "musics"],
-    usage: ".pj queue",
+    usage: `${prefix}queue`,
 
     execute(message) {
         if (!message.member.voice.channel) {

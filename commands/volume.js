@@ -1,8 +1,10 @@
+const { prefix } = require("../config.json");
+
 module.exports = {
     name: "volume",
     description: "Shows the current volume level or changes volume to a provided value.",
     aliases: ["vol", "v"],
-    usage: ".pj volume or .pj volume <volume number>",
+    usage: `${prefix}volume or ${prefix}volume <volume number>`,
 
     execute(message, args) {
         if (!message.member.voice.channel) {
