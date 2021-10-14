@@ -57,7 +57,7 @@ class Queue {
                 this.playing = false;
 
                 setTimeout(() => {
-                    this.connection.destroy();
+                    this.leave();
                 }, 2000);
             }
         } else if(this.loopingQueue && !this.loopingMusic) {
