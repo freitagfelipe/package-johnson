@@ -153,7 +153,7 @@ module.exports = {
         });
 
         collector.on('end', () => {
-            if (!msg.deleted && !answered) {
+            if (!msg.reactions.message.deleted && !answered) {
                 msg.edit({ embeds: [
                     new MessageEmbed()
                         .setAuthor(
