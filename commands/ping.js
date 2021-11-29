@@ -6,6 +6,6 @@ module.exports = {
     usage: `${prefix}ping`,
 
     execute(message) {
-        return message.reply(`:ping_pong: **Pong!**\n**Your ping is**: \`${Date.now() - message.createdTimestamp}ms\`.\n**API latency is**: \`${Math.round(message.client.ws.ping)}ms\`.`);
+        message.reply(`:ping_pong: **Pong!**\n**Your ping is**: \`${Date.now() - message.createdTimestamp}ms\`.\n**API latency is**: \`${Math.round(message.client.ws.ping)}ms\`.`);
     }
 }

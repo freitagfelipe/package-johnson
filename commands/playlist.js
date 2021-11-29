@@ -161,9 +161,9 @@ module.exports = {
             
             if (music) {
                 if (music[page]) {
-                    return execute(message, [music[page]]);
+                    execute(message, [music[page]]);
                 } else {
-                    return message.reply("There is no song with the number that you reacted to on this page, please react with another number!");
+                    message.reply("There is no song with the number that you reacted to on this page, please react with another number!");
                 }
             }
         });

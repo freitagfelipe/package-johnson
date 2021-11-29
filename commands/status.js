@@ -22,7 +22,7 @@ module.exports = {
 
         const userAvatar = user.avatarURL() != null ? user.avatarURL() : "https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/main/medias/defaultUserAvatar.png";
 
-        return message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${user.username}(${isHuman}), stats:`
@@ -35,6 +35,6 @@ module.exports = {
                     { name: "Account created on:", value: `${user.createdAt.toUTCString().split(" ").slice(0, 5).join(" ")}`, inline: true },
                     { name: "Joined on:", value: `${message.guild.members.cache.find(member => member.id === user.id).joinedAt.toUTCString().split(" ").slice(0, 5).join(" ")}`, inline: true }
             )
-        ] });
+        ]});
     }
 }

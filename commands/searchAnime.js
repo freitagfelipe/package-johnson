@@ -27,7 +27,7 @@ module.exports = {
 
         searchingMessage.delete();
 
-        return message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -50,6 +50,6 @@ module.exports = {
                     { name: "Source:", value: `\`${anime.source}\``, inline: true }
                 )
                 .setTimestamp()
-        ] });
+        ]});
     }
 }

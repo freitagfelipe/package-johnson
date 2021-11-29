@@ -54,7 +54,7 @@ module.exports = {
 
         lyrics = lyrics.split("\n\n");
 
-        for (let i = 0; i < lyrics.length; i++) {
+        for (let i = 0; i < lyrics.length; ++i) {
             currentPage.addField("\u200B", `${lyrics[i]}`);
 
             if (((i + 1) % 10 === 0 && i !== 0) || i === lyrics.length - 1) {
@@ -69,6 +69,6 @@ module.exports = {
             }
         }
 
-        return pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
+        pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
     }
 }

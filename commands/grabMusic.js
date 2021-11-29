@@ -25,7 +25,7 @@ module.exports = {
 
         const musicTime = formatMusicTime(queue.musics[0].songInfo.videoDetails.lengthSeconds);
 
-        return message.author.send({ embeds: [
+        message.author.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -41,6 +41,6 @@ module.exports = {
                 )
                 .setFooter("• Enjoy! || ")
                 .setTimestamp()
-        ] });
+        ]});
     }
 }

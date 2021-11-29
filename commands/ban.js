@@ -25,8 +25,8 @@ module.exports = {
 
         const reason = args.slice(1).join(" ") || "No reason";
 
-        member.ban({ reason: reason }).then(() => {
-            return message.channel.send({ embeds: [
+        member.ban({reason: reason }).then(() => {
+            message.channel.send({ embeds: [
                 new MessageEmbed()
                     .setAuthor(
                         `${message.client.user.username}`,
@@ -37,11 +37,11 @@ module.exports = {
                     .setDescription(`Reason: ${reason}`)
                     .setThumbnail(member.user.displayAvatarURL())
                     .setTimestamp()
-            ] });
+            ]});
         }).catch(error => {
             console.log(error);
 
-            return message.reply("I don't have permission to ban this user because his role is higher or equal my role!");
+            message.reply("I don't have permission to ban this user because his role is higher or equal my role!");
         });
     }
 }

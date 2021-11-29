@@ -25,6 +25,6 @@ module.exports = {
 
         message.channel.send("**Your music has been resumed!⏯️**");
 
-        return queue.resume();
+        queue.resume();
     }
 }

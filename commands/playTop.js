@@ -22,6 +22,6 @@ module.exports = {
             return message.reply("You need to have a queue to add a song on the top of it!");
         }
 
-        return execute(message, args, 1);
+        execute(message, args, 1);
     }
 }

@@ -23,6 +23,6 @@ module.exports = {
 
         queue.pause();
 
-        return message.channel.send("**Your music has been paused!⏸️**");
+        message.channel.send("**Your music has been paused!⏸️**");
     }
 }

@@ -27,6 +27,6 @@ module.exports = {
             message.channel.send("**Disabled queue loop!🔁**");
         }
 
-        return queue.loopQueue();
+        queue.loopQueue();
     }
 }

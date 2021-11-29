@@ -25,6 +25,6 @@ module.exports = {
 
         queue.next(true);
 
-        return message.channel.send("**Skipped!⏭️**");
+        message.channel.send("**Skipped!⏭️**");
     }
 }

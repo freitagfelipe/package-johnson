@@ -23,6 +23,6 @@ module.exports = {
 
         queue.shuffleQueue();
 
-        return message.channel.send("Shuffled your queue!🔀");
+        message.channel.send("Shuffled your queue!🔀");
     }
 }

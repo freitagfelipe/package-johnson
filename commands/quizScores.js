@@ -17,7 +17,7 @@ module.exports = {
             return message.reply("It looks like I don't have a ranking yet!");
         }
 
-        for (let i = 0; i < 10 && i < scores.rowCount; i++) {
+        for (let i = 0; i < 10 && i < scores.rowCount; ++i) {
             if (scores.rows[i].score > 0) {
                 descriptionText += `${i + 1}°) <@${scores.rows[i].id}> | Points: ${scores.rows[i].score}\n`;
             }
@@ -42,6 +42,6 @@ module.exports = {
             pontuationEmbed.addField("\u200B", "Congratulations to everyone!");
         }
 
-        return message.channel.send({ embeds: [pontuationEmbed] });
+        message.channel.send({ embeds: [pontuationEmbed] });
     }
 }

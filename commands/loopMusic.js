@@ -27,6 +27,6 @@ module.exports = {
             message.channel.send("**Disabled music loop!🔂**");
         }
 
-        return queue.loopMusic();
+        queue.loopMusic();
     }
 }

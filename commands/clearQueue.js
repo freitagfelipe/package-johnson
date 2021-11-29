@@ -23,6 +23,6 @@ module.exports = {
 
         queue.clearQueue();
 
-        return message.channel.send("**Cleaned your queue!🚮**");
+        message.channel.send("**Cleaned your queue!🚮**");
     }
 }

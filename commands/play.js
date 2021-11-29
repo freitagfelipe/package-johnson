@@ -48,13 +48,13 @@ module.exports = {
         let queue = global.queues.find(obj => obj.id === message.guild.id);
 
         if (queue) {
-            return queue.add(songInfo, message, wichPlay);
+            queue.add(songInfo, message, wichPlay);
         } else {
             queue = new Queue(channel, message.guild.id);
 
             global.queues.push(queue);
             
-            return queue.add(songInfo, message, wichPlay);
+            queue.add(songInfo, message, wichPlay);
         }
     }
 }

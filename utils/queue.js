@@ -16,6 +16,7 @@ class Queue {
         this.connection = this.join();
         this.resource;
         this.connection.subscribe(this.player);
+
         this.connection.on("disconnected", () => {
             this.leave();
         });
@@ -32,14 +33,14 @@ class Queue {
         });
     }
 
-    async add(songInfo, userMessage, wichPlay) {
+    add(songInfo, userMessage, wichPlay) {
         if (!wichPlay) {
             this.musics.push({songInfo, user: userMessage.author});
         } else if(wichPlay) {
             this.musics.splice(1, 0, {songInfo, user: userMessage.author});
         }
 
-        await sendMusicEmbed(userMessage, this.musics, songInfo, wichPlay);
+        sendMusicEmbed(userMessage, this.musics, songInfo, wichPlay);
         
         if (this.musics.length === 1) {
             this.play();

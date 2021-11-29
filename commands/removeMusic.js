@@ -25,6 +25,6 @@ module.exports = {
 
         message.channel.send(`Successfully removed music \`${queue.musics[args[0]].songInfo.videoDetails.title}\`!🗑️`);
 
-        return queue.removeMusic(args[0]);
+        queue.removeMusic(args[0]);
     }
 }

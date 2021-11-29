@@ -21,6 +21,6 @@ module.exports = {
             return message.reply("I'm not playing anything in this server!");
         }
 
-        return queue.showNowPlaying(message);
+        queue.showNowPlaying(message);
     }
 }

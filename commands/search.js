@@ -46,7 +46,7 @@ module.exports = {
             .setColor(`${embedColor}`)
             .setDescription("**Timeout!⌛**");
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 10; ++i) {
             page[0].addField("\u200B", `${i + 1}) [${musics[i].title}](${musics[i].url}) | \`Channel name:\` [${musics[i].author.name}](${musics[i].author.url})`);
         }
 
@@ -90,9 +90,9 @@ module.exports = {
             }
 
             if (music) {
-                return execute(message, [music]);
+                execute(message, [music]);
             } else {
-                return message.reply("There is no song with the number that you reacted, please react with another number!");
+                message.reply("There is no song with the number that you reacted, please react with another number!");
             }
         });
     }

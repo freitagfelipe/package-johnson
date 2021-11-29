@@ -25,6 +25,6 @@ module.exports = {
 
         queue.jump(args[0]);
 
-        return message.channel.send(`Jumped to music \`${args[0]}) ${queue.musics[args[0]].songInfo.videoDetails.title}\`!⤴️`);
+        message.channel.send(`Jumped to music \`${args[0]}) ${queue.musics[args[0]].songInfo.videoDetails.title}\`!⤴️`);
     }
 }

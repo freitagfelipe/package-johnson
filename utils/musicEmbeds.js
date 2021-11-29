@@ -11,7 +11,7 @@ module.exports = {
         let timeBar = "\u200B";
 
         if (musicTime !== "Live music") {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 30; ++i) {
                 if (i === percentTime) {
                     timeBar += "🔘";
                 } else {
@@ -40,10 +40,10 @@ module.exports = {
             nowPlayingEmbed.addField("\u200B", `\`${timeBar}\``);
         }
 
-        return message.channel.send({ embeds: [nowPlayingEmbed] });
+        message.channel.send({ embeds: [nowPlayingEmbed] });
     },
 
-    async sendQueueEmbed(message, musics, loopingMusic, loopingQueue) {
+    sendQueueEmbed(message, musics, loopingMusic, loopingQueue) {
         let currentPage = new MessageEmbed()
             .setAuthor(
                 `${message.client.user.username}`,
@@ -61,7 +61,7 @@ module.exports = {
             .setColor(`${embedColor}`)
             .setDescription("**Timeout!⌛**");
 
-        for (let i = 0; i < musics.length; i++) {
+        for (let i = 0; i < musics.length; ++i) {
             const durationTime = formatMusicTime(musics[i].songInfo.videoDetails.lengthSeconds);
 
             if (i === 0) {
@@ -87,13 +87,13 @@ module.exports = {
             }
         }
 
-        return paginationEmbed(message, pages, 60000, ['⏪', '⏩'], false, endPage);
+        paginationEmbed(message, pages, 60000, ['⏪', '⏩'], false, endPage);
     },
 
     sendMusicEmbed(message, musics, songInfo, wichPlay) {
         const musicTime = formatMusicTime(Number(songInfo.videoDetails.lengthSeconds));
 
-        message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -110,6 +110,6 @@ module.exports = {
                 .setThumbnail(songInfo.videoDetails.thumbnails[0].url)
                 .setFooter(`• Queue position: ${musics.length - 1 === 0 || wichPlay === 2 ? "now playing" : wichPlay === 1 ? "1" : musics.length - 1} || `)
                 .setTimestamp()
-        ] });
+        ]});
     }
 }

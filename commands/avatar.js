@@ -19,7 +19,7 @@ module.exports = {
         const userAvatarLink = user.avatarURL() !== null ? user.avatarURL() : "";
         const avatarTitle = user.avatarURL() !== null ? "Click to open the avatar in your browser!" : "User doesn't have a profile photo!";
 
-        message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${user.username}`,
@@ -29,6 +29,6 @@ module.exports = {
                 .setTitle(`${avatarTitle}`)
                 .setURL(`${userAvatarLink}`)
                 .setImage(userAvatar)
-        ] });
+        ]});
     }
 }

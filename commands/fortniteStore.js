@@ -31,7 +31,9 @@ module.exports = {
             } catch(error) {
                 console.log(error);
                 
-                return message.reply("An error occurred while trying to execute your command, please try again!");
+                message.reply("An error occurred while trying to execute your command, please try again!");
+
+                return;
             }
         };
 
@@ -54,7 +56,7 @@ module.exports = {
             .setTitle("You can click on the link to see the skin image!")
             .setTimestamp();
 
-        for (let i = 0; i < store.length; i++) {
+        for (let i = 0; i < store.length; ++i) {
             descriptionText += `[${store[i].name}](${store[i].imageUrl}) | \`vBucks: ${store[i].vBucks === 0 ? "please look at the store!" : store[i].vBucks}\`\n`;
 
             if ((i + 1) % 10 === 0 || i === store.length - 1) {
@@ -72,6 +74,6 @@ module.exports = {
             }
         }
 
-        return pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
+        pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
     }
 }

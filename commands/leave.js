@@ -21,6 +21,6 @@ module.exports = {
 
         queue.leave();
 
-        return message.channel.send("Successfully disconnected!✅");
+        message.channel.send("Successfully disconnected!✅");
     }
 }
