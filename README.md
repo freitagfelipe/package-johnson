@@ -71,185 +71,185 @@
 - Description: send a message with informations about Package Johnson creation.
 - Usage: .pj about
 #### anime-endings
-- Description: searches the anime that you requested and send his endings musics
-- Aliases: animeendings, ae
+- Description: searches the anime that you requested and send his endings musics.
+- Aliases: animeendings, ae.
 - Usage: .pj anime-endings <anime name\>
 
 #### anime-openings
-- Description: searches the anime that you requested and send his openings musics
-- Aliases: animeopenings, ao
+- Description: searches the anime that you requested and send his openings musics.
+- Aliases: animeopenings, ao.
 - Usage: .pj anime-openings <anime name\>
 
 #### avatar
-- Description: shows your avatar or the avatar of who you have tagged
+- Description: Shows your avatar or the avatar of who you tagged.
 - Usage: .pj avatar or .pj avatar <user mention\>
 
 #### ban
-- Description: ban a user from your discord server
+- Description: Ban an user from your discord server.
 - Usage: .pj ban <user mention> or .pj ban <user mention\> <reason\>
 
 #### <a name="clear-section"></a>clear
-- Description: clear messages in the channel
-- Aliase: c
+- Description: clear messages in the channel.
+- Aliase: c.
 - Usage: .pj clear <number of messages\>
 
 #### clear-queue
-- Description: clear the current server music queue
-- Aliases: cq, clearqueue
+- Description: clear the current server music queue.
+- Aliases: cq, clearqueue.
 - Usage: .pj clear-queue
 
 #### commands
-- Description: shows the name of all commands
+- Description: Shows the name of all my commands.
 - Usage: .pj commands
 
 #### even-or-odd
-- Description: Package Johnson will play even or odd with you
-- Aliases: eo, evenorodd
+- Description: Package Johnson will play even or odd with you.
+- Aliases: eo, evenorodd.
 - Usage: .pj even-or-odd <even or odd\> <number\>
 
 #### fortnite-store
-- Description: shows the current fortnite store
-- Aliases: fnstore, fn-store, store
+- Description: shows the current fortnite store.
+- Aliases: fnstore, fn-store, store.
 - Usage: .pj fortnite-store
 
 #### fortnite-tracker
-- Description: shows the status of a player on fortnite
-- Aliases: fntracker, fn-tracker
+- Description: Shows the status of a fortnite player.
+- Aliases: fntracker, fn-tracker.
 - .pj fortnite-tracker <platform\> <fortnite nickname\>
 
 #### grab-music
-- Description: send the current music in your private chat
-- Aliase: grab
+- Description: send the current music in your private chat.
+- Aliase: grab.
 - Usage: .pj grab-music
 
 #### help
-- Description: teaches you how to use a command
-- Aliase: h
+- Description: teaches you how to use a command.
+- Aliase: h.
 - Usage: .pj help <command name\>
 
 #### join
-- Description: Package Johnson will join in your current voice channel
-- Aliases: connect, summon
+- Description: Package Johnson will join in your current voice channel.
+- Aliases: connect, summon.
 - Usage: .pj join
 
 #### jump
-- Description: jump to a specific song in the queue and start playing it
-- Aliase: j
+- Description: jump to a specific song in the queue and start playing it.
+- Aliase: j.
 - .pj jump <music number\>
 
 #### kick
-- Description: kick a member from your discord server
+- Description: kick a member from your discord server.
 - Usage: .pj kick <user mention\> or .pj kick <user mention\> <reason\>
 
 #### leave
-- Description: forces Package Johnson to leave the voice channel
-- Aliases: disconnect, dc, lv
+- Description: forces Package Johnson to leave the voice channel.
+- Aliases: disconnect, dc, lv.
 - Usage: .pj leave
 
 #### link
-- Description: shows the link to add Package Johnson in your discord server
+- Description: shows the link to add Package Johnson in your discord server.
 - Usage: .pj link
 
 #### loop-music
-- Description: loop the actual music
-- Aliases: lm, loopmusic
+- Description: loop the actual music.
+- Aliases: lm, loopmusic.
 - Usage: .pj loop-music
 
 #### loop-queue
-- Description: loop the actual queue
-- Aliases: lq, loopqueue
+- Description: loop the actual queue.
+- Aliases: lq, loopqueue.
 - Usage: .pj loop-queue
 
 #### lyrics
-- Description: Shows the lyrics of the currently playing song or the current song of the queue.
-- Aliase: l
+- Description: Shows the lyrics of the currently playing song or the song that you requested.
+- Aliase: l.
 - Usage: .pj lyrics or .pj lyrics <music name> | <author name>
 
 #### next
-- Description: skip to the next song
-- Aliase: skip
+- Description: skip to the next song.
+- Aliase: skip.
 - Usage: .pj next
 
 #### next-play
-- Description: add a song on the top of the queue and skip the current song
-- Aliases: skip-play, sp
+- Description: add a song on the top of the queue and skip the current song.
+- Aliases: skip-play, sp.
 - Usage: .pj next-play <music name or music link\>
 
 #### now-playing
-- Description: show informations about the song that is currently playing
-- Aliases: np, nowplaying
+- Description: show informations about the song that is currently playing.
+- Aliases: np, nowplaying.
 - Usage: .pj now-playing
 
 #### pause
-- Description: pauses the current song
-- Aliase: stop
+- Description: pauses the current song.
+- Aliase: stop.
 - Usage: .pj pause
 
 #### ping
-- Description: shows your ping and the latency ping
+- Description: Shows your ping and the API latency.
 - Usage: .pj ping
 
 #### play
-- Description: play a song in your current voice channel
-- Aliase: p
+- Description: play a song in your current voice channel.
+- Aliase: p.
 - Usage: .pj play <music name or music link\>
 
 #### playlist
-- Description: shows my favorite lofi playlist
-- Aliase: pl
+- Description: shows my favorite lofi playlist.
+- Aliase: pl.
 - Usage: .pj playlist
 
 #### play-top
-- Description: add a song on the top of the queue
-- Aliases: pt, playtop
+- Description: add a song on the top of the queue.
+- Aliases: pt, playtop.
 - Usage: .pj play-top <music name or music link\>
 
 #### queue
-- Description: shows the current music queue
-- Aliases: q, musics
+- Description: shows the current music queue.
+- Aliases: q, musics.
 - Usage: .pj queue
 
 #### quiz
-- Description: Package Johnson will send a question in the channel
+- Description: Package Johnson will send a question in the channel.
 - Usage: .pj quiz
 
 #### quiz-scores
-- Description: shows the top 10 quiz scores
-- Aliases: qs, quizscores
+- Description: shows the top 10 quiz scores.
+- Aliases: qs, quizscores.
 - Usage: .pj quiz-scores
 
 #### <a name="remove-section"></a>remove
-- Description: removes the selected song from the queue
-- Aliases: delete, del, rm
+- Description: removes the selected song from the queue.
+- Aliases: delete, del, rm.
 - Usage: .pj remove <music number\>
 
 #### resume
-- Description: continues playing the song that is paused
-- Aliases: continue, r
+- Description: continues playing the song that is paused.
+- Aliases: continue, r.
 - Usage: .pj resume
 
 #### search
-- Description: searches for a music name and send a list to you choose wich one will play
+- Description: searches for a music name and send a list to you choose wich one will play.
 - Usage: .pj search
 
 #### search-anime
-- Description: searches the anime that you requested and send it's information
-- Aliases: searchanime, sa
+- Description: Searches the anime that you requested and send his information.
+- Aliases: searchanime, sa.
 - Usage: .pj search-anime <anime name\>
 
 #### shuffle-queue
-- Description: shuffle your current queue
-- Aliases: random, shuffle, random-queue
+- Description: shuffle your current queue.
+- Aliases: random, shuffle, random-queue.
 - Usage: .pj shuffle-queue
 
 #### status
-- Description: shows your user stats or the user stats of who you have tagged
-- Aliases: userinfo, user-info
+- Description: Shows your user stats or the user stats of who you tagged.
+- Aliases: userinfo, user-info.
 - Usage: .pj status or .pj status <user mention\>
 
 #### volume
-- Description: shows the current volume level or changes volume to a provided value
-- Aliases: vol, v
+- Description: shows the current volume level or changes volume to a provided value.
+- Aliases: vol, v.
 - Usage: .pj volume or .pj volume <volume number\>
 
 ## Interactions help
