@@ -22,7 +22,7 @@ module.exports = {
         searchingMessage.delete();
 
         if(!result.items.length) {
-            return message.reply("No song ware found! Please try again.");
+            return message.reply("No song were found! Please try again.");
         }
 
         const musics = result.items.filter(item => item.type === "video");
@@ -92,7 +92,7 @@ module.exports = {
             if (music) {
                 return execute(message, [music]);
             } else {
-                return message.reply("There is no song with the number you reacted, please react with another number!");
+                return message.reply("There is no song with the number that you reacted, please react with another number!");
             }
         });
     }

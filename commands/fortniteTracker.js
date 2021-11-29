@@ -8,7 +8,7 @@ dotenv.config();
 
 module.exports = {
     name: "fortnite-tracker",
-    description: "Shows the status of a player on fortnite.",
+    description: "Shows the status of a fortnite player.",
     aliases: ["fntracker", "fn-tracker"],
     usage: `${prefix}fortnite-tracker <platform> <fortnite nickname>`,
 

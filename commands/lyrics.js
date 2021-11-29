@@ -5,7 +5,7 @@ const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "lyrics",
-    description: "Shows the lyrics of the currently playing song or the current song of the queue.",
+    description: "Shows the lyrics of the currently playing song or the song that you requested.",
     aliases: ["l"],
     usage: `${prefix}lyrics or ${prefix}lyrics <music name> | <author name>`,
 
@@ -19,7 +19,7 @@ module.exports = {
             const queue = global.queues.find(obj => obj.id === message.guild.id);
             
             if(!queue) {
-                return message.reply("You need a music queue so I can send the lyrics of the current song!");
+                return message.reply(`You need a music queue so I can send the lyrics of the current song! But if you want the lyrics of a specific music you can use ${prefix}lyrics <music name> | <author name>`);
             }
 
             authorName = queue.musics[0].songInfo.videoDetails.media.artist;

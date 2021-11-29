@@ -5,7 +5,7 @@ const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "search-anime",
-    description: "Searches the anime that you requested and send it's information.",
+    description: "Searches the anime that you requested and send his information.",
     aliases: ["searchanime", "sa"],
     usage: `${prefix}search-anime <anime name>`,
 

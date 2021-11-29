@@ -4,7 +4,7 @@ const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "commands",
-    description: "Shows the name of all commands.",
+    description: "Shows the name of all my commands.",
     usage: `${prefix}commands`,
 
     execute(message) {

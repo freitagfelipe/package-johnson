@@ -8,7 +8,7 @@ module.exports = {
 
     execute(message, args) {
         if (args.length === 0) {
-            return message.reply("You need to mention the member you want to kick and if you want you can insert the reason!");
+            return message.reply("You need to mention the member that you want to kick and if you want you can insert the reason!");
         } else if (!message.member.permissions.has("KICK_MEMBERS")) {
             return message.reply("You don't have permissions to kick anyone from this server!");
         }

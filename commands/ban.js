@@ -3,12 +3,12 @@ const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "ban",
-    description: "Ban a user from your discord server.",
+    description: "Ban an user from your discord server.",
     usage: `${prefix}ban <user mention> or ${prefix}ban <user mention> <reason>`,
 
     execute(message, args) {
         if (args.length === 0) {
-            return message.reply("You need to mention the member you want to ban and if you want you can insert the reason!");
+            return message.reply("You need to mention the member that you want to ban and if you want you can insert the reason!");
         } else if (!message.member.permissions.has("BAN_MEMBERS")) {
             return message.reply("You don't have permissions to ban anyone from this server!");
         }
