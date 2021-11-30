@@ -13,7 +13,7 @@ module.exports = {
         if (!message.member.voice.channel) {
             return message.reply("You need to be in a voice channel to execute this command!");
         } else if (message.guild.me.voice.channel && !(message.guild.me.voice.channel.name === message.member.voice.channel.name)) {
-            return message.reply("I'm already in another voice channel in this server, please join it to execute this command!");
+            return message.reply("I'm already in another voice channel in this server, please join in it to execute this command!");
         }
 
         const pageOne = new MessageEmbed()
@@ -161,9 +161,9 @@ module.exports = {
             
             if (music) {
                 if (music[page]) {
-                    return execute(message, [music[page]]);
+                    execute(message, [music[page]]);
                 } else {
-                    return message.reply("There is no song with the number you reacted to on this page, please react with another number!");
+                    message.reply("There is no song with the number that you reacted to on this page, please react with another number!");
                 }
             }
         });

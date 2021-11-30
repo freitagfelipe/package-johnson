@@ -50,7 +50,7 @@ module.exports = {
             .setThumbnail(anime.image_url)
             .setTimestamp();
 
-        for (let i = 0, number = 1; i < endings.length; i++, number++) {
+        for (let i = 0, number = 1; i < endings.length; ++i, ++number) {
             currentPage.addField("\u200B", `\`${number})\` ${endings[i].slice(2)}`);
 
             if (((i + 1) % 10 === 0) || i === endings.length - 1) {
@@ -68,6 +68,6 @@ module.exports = {
             }
         }
 
-        return pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
+        pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
     }
 }

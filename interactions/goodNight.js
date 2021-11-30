@@ -5,7 +5,7 @@ module.exports = {
     name: "good night",
 
     execute(message) {
-        return message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -14,6 +14,6 @@ module.exports = {
                 .setColor(`${embedColor}`)
                 .setTitle(`Konbanwaaaaaaaaaaaa!`)
                 .setImage("https://raw.githubusercontent.com/freitagfelipe/package-johnson-discord/main/medias/goodNight.gif")
-        ] });
+        ]});
     }
 }

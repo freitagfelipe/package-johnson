@@ -23,7 +23,7 @@ module.exports = {
             winnerAvatar = (packageNumber + parseInt(args[1])) % 2 !== 0 ? `${message.author.displayAvatarURL()}` : `${message.client.user.displayAvatarURL()}`;
         }
 
-        return message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -37,6 +37,6 @@ module.exports = {
                 )
                 .setThumbnail(`${winnerAvatar}`)
                 .setTimestamp()
-        ] });
+        ]});
     }
 }

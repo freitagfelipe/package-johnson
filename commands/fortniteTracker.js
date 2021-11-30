@@ -8,7 +8,7 @@ dotenv.config();
 
 module.exports = {
     name: "fortnite-tracker",
-    description: "Shows the status of a player on fortnite.",
+    description: "Shows the status of a fortnite player.",
     aliases: ["fntracker", "fn-tracker"],
     usage: `${prefix}fortnite-tracker <platform> <fortnite nickname>`,
 
@@ -35,14 +35,16 @@ module.exports = {
             } catch(error) {
                 console.log(error);
                 
-                return message.reply("An error occurred while trying to execute your command, please try again!");
+                message.reply("An error occurred while trying to execute your command, please try again!");
+
+                return;
             }
         };
 
         const playerInfo = await getPlayer(args.shift(), escape(args.join(" ")));
         
         if (playerInfo.error) {
-            return message.reply("This profile is private!");
+            return message.reply("I can't find this profile because he doesn't exist or is private!");
         }
 
         let totalMinutesPlayed = 0;
@@ -51,7 +53,7 @@ module.exports = {
             totalMinutesPlayed += playerInfo.stats[object].minutesPlayed.valueInt;
         }
 
-        return message.channel.send({ embeds: [
+        return message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -71,6 +73,6 @@ module.exports = {
                     { name: "Score:", value: `\`${playerInfo.lifeTimeStats[6].value}\``, inline: true },
                 )
                 .setTimestamp()
-        ] });
+        ]});
     }
 }

@@ -3,7 +3,7 @@ const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "avatar",
-    description: "Shows your avatar or the avatar of who you have tagged.",
+    description: "Shows your avatar or the avatar of who you tagged.",
     usage: `${prefix}avatar or ${prefix}avatar <user mention>`,
 
     execute(message, args) {
@@ -19,7 +19,7 @@ module.exports = {
         const userAvatarLink = user.avatarURL() !== null ? user.avatarURL() : "";
         const avatarTitle = user.avatarURL() !== null ? "Click to open the avatar in your browser!" : "User doesn't have a profile photo!";
 
-        message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${user.username}`,
@@ -29,6 +29,6 @@ module.exports = {
                 .setTitle(`${avatarTitle}`)
                 .setURL(`${userAvatarLink}`)
                 .setImage(userAvatar)
-        ] });
+        ]});
     }
 }

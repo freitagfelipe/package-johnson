@@ -10,7 +10,7 @@ module.exports = {
     usage: `${prefix}link`,
 
     execute(message) {
-        return message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -23,6 +23,6 @@ module.exports = {
                     { name: "Created by:", value: "[Felipe Freitag](https://github.com/freitagfelipe)", inline: true },
                     { name: "Link to repository:", value: "[Github](https://github.com/freitagfelipe/package-johnson)", inline: true }
                 )
-        ] });
+        ]});
     }
 }

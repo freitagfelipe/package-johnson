@@ -4,7 +4,7 @@ const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "commands",
-    description: "Shows the name of all commands.",
+    description: "Shows the name of all my commands.",
     usage: `${prefix}commands`,
 
     execute(message) {
@@ -31,7 +31,7 @@ module.exports = {
             commandsName.push(object[1].name);
         }
 
-        for (let i = 0; i < commandsName.length; i++) {
+        for (let i = 0; i < commandsName.length; ++i) {
             descriptionText += `- \`${commandsName[i]}\`\n`;
 
             if (((i + 1) % 10 === 0 && i !== 0) || i === commandsName.length - 1) {
@@ -48,6 +48,6 @@ module.exports = {
             }
         }
 
-        return pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
+        pagination(message, pages, 60000, ['⏪', '⏩'], false, endPage);
     }
 }

@@ -8,7 +8,7 @@ module.exports = {
 
     execute(message, args) {
         if (args.length === 0) {
-            return message.reply("You need to mention the member you want to kick and if you want you can insert the reason!");
+            return message.reply("You need to mention the member that you want to kick and if you want you can insert the reason!");
         } else if (!message.member.permissions.has("KICK_MEMBERS")) {
             return message.reply("You don't have permissions to kick anyone from this server!");
         }
@@ -26,7 +26,7 @@ module.exports = {
         const reason = args.slice(1).join(" ") || "no reason";
 
         member.kick(reason).then(() => {
-            return message.channel.send({ embeds: [
+            message.channel.send({embeds: [
                 new MessageEmbed()
                     .setAuthor(
                         `${message.client.user.username}`,
@@ -37,11 +37,11 @@ module.exports = {
                     .setDescription(`**Reason: ${reason}**`)
                     .setThumbnail(member.user.displayAvatarURL())
                     .setTimestamp()
-            ] });
+            ]});
         }).catch(error => {
             console.log(error);
 
-            return message.reply("I don't have permission to kick this user because his role is higher or equal my role!");
+            message.reply("I don't have permission to kick this user because his role is higher or equal my role!");
         });
     }
 }

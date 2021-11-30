@@ -5,7 +5,7 @@ const { embedColor, prefix } = require("../config.json");
 
 module.exports = {
     name: "search-anime",
-    description: "Searches the anime that you requested and send it's information.",
+    description: "Searches the anime that you requested and send his information.",
     aliases: ["searchanime", "sa"],
     usage: `${prefix}search-anime <anime name>`,
 
@@ -27,7 +27,7 @@ module.exports = {
 
         searchingMessage.delete();
 
-        return message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${message.client.user.username}`,
@@ -50,6 +50,6 @@ module.exports = {
                     { name: "Source:", value: `\`${anime.source}\``, inline: true }
                 )
                 .setTimestamp()
-        ] });
+        ]});
     }
 }

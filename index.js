@@ -36,11 +36,21 @@ client.on("ready", async () => {
 });
 
 client.on("messageCreate", message => {
-    if (message.author.id !== client.user.id && message.content.startsWith(prefix)) {
+    if (message.author.id === client.user.id || message.author.bot) {
+        return;
+    }
+
+    if (message.content.startsWith(prefix)) {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
 
         const command = client.commands.get(commandName) || client.commands.find(command => command.aliases && command.aliases.includes(commandName));
+
+        if (command === undefined) {
+            message.reply(`I don't have this command! To see all my commands use ${prefix}commands.`);
+
+            return;
+        }
 
         try {
             command.execute(message, args);
@@ -50,11 +60,17 @@ client.on("messageCreate", message => {
             message.reply("An error occurred while trying to execute your command, please try again!");
         }
 
-    } else if(message.author.id !== client.user.id && message.mentions.users.first() && message.mentions.users.first().id === client.user.id) {
+    } else if(message.mentions.users.first() && message.mentions.users.first().id === client.user.id) {
         const interactionName = message.content.split(" ");
         interactionName.pop();
 
         const interaction = client.interactions.get(interactionName.join(" "));
+
+        if (interaction === undefined) {
+            message.reply("I don't have this interaction! To see all my interactions go in https://github.com/freitagfelipe/package-johnson-discord and check my README.");
+
+            return;
+        }
 
         try {
             interaction.execute(message);
@@ -92,8 +108,6 @@ client.on('guildCreate', async guild => {
         guild.me.roles.add(role);
         role.setHoist(true);
     });
-
-    client
 
     const owner = await guild.members.fetch(guild.ownerId);
 

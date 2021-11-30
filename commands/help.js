@@ -20,7 +20,7 @@ module.exports = {
             return message.reply(`I couldn't find the command ${args[0]}! If you want to see a complete list of my commands type \`${prefix}commands\`!`);
         }
 
-        return message.channel.send({ embeds: [
+        message.channel.send({embeds: [
             new MessageEmbed()
                 .setAuthor(
                     `${client.user.username}`,
@@ -35,6 +35,6 @@ module.exports = {
                 )
                 .setThumbnail(`${client.user.displayAvatarURL()}`)
                 .setTimestamp()
-        ] });
+        ]});
     }
 }

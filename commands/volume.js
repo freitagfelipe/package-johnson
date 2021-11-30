@@ -29,6 +29,6 @@ module.exports = {
 
         queue.setVolume(parseFloat(args[0]));
         
-        return message.channel.send(`The volume is now ${args[0]}!${wichEmoji}`);
+        message.channel.send(`The volume is now ${args[0]}!${wichEmoji}`);
     }
 }

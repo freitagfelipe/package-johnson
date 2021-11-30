@@ -24,20 +24,20 @@ module.exports = {
                         verifyQuestion = results[Math.floor(Math.random() * 50)];
                         isGood = true;
 
-                        for (let i = 0; i < verifyQuestion.question.length; i++) {
+                        for (let i = 0; i < verifyQuestion.question.length; ++i) {
                             if (verifyQuestion.question[i] === "&") {
                                 isGood = false;
                             }
                         }
 
-                        for (let i = 0; i < verifyQuestion.correct_answer.length; i++) {
+                        for (let i = 0; i < verifyQuestion.correct_answer.length; ++i) {
                             if (verifyQuestion.correct_answer[i] === "&") {
                                 isGood = false;
                             }
                         }
 
-                        for (let i = 0; i < 3; i++) {
-                            for (let j = 0; j < verifyQuestion.incorrect_answers[i].length; j++) {
+                        for (let i = 0; i < 3; ++i) {
+                            for (let j = 0; j < verifyQuestion.incorrect_answers[i].length; ++j) {
                                 if (verifyQuestion.incorrect_answers[i][j] === "&") {
                                     isGood = false;
                                 }
@@ -56,7 +56,9 @@ module.exports = {
             } catch(error) {
                 console.log(error);
 
-                return message.reply("An error occurred while trying to execute your command, please try again!");
+                message.reply("An error occurred while trying to execute your command, please try again!");
+
+                return;
             }
         }
 
@@ -73,7 +75,7 @@ module.exports = {
                 `${message.client.user.displayAvatarURL()}`
             )
             .setColor(embedColor)
-            .setTitle("React with the number from 1️⃣ to 4️⃣ corresponding to the answer you think is correct!")
+            .setTitle("React with a number from 1️⃣ to 4️⃣ corresponding to the answer you think is correct!")
             .addField(`${question.question}`, `1) ${answers[0]}\n2) ${answers[1]}\n3) ${answers[2]}\n 4) ${answers[3]}`)
             .addField("\u200B", `${message.author.username} have one minute to answer the question or it will be deleted! You just have one chance.`)
             .setTimestamp();

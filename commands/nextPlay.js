@@ -26,6 +26,6 @@ module.exports = {
 
         await execute(message, args, 2);
 
-        return queue.next();
+        queue.next();
     }
 }

@@ -24,7 +24,7 @@ module.exports = {
             queue = new Queue(channel, message.guild.id);
             global.queues.push(queue);
 
-            return message.channel.send("Successfully connected!✅");
+            message.channel.send("Successfully connected!✅");
         }
     }
 }
